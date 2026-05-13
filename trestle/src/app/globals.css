@@ -1,0 +1,199 @@
+@import "tailwindcss";
+
+@theme {
+  /* Ink — deep navy primary */
+  --color-ink-950: #050B17;
+  --color-ink-900: #0A1628;
+  --color-ink-800: #0E1D33;
+  --color-ink-700: #142847;
+  --color-ink-600: #1E3559;
+  --color-ink-500: #36507A;
+  --color-ink-400: #5E7BA4;
+  --color-ink-300: #94A8C5;
+  --color-ink-200: #C5D1E3;
+  --color-ink-100: #E5EBF3;
+  --color-ink-50: #F2F5FA;
+
+  /* Bone — warm ivory neutrals */
+  --color-bone-50: #FBF8F2;
+  --color-bone-100: #F4EFE3;
+  --color-bone-200: #E8DFCB;
+  --color-bone-300: #D5C9AC;
+
+  /* Iron — graphite */
+  --color-iron-900: #14181F;
+  --color-iron-800: #1E2330;
+  --color-iron-700: #2F3A4F;
+  --color-iron-600: #44516A;
+  --color-iron-500: #5A6678;
+  --color-iron-400: #7C8696;
+  --color-iron-300: #A6AEBC;
+
+  /* Forge — restrained green (action / verified) */
+  --color-forge-700: #135233;
+  --color-forge-600: #186040;
+  --color-forge-500: #1F7A4D;
+  --color-forge-400: #2E9963;
+  --color-forge-300: #5BB585;
+  --color-forge-100: #DDF0E4;
+  --color-forge-50: #EEF7F1;
+
+  /* Spark — burnt amber (urgency / exclusivity) */
+  --color-spark-700: #9C4B12;
+  --color-spark-600: #B85B17;
+  --color-spark-500: #DC6F1C;
+  --color-spark-400: #ED8C39;
+  --color-spark-300: #F2A766;
+  --color-spark-100: #FBE6CF;
+  --color-spark-50: #FDF3E7;
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --font-display: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-2xl: 28px;
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-bone-50);
+    color: var(--color-ink-900);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11", "cv05";
+  }
+
+  ::selection {
+    background-color: var(--color-spark-100);
+    color: var(--color-ink-900);
+  }
+
+  /* Tight headline tracking, editorial feel */
+  h1, h2, h3, h4 {
+    letter-spacing: -0.022em;
+  }
+
+  h1 { letter-spacing: -0.028em; }
+
+  /* Subtle focus ring */
+  :focus-visible {
+    outline: 2px solid var(--color-spark-500);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+@layer utilities {
+  .font-mono { font-family: var(--font-mono); }
+  .font-display { font-family: var(--font-display); }
+
+  .text-balance { text-wrap: balance; }
+  .text-pretty { text-wrap: pretty; }
+
+  /* Hairline border in ink tone, for use on light backgrounds */
+  .border-hair {
+    border-color: rgb(10 22 40 / 0.10);
+  }
+  .border-hair-strong {
+    border-color: rgb(10 22 40 / 0.18);
+  }
+
+  /* Industrial grid overlay — subtle background pattern */
+  .bg-grid-ink {
+    background-image:
+      linear-gradient(to right, rgb(10 22 40 / 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(10 22 40 / 0.04) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  .bg-grid-bone {
+    background-image:
+      linear-gradient(to right, rgb(255 255 255 / 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(255 255 255 / 0.04) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  /* Subtle blueprint dot pattern */
+  .bg-dot-ink {
+    background-image: radial-gradient(rgb(10 22 40 / 0.10) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+
+  /* Radial spotlight behind hero */
+  .bg-hero-spot {
+    background:
+      radial-gradient(60% 50% at 20% 0%, rgba(220, 111, 28, 0.07), transparent 60%),
+      radial-gradient(45% 40% at 90% 10%, rgba(31, 122, 77, 0.06), transparent 65%);
+  }
+
+  .bg-hero-spot-dark {
+    background:
+      radial-gradient(70% 60% at 15% 0%, rgba(237, 140, 57, 0.12), transparent 60%),
+      radial-gradient(50% 50% at 95% 100%, rgba(46, 153, 99, 0.10), transparent 65%);
+  }
+
+  .shadow-card {
+    box-shadow:
+      0 1px 0 rgb(10 22 40 / 0.04),
+      0 2px 6px -2px rgb(10 22 40 / 0.06),
+      0 12px 28px -16px rgb(10 22 40 / 0.10);
+  }
+
+  .shadow-card-lg {
+    box-shadow:
+      0 1px 0 rgb(10 22 40 / 0.05),
+      0 8px 20px -8px rgb(10 22 40 / 0.10),
+      0 32px 64px -28px rgb(10 22 40 / 0.18);
+  }
+
+  .ring-hair {
+    box-shadow: inset 0 0 0 1px rgb(10 22 40 / 0.10);
+  }
+
+  /* Marquee — used for the live ingest ticker */
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  .animate-marquee {
+    animation: marquee 38s linear infinite;
+  }
+
+  /* Pulse dot — for "live" indicators */
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(0.85); }
+  }
+  .animate-pulse-dot {
+    animation: pulse-dot 1.8s ease-in-out infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-marquee,
+    .animate-pulse-dot {
+      animation: none !important;
+    }
+  }
+
+  /* Glow ring for spark accents */
+  .ring-spark {
+    box-shadow:
+      0 0 0 1px rgb(220 111 28 / 0.30),
+      0 0 24px -6px rgb(220 111 28 / 0.40);
+  }
+}

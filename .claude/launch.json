@@ -12,6 +12,12 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "build"],
       "port": 3000
+    },
+    {
+      "name": "trestle",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "trestle", "run", "dev", "--", "-p", "3100"],
+      "port": 3100
     }
   ]
 }

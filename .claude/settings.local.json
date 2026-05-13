@@ -6,7 +6,10 @@
       "PowerShell(Get-Command node -ErrorAction SilentlyContinue | Select-Object Source; Get-Command npm -ErrorAction SilentlyContinue | Select-Object Source; Get-ChildItem \"C:\\\\Program Files\\\\nodejs\" -ErrorAction SilentlyContinue | Select-Object Name; Get-ChildItem \"$env:APPDATA\\\\nvm\" -ErrorAction SilentlyContinue | Select-Object Name; Get-ChildItem \"$env:LOCALAPPDATA\\\\Programs\" -ErrorAction SilentlyContinue | Select-Object Name)",
       "PowerShell(if \\(-not \\(Test-Path \"D:\\\\Claude\\\\Samuel Kopstick\\\\new\\\\.claude\"\\)\\) { New-Item -ItemType Directory -Path \"D:\\\\Claude\\\\Samuel Kopstick\\\\new\\\\.claude\" -Force })",
       "PowerShell($env:Path = [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"User\"\\); where.exe npm 2>&1; where.exe node 2>&1)",
-      "mcp__Claude_Preview__preview_start"
+      "mcp__Claude_Preview__preview_start",
+      "Bash(mkdir -p .claude)",
+      "PowerShell(Get-Command claude -ErrorAction SilentlyContinue)",
+      "PowerShell(Get-ChildItem -Path \"$env:USERPROFILE\",\"$env:LOCALAPPDATA\",\"$env:APPDATA\" -Recurse -Filter \"claude.cmd\" -ErrorAction SilentlyContinue -Depth 4 2>$null | Select-Object -First 5 -ExpandProperty FullName; Get-ChildItem -Path \"$env:USERPROFILE\",\"$env:LOCALAPPDATA\",\"$env:APPDATA\" -Recurse -Filter \"claude.exe\" -ErrorAction SilentlyContinue -Depth 4 2>$null | Select-Object -First 5 -ExpandProperty FullName)"
     ]
   }
 }
