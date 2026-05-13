@@ -8,68 +8,52 @@ const EXPO_EASE = [0.16, 1, 0.3, 1] as const;
 interface Platform {
   name: string;
   subtitle: string;
-  wordmark: React.ReactNode;
+  /** Logo file path under /public */
+  logo: string;
+  /** Aspect tweak — some logos render better at slightly different max heights */
+  maxHeight?: string;
 }
 
 const platforms: Platform[] = [
   {
-    name: "Spire",
+    name: "Spire — Authorized Partner",
     subtitle: "Business Management",
-    wordmark: (
-      <span className="inline-flex items-center gap-1.5">
-        <span
-          aria-hidden="true"
-          className="inline-block h-0 w-0 border-y-[6px] border-l-[10px] border-y-transparent border-l-accent-500"
-        />
-        <span className="font-sans font-bold uppercase tracking-[0.18em] text-navy-900 text-[length:--font-size-h3]">
-          SPIRE
-        </span>
-      </span>
-    ),
+    logo: "/logos/spire.png",
+    // Spire Authorized Partner variant has the certification bar — give it
+    // the same vertical space as Adagio so both trust signals read clearly.
+    maxHeight: "max-h-16",
   },
   {
-    name: "Adagio",
+    name: "Adagio — Authorized Reseller",
     subtitle: "Accounting Software",
-    wordmark: (
-      <span className="font-display italic text-navy-900 text-[length:--font-size-h2] leading-none">
-        Adagio
-      </span>
-    ),
+    logo: "/logos/adagio.png",
+    // Adagio Authorized Reseller variant is taller (has the certification bar) —
+    // give it slightly more height so the trust signal reads clearly.
+    maxHeight: "max-h-16",
   },
   {
-    name: "PayDirt",
+    name: "PayDirt Payroll",
     subtitle: "Payroll",
-    wordmark: (
-      <span className="font-sans font-bold text-navy-900 text-[length:--font-size-h3] tracking-tight">
-        Pay<span className="text-accent-600">Dirt</span>
-      </span>
-    ),
+    logo: "/logos/paydirt.png",
+    maxHeight: "max-h-10",
   },
   {
     name: "Crystal Reports",
     subtitle: "Reporting",
-    wordmark: (
-      <span className="text-navy-900 text-[length:--font-size-h3] leading-none">
-        <span className="font-bold tracking-tight">Crystal</span>
-        <span className="font-light ml-1.5">Reports</span>
-      </span>
-    ),
+    logo: "/logos/crystal-reports.png",
+    maxHeight: "max-h-14",
   },
   {
-    name: "Excel & Access",
-    subtitle: "Custom Reporting",
-    wordmark: (
-      <span className="font-sans font-semibold text-navy-900 text-[length:--font-size-h3] tracking-tight">
-        Excel <span className="text-accent-600 font-light">+</span> Access
-      </span>
-    ),
+    name: "Microsoft Access",
+    subtitle: "Custom Databases",
+    logo: "/logos/microsoft-access.png",
+    maxHeight: "max-h-14",
   },
 ];
 
 export function PlatformsStrip() {
   return (
     <SectionWrapper background="light" padding="default">
-      {/* TODO: Replace text wordmarks with official partner logos when client supplies brand assets */}
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -108,27 +92,22 @@ export function PlatformsStrip() {
             }}
             whileHover={{ y: -2 }}
             transition={{ duration: 0.25, ease: EXPO_EASE }}
-            className="group flex min-h-[112px] flex-col items-center justify-center rounded-xl border border-slate-200 bg-white px-6 py-5 text-center shadow-card transition-shadow duration-300 hover:shadow-card-hover"
+            className="group flex min-h-[140px] flex-col items-center justify-center rounded-xl border border-slate-200 bg-white px-6 py-6 text-center shadow-card transition-shadow duration-300 hover:shadow-card-hover"
           >
-            <div className="flex h-10 items-center justify-center">
-              {platform.wordmark}
+            <div className="flex h-20 w-full items-center justify-center">
+              <img
+                src={platform.logo}
+                alt={`${platform.name} logo`}
+                loading="lazy"
+                className={`${platform.maxHeight ?? "max-h-12"} w-auto object-contain`}
+              />
             </div>
-            <p className="mt-2.5 text-[length:--font-size-caption] font-medium uppercase tracking-[0.12em] text-slate-500">
+            <p className="mt-3 text-[length:--font-size-caption] font-medium uppercase tracking-[0.12em] text-slate-500">
               {platform.subtitle}
             </p>
           </motion.div>
         ))}
       </motion.div>
-
-      <motion.p
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true, margin: "-40px" }}
-        transition={{ duration: 0.6, delay: 0.3, ease: EXPO_EASE }}
-        className="mt-8 text-center text-sm text-slate-500"
-      >
-        * Replace with official partner logos when client supplies brand assets.
-      </motion.p>
     </SectionWrapper>
   );
 }

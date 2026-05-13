@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CleverPays — Payments, with people who care</title>
+<meta name="description" content="Clover Authorized Dealers with in-house support and integration teams. Bilingual EN/FR. We treat your business like it's our own — built in Quebec.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<style>
+.hero-home { padding:100px 0 80px; }
+@media (max-width:768px) { .hero-home { padding:60px 0 60px; } }
+.hero-grid-layout { display:grid; grid-template-columns:1.1fr 1fr; gap:64px; align-items:center; position:relative; z-index:1; }
+@media (max-width:1023px) { .hero-grid-layout { grid-template-columns:1fr; gap:48px; } }
+.hero-visual { position:relative; aspect-ratio:1; max-width:580px; margin-left:auto; }
+@media (max-width:1023px) { .hero-visual { max-width:480px; margin:0 auto; } }
+.hex-network { position:absolute; inset:0; z-index:0; opacity:0.5; }
+.hex-network svg { width:100%; height:100%; }
+.hero-device-station { position:absolute; top:12%; right:0; width:70%; z-index:2; filter:drop-shadow(0 24px 48px rgba(0,0,0,0.5)); animation:gentle-float 8s ease-in-out infinite; }
+.hero-device-flex { position:absolute; bottom:4%; left:2%; width:38%; z-index:3; filter:drop-shadow(0 16px 32px rgba(0,0,0,0.45)); animation:gentle-float 8s ease-in-out infinite; animation-delay:-3s; }
+@keyframes gentle-float { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-12px); } }
+.hero-floating-card { position:absolute; top:8%; left:-4%; z-index:4; background:rgba(10,20,48,0.92); backdrop-filter:blur(12px); border:1px solid var(--cp-border-dark-strong); border-radius:14px; padding:14px 18px; display:flex; align-items:center; gap:12px; box-shadow:var(--cp-shadow-lg); animation:gentle-float 8s ease-in-out infinite; animation-delay:-5s; }
+.hero-floating-card .check { width:28px; height:28px; background:var(--cp-jade-500); color:var(--cp-bg-deep); border-radius:50%; display:flex; align-items:center; justify-content:center; }
+.hero-floating-card .check svg { width:16px; height:16px; }
+.hero-floating-card .text { font-size:13px; }
+.hero-floating-card .text strong { display:block; font-weight:700; color:var(--cp-ink-on-dark); }
+.hero-floating-card .text span { font-size:12px; color:var(--cp-ink-on-dark-3); }
+.hero-stat-card { position:absolute; bottom:14%; right:-2%; z-index:4; background:linear-gradient(135deg, var(--cp-honey-500), var(--cp-honey-300)); color:var(--cp-bg-deep); border-radius:16px; padding:16px 22px; box-shadow:var(--cp-shadow-honey); animation:gentle-float 8s ease-in-out infinite; animation-delay:-2s; }
+.hero-stat-card .num { font-size:28px; font-weight:800; letter-spacing:-0.03em; line-height:1; }
+.hero-stat-card .label { font-size:11px; text-transform:uppercase; letter-spacing:0.06em; font-weight:700; margin-top:4px; }
+.hero-ctas { display:flex; gap:14px; flex-wrap:wrap; align-items:center; margin-top:8px; }
+.hero-sub { font-size:clamp(18px,1.9vw,22px); color:var(--cp-ink-on-dark-2); max-width:600px; margin:24px 0 36px; line-height:1.55; }
+.hero-sub strong { color:var(--cp-ink-on-dark); font-weight:600; }
+.care-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; margin-top:56px; }
+@media (max-width:960px) { .care-grid { grid-template-columns:repeat(2,1fr); } }
+@media (max-width:540px) { .care-grid { grid-template-columns:1fr; } }
+.care-pillar { padding:32px; background:var(--cp-bg-elev); border:1px solid var(--cp-border-dark); border-radius:var(--cp-radius-lg); transition:all 320ms var(--cp-ease); }
+.care-pillar:hover { transform:translateY(-4px); border-color:var(--cp-honey-500); }
+.care-num { font-family:'Instrument Serif',serif; font-style:italic; font-size:36px; line-height:1; color:var(--cp-honey-400); margin-bottom:24px; }
+.care-pillar h3 { font-size:20px; font-weight:700; letter-spacing:-0.02em; line-height:1.25; margin-bottom:12px; }
+.care-pillar p { font-size:15px; color:var(--cp-ink-on-dark-2); line-height:1.55; }
+.duo-section { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+@media (max-width:960px) { .duo-section { grid-template-columns:1fr; } }
+.duo-card { padding:48px; border-radius:var(--cp-radius-xl); background:linear-gradient(160deg, var(--cp-bg-elev-2), var(--cp-bg-base)); border:1px solid var(--cp-border-dark); position:relative; overflow:hidden; transition:all 320ms var(--cp-ease); min-height:420px; display:flex; flex-direction:column; justify-content:space-between; }
+.duo-card:hover { transform:translateY(-4px); border-color:var(--cp-honey-500); }
+.duo-card-tag { font-size:12px; text-transform:uppercase; letter-spacing:0.16em; font-weight:700; color:var(--cp-honey-400); }
+.duo-card h2 { font-size:clamp(28px,3vw,38px); font-weight:800; letter-spacing:-0.025em; line-height:1.1; margin:16px 0 16px; }
+.duo-card p { font-size:15px; color:var(--cp-ink-on-dark-2); line-height:1.6; margin-bottom:24px; }
+.duo-logos { display:flex; gap:16px; flex-wrap:wrap; margin:20px 0; }
+.duo-logos > * { height:32px; padding:6px 14px; background:rgba(255,255,255,0.06); border:1px solid var(--cp-border-dark); border-radius:8px; font-size:13px; font-weight:600; color:var(--cp-ink-on-dark-2); display:inline-flex; align-items:center; }
+.industries-header { display:grid; grid-template-columns:1.3fr 1fr; gap:48px; align-items:end; margin-bottom:56px; }
+@media (max-width:960px) { .industries-header { grid-template-columns:1fr; gap:24px; } }
+.quote-block { text-align:center; max-width:920px; margin:0 auto; }
+.quote-text { font-family:'Instrument Serif',serif; font-style:italic; font-size:clamp(28px,4vw,44px); font-weight:400; line-height:1.3; letter-spacing:-0.01em; margin-bottom:32px; }
+.quote-text .em { background:linear-gradient(135deg, var(--cp-honey-400), var(--cp-honey-300)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+.quote-attrib { font-size:13px; color:var(--cp-ink-on-dark-3); letter-spacing:0.10em; text-transform:uppercase; font-weight:600; }
+.quote-stars { color:var(--cp-honey-500); font-size:20px; letter-spacing:4px; margin-bottom:24px; }
+.tools-band { background:var(--cp-bg-cream); color:var(--cp-ink-on-cream); }
+.tools-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:56px; }
+@media (max-width:960px) { .tools-grid { grid-template-columns:1fr; } }
+.tool-card-light { padding:32px; background:var(--cp-bg-white); border:1px solid var(--cp-border-cream); border-radius:var(--cp-radius-lg); box-shadow:var(--cp-shadow-md); transition:all 320ms var(--cp-ease); }
+.tool-card-light:hover { transform:translateY(-4px); box-shadow:var(--cp-shadow-lg); border-color:var(--cp-honey-500); }
+.tool-icon { width:44px; height:44px; border-radius:11px; background:linear-gradient(135deg, var(--cp-honey-300), var(--cp-honey-500)); color:var(--cp-bg-deep); display:flex; align-items:center; justify-content:center; margin-bottom:20px; }
+.tool-icon svg { width:22px; height:22px; }
+.tool-name { font-size:19px; font-weight:700; letter-spacing:-0.01em; margin-bottom:6px; color:var(--cp-ink-on-cream); }
+.tool-desc { font-size:14px; color:var(--cp-ink-on-cream-2); margin-bottom:18px; line-height:1.5; }
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Primary">
+  <div class="nav-inner">
+    <a class="logo" href="/home.html">
+      <span class="logo-mark" aria-hidden="true"><span>CP</span></span>
+      <span class="logo-text"><span class="clever">Clever</span><span class="pays">Pays</span></span>
+    </a>
+    <div class="nav-links">
+      <div class="nav-item">
+        <a class="nav-link" href="#">Payment Processing
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </a>
+        <div class="nav-mega"><div class="nav-mega-inner">
+          <a class="nav-mega-item" href="/payment-processing/clover.html"><div class="nav-mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><circle cx="12" cy="5" r="2"/><circle cx="12" cy="19" r="2"/><circle cx="5" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg></div><div class="nav-mega-content"><h5>Clover</h5><p>Authorized dealer — full lineup, set up right</p></div></a>
+          <a class="nav-mega-item" href="/payment-processing/other-solutions.html"><div class="nav-mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="2" width="12" height="20" rx="2"/></svg></div><div class="nav-mega-content"><h5>Smart Terminals</h5><p>Ingenico · Pax · Verifone alternatives</p></div></a>
+          <a class="nav-mega-item" href="#"><div class="nav-mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/></svg></div><div class="nav-mega-content"><h5>Virtual Terminal</h5><p>Accept by phone or browser</p></div></a>
+          <a class="nav-mega-item" href="#"><div class="nav-mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg></div><div class="nav-mega-content"><h5>Online &amp; eCommerce</h5><p>Shopify, WooCommerce &amp; more</p></div></a>
+        </div></div>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link" href="#">Business Solutions
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </a>
+        <div class="nav-mega"><div class="nav-mega-inner">
+          <a class="nav-mega-item" href="/business-solutions/integrated-pos.html"><div class="nav-mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div><div class="nav-mega-content"><h5>Integrated POS</h5><p>Your POS, our payments, seamless</p></div></a>
+          <a class="nav-mega-item" href="#"><div class="nav-mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></div><div class="nav-mega-content"><h5>Inventory Management</h5><p>Multi-location, real-time</p></div></a>
+          <a class="nav-mega-item" href="#"><div class="nav-mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><div class="nav-mega-content"><h5>Employee Management</h5><p>Schedules, payroll, permissions</p></div></a>
+          <a class="nav-mega-item" href="#"><div class="nav-mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div><div class="nav-mega-content"><h5>Business Reporting</h5><p>One dashboard, every location</p></div></a>
+        </div></div>
+      </div>
+      <a class="nav-link" href="#industries">Industries</a>
+      <a class="nav-link" href="#questions">Pricing &amp; FAQ</a>
+      <a class="nav-link" href="/calculator.html">Tools</a>
+      <a class="nav-link" href="#why">About</a>
+    </div>
+    <div class="nav-right">
+      <div class="locale-toggle" role="group" aria-label="Language">
+        <button class="locale-btn active">EN</button>
+        <button class="locale-btn">FR</button>
+      </div>
+      <a class="btn-nav" href="#closing">Talk to us</a>
+      <button class="menu-toggle" id="menu-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-drawer" id="mobile-drawer">
+  <button class="mobile-drawer-close" id="drawer-close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+  <a href="/payment-processing/clover.html">Clover</a>
+  <a href="/payment-processing/other-solutions.html">Smart Terminals</a>
+  <a href="/business-solutions/integrated-pos.html">Integrated POS</a>
+  <a href="#industries">Industries</a>
+  <a href="#questions">Pricing &amp; FAQ</a>
+  <a href="/calculator.html">Tools</a>
+  <a href="#why">About</a>
+</div>
+
+<section class="hero hero-home">
+  <div class="hero-bg"></div><div class="hero-grid"></div>
+  <div class="hero-orb hero-orb-1"></div><div class="hero-orb hero-orb-2"></div>
+  <div class="container">
+    <div class="hero-grid-layout">
+      <div>
+        <div class="eyebrow-chip"><span class="eyebrow-dot"></span><span>Clover Authorized Dealer · Bilingual EN/FR · Built in Quebec</span></div>
+        <h1 class="display-xl">We treat<br>your business<br><span class="serif accent-honey">like it's our own.</span></h1>
+        <p class="hero-sub">A <strong>Clover Authorized Dealer</strong> with <strong>in-house support</strong> and <strong>in-house integration teams</strong>. We empower our team to go above and beyond — because every merchant deserves a partner who actually shows up.</p>
+        <div class="hero-ctas">
+          <a href="#closing" class="btn btn-honey">Talk to a specialist <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <a href="/calculator.html" class="btn btn-ghost-light">Try the rate calculator</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hex-network"><svg viewBox="0 0 600 600" fill="none"><defs><linearGradient id="hex-line" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#E8B547" stop-opacity="0.4"/><stop offset="100%" stop-color="#5BC0E8" stop-opacity="0.4"/></linearGradient></defs><g stroke="url(#hex-line)" stroke-width="1.5" fill="none" opacity="0.7"><polygon points="300,50 380,100 380,200 300,250 220,200 220,100"/><polygon points="150,150 230,200 230,300 150,350 70,300 70,200"/><polygon points="450,150 530,200 530,300 450,350 370,300 370,200"/><polygon points="300,250 380,300 380,400 300,450 220,400 220,300"/><polygon points="150,350 230,400 230,500 150,550 70,500 70,400"/><polygon points="450,350 530,400 530,500 450,550 370,500 370,400"/></g></svg></div>
+        <img class="hero-device-station" src="https://cleverpays.ca/wp-content/uploads/2024/04/Stationduo_3_4_Right_WCB_Merchant_Facing_with-Shadow-1.png" alt="Clover Station Duo">
+        <img class="hero-device-flex" src="https://cleverpays.ca/wp-content/uploads/2024/04/Clover_Flex_2_Left_ret_cs_11.5-3.png" alt="Clover Flex">
+        <div class="hero-floating-card"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><div class="text"><strong>Clover Authorized</strong><span>Certified dealer · Direct support</span></div></div>
+        <div class="hero-stat-card"><div class="num">&lt; 2 min</div><div class="label">Avg phone answer · EN/FR</div></div>
+      </div>
+    </div>
+
+    <div class="trust-strip" style="margin-top: 80px;">
+      <div class="trust-cell"><div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div><div><div class="trust-label">Certified</div><div class="trust-value">Clover Authorized Dealer</div></div></div>
+      <div class="trust-cell"><div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg></div><div><div class="trust-label">Built in</div><div class="trust-value">Quebec · Bilingual EN/FR</div></div></div>
+      <div class="trust-cell"><div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><div><div class="trust-label">Real humans</div><div class="trust-value">In-house support</div></div></div>
+      <div class="trust-cell"><div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div><div><div class="trust-label">Engineering</div><div class="trust-value">In-house integrations</div></div></div>
+      <div class="trust-cell"><div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><div><div class="trust-label">Pricing</div><div class="trust-value">Plain language · No surprises</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="why">
+  <div class="container">
+    <span class="section-eyebrow reveal">What real care looks like</span>
+    <h2 class="section-h2 reveal">A team built around <span class="serif accent-honey">your business.</span></h2>
+    <p class="lede reveal" style="margin-top: 24px;">Most processors sell you a device and disappear. We're different. As Clover Authorized Dealers with everything under one roof in Laval, the support agent who answers your call has the authority — and the engineer at the next desk — to actually fix what's wrong.</p>
+    <div class="care-grid">
+      <div class="care-pillar reveal"><div class="care-num">01</div><h3>Directly authorized by Clover</h3><p>We're a Clover Authorized Dealer — direct line, direct support, direct authority to provision and fix devices. Not a reseller routing your call somewhere else.</p></div>
+      <div class="care-pillar reveal reveal-delay-1"><div class="care-num">02</div><h3>In-house everything</h3><p>Support, engineering, integrations — every part of the operation under one roof in Laval. When something needs fixing, the right person is already in the room.</p></div>
+      <div class="care-pillar reveal reveal-delay-2"><div class="care-num">03</div><h3>Empowered to make it right</h3><p>Our team has the authority to solve, credit, replace, reprovision — without three layers of escalation. Most issues close on the first call.</p></div>
+      <div class="care-pillar reveal reveal-delay-3"><div class="care-num">04</div><h3>Transparent pricing</h3><p>Plain-language statements. Every fee labeled in English. No PCI non-compliance fees. No three-year auto-renews. No setup fees for standard configurations.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section clover-band">
+  <div class="clover-band-bg"></div>
+  <div class="container clover-band-inner">
+    <div class="clover-band-header">
+      <div><span class="section-eyebrow on-cream reveal">The Clover lineup</span><h2 class="section-h2 reveal">Full lineup. <span class="serif accent-honey">Set up right.</span></h2></div>
+      <div><p class="lede on-cream reveal">Flex, Mini, Station Duo, Station Solo, Kiosk, and Integrated — every device <strong>provisioned, configured, and shipped ready to plug in</strong>. Backed by the team that connects it to the systems you already run.</p></div>
+    </div>
+    <div class="device-grid">
+      <a href="/payment-processing/clover.html#flex" class="device-card reveal" style="background:var(--cp-bg-white); border-color:var(--cp-border-cream);">
+        <div class="device-img-wrap" style="background:linear-gradient(135deg, var(--cp-bg-cream-2), var(--cp-bg-cream));"><img src="https://cleverpays.ca/wp-content/uploads/2024/04/Clover_Flex_2_Left_ret_cs_11.5-3.png" alt="Clover Flex"></div>
+        <div class="device-card-body"><div class="device-tag" style="color:var(--cp-honey-700);">Handheld POS</div><div class="device-name" style="color:var(--cp-ink-on-cream);">Clover Flex</div><p class="device-desc" style="color:var(--cp-ink-on-cream-2);">Counter, in line, at the table or in the field. The most flexible Clover — built for businesses that move.</p><span class="device-cta" style="color:var(--cp-honey-700);">Explore Flex →</span></div>
+      </a>
+      <a href="/payment-processing/clover.html#station-duo" class="device-card reveal reveal-delay-1" style="background:var(--cp-bg-white); border-color:var(--cp-border-cream);">
+        <div class="device-img-wrap" style="background:linear-gradient(135deg, var(--cp-bg-cream-2), var(--cp-bg-cream));"><img src="https://cleverpays.ca/wp-content/uploads/2024/04/Stationduo_3_4_Right_WCB_Merchant_Facing_with-Shadow-1.png" alt="Clover Station Duo"></div>
+        <div class="device-card-body"><div class="device-tag" style="color:var(--cp-honey-700);">Countertop POS · Dual screen</div><div class="device-name" style="color:var(--cp-ink-on-cream);">Clover Station Duo</div><p class="device-desc" style="color:var(--cp-ink-on-cream-2);">The ultimate countertop system for QSR, retail, and service. Customer-facing display, full peripherals, real horsepower.</p><span class="device-cta" style="color:var(--cp-honey-700);">Explore Station Duo →</span></div>
+      </a>
+      <a href="/payment-processing/clover.html#kiosk" class="device-card reveal reveal-delay-2" style="background:var(--cp-bg-white); border-color:var(--cp-border-cream);">
+        <div class="device-img-wrap" style="background:linear-gradient(135deg, var(--cp-bg-cream-2), var(--cp-bg-cream));"><img src="https://cleverpays.ca/wp-content/uploads/2024/04/clover_kiosk-scaled.webp" alt="Clover Kiosk"></div>
+        <div class="device-card-body"><div class="device-tag" style="color:var(--cp-honey-700);">Self-service</div><div class="device-name" style="color:var(--cp-ink-on-cream);">Clover Kiosk</div><p class="device-desc" style="color:var(--cp-ink-on-cream-2);">Self-service ordering for QSR, retail, and high-volume environments. Reduce lines, lift ticket size, free up staff.</p><span class="device-cta" style="color:var(--cp-honey-700);">Explore Kiosk →</span></div>
+      </a>
+    </div>
+    <div style="text-align: center; margin-top: 56px;"><a href="/payment-processing/clover.html" class="text-link on-cream" style="font-size:16px;">See the full Clover hub →</a></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <span class="section-eyebrow reveal">Beyond Clover</span>
+    <h2 class="section-h2 reveal" style="margin-bottom:56px;">More than one way to <span class="serif accent-honey">run your counter.</span></h2>
+    <div class="duo-section">
+      <a href="/payment-processing/other-solutions.html" class="duo-card reveal">
+        <div><div class="duo-card-tag">Smart Terminals</div><h2>Ingenico. Pax. Verifone.</h2><p>When Clover isn't the right fit, we bring premium alternatives. Ingenico DX8000 &amp; EX8000, Pax A920, Verifone V400m &amp; T650 — fully supported, properly configured.</p><div class="duo-logos"><span>Ingenico</span><span>Pax</span><span>Verifone</span></div></div>
+        <span class="text-link">Explore other solutions →</span>
+      </a>
+      <a href="/business-solutions/integrated-pos.html" class="duo-card reveal reveal-delay-1">
+        <div><div class="duo-card-tag">Integrated POS</div><h2>Your POS. Our payments. One flow.</h2><p>Keep the POS you love. Connect it to CleverPays via FLEX, Datacap, Eigen, or PaymentTree — middleware our in-house team configures and supports end-to-end.</p><div class="duo-logos"><span>FLEX</span><span>Datacap</span><span>Eigen</span><span>PaymentTree</span></div></div>
+        <span class="text-link">Explore Integrated POS →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="industries">
+  <div class="container">
+    <div class="industries-header">
+      <div><span class="section-eyebrow reveal">Who we know cold</span><h2 class="section-h2 reveal">Industries we work <span class="serif accent-honey">deeply in.</span></h2></div>
+      <p class="lede reveal">Not "we serve all verticals." These are the operations we know down to the 7pm Friday rush — and where our integration team has built real depth.</p>
+    </div>
+    <div class="industries-grid">
+      <a href="#" class="industry-tile reveal"><svg class="industry-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><div><div class="industry-name">Retail</div><div class="industry-detail">Boutique to chain</div></div></a>
+      <a href="#" class="industry-tile reveal"><svg class="industry-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg><div><div class="industry-name">Restaurants &amp; QSR</div><div class="industry-detail">FOH to kitchen display</div></div></a>
+      <a href="#" class="industry-tile reveal reveal-delay-1"><svg class="industry-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><div><div class="industry-name">Grocery</div><div class="industry-detail">Independent to multi-store</div></div></a>
+      <a href="#" class="industry-tile reveal reveal-delay-1"><svg class="industry-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg><div><div class="industry-name">Healthcare</div><div class="industry-detail">Clinics &amp; specialists</div></div></a>
+      <a href="#" class="industry-tile reveal reveal-delay-2"><svg class="industry-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg><div><div class="industry-name">Gas &amp; Fleet</div><div class="industry-detail">Pump, store, fleet card</div></div></a>
+      <a href="#" class="industry-tile reveal reveal-delay-2"><svg class="industry-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/></svg><div><div class="industry-name">Professional Services</div><div class="industry-detail">Invoicing &amp; recurring</div></div></a>
+      <a href="#" class="industry-tile reveal reveal-delay-3"><svg class="industry-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><div><div class="industry-name">Non-Profits</div><div class="industry-detail">Lower rates, fair terms</div></div></a>
+      <a href="#" class="industry-tile reveal reveal-delay-3"><svg class="industry-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg><div><div class="industry-name">Multi-Location</div><div class="industry-detail">Franchise &amp; chain</div></div></a>
+    </div>
+  </div>
+</section>
+
+<section class="section-tight">
+  <div class="container">
+    <div class="quote-block">
+      <div class="quote-stars reveal">★★★★★</div>
+      <p class="quote-text reveal">"The CleverPays team didn't just sell us a Clover. They <span class="em">configured it for our menu</span>, integrated it with our inventory, and answered every call we made — in <span class="em">French, in English, on weekends</span>. We've never had a payments partner work this way before."</p>
+      <div class="quote-attrib reveal"><strong>Restaurant owner</strong> · Montréal, QC</div>
+    </div>
+  </div>
+</section>
+
+<section class="section tools-band">
+  <div class="container">
+    <span class="section-eyebrow on-cream reveal">Merchant tools</span>
+    <h2 class="section-h2 reveal">Real math. <span class="serif accent-honey">No fluff.</span></h2>
+    <p class="lede on-cream reveal" style="margin-top:20px;">Calculators that show what you're paying and what you could be paying — built so you can decide for yourself before you ever talk to us.</p>
+    <div class="tools-grid">
+      <a href="/calculator.html" class="tool-card-light reveal">
+        <div class="tool-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+        <div class="tool-name">Effective Rate Calculator</div>
+        <div class="tool-desc">A 30-second estimate of your blended effective rate. Adjustable, bilingual, shareable.</div>
+        <span class="text-link on-cream">Open →</span>
+      </a>
+      <a href="#" class="tool-card-light reveal reveal-delay-1">
+        <div class="tool-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/></svg></div>
+        <div class="tool-name">Hardware ROI</div>
+        <div class="tool-desc">Lease vs buy on Clover hardware. Three-year total cost laid out plainly.</div>
+        <span class="text-link on-cream">Coming soon</span>
+      </a>
+      <a href="#" class="tool-card-light reveal reveal-delay-2">
+        <div class="tool-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+        <div class="tool-name">Multi-Location Estimator</div>
+        <div class="tool-desc">Time and operational lift across multiple locations. Built for chains and franchise.</div>
+        <span class="text-link on-cream">Coming soon</span>
+      </a>
+    </div>
+    <div style="text-align:center; margin-top:56px;"><a href="/calculator.html" class="text-link on-cream" style="font-size:16px;">Try the rate calculator →</a></div>
+  </div>
+</section>
+
+<!-- BEFORE YOU DECIDE — THE QA HUB -->
+<section class="section" id="questions">
+  <div class="container">
+    <div style="text-align:center; max-width:760px; margin:0 auto 56px;">
+      <span class="section-eyebrow reveal">Before you decide</span>
+      <h2 class="section-h2 reveal">Real answers to the <span class="serif accent-honey">questions merchants actually ask.</span></h2>
+      <p class="lede reveal" style="margin:24px auto 0;">We collected the questions a worried, careful merchant asks before switching processors — and answered every one of them in plain language. If you have a question not here, ask us.</p>
+    </div>
+
+    <div class="qa-hub reveal">
+      <div style="text-align:center;">
+        <h3 style="font-size:22px; font-weight:700; letter-spacing:-0.01em; color:var(--cp-honey-300);">12 categories. 60+ questions. Plain answers.</h3>
+        <p style="font-size:15px; color:var(--cp-ink-on-dark-2); margin-top:12px;">Pick a topic. We've answered the same questions hundreds of times — the answers are tight and honest.</p>
+      </div>
+      <div class="qa-hub-grid">
+        <div class="qa-tabs">
+          <button class="qa-tab active" data-panel="qa-pricing">Pricing &amp; fees <span class="qa-tab-count">8</span></button>
+          <button class="qa-tab" data-panel="qa-contract">Contracts <span class="qa-tab-count">5</span></button>
+          <button class="qa-tab" data-panel="qa-hardware">Hardware <span class="qa-tab-count">7</span></button>
+          <button class="qa-tab" data-panel="qa-switching">Switching from Square <span class="qa-tab-count">6</span></button>
+          <button class="qa-tab" data-panel="qa-support">Support &amp; service <span class="qa-tab-count">6</span></button>
+          <button class="qa-tab" data-panel="qa-integration">Integrations <span class="qa-tab-count">5</span></button>
+          <button class="qa-tab" data-panel="qa-security">Security &amp; PCI <span class="qa-tab-count">4</span></button>
+          <button class="qa-tab" data-panel="qa-settlement">Settlement &amp; money <span class="qa-tab-count">5</span></button>
+          <button class="qa-tab" data-panel="qa-multi">Multi-location <span class="qa-tab-count">4</span></button>
+          <button class="qa-tab" data-panel="qa-quebec">Quebec specifics <span class="qa-tab-count">4</span></button>
+          <button class="qa-tab" data-panel="qa-team">The team &amp; company <span class="qa-tab-count">5</span></button>
+          <button class="qa-tab" data-panel="qa-staff">Staff &amp; training <span class="qa-tab-count">4</span></button>
+        </div>
+        <div class="qa-content">
+          <div class="qa-panel active" id="qa-pricing">
+            <h3>Pricing &amp; fees</h3>
+            <p class="qa-panel-intro">The most-asked questions. Rates depend on your card mix and channel — but here's exactly how pricing works.</p>
+            <details class="qa-q"><summary>What's my actual rate going to be?</summary><div class="qa-a"><p>Effective rate depends on your card mix (debit vs credit vs premium), average ticket, monthly volume, and channel. For a typical small restaurant or retail merchant, blended effective rates land between <strong>1.9% and 2.6%</strong>. The only way to give a real number is to read your statement — we do that in 24 hours.</p></div></details>
+            <details class="qa-q"><summary>Is it flat-rate or interchange-plus?</summary><div class="qa-a"><p>We offer both. <strong>Interchange-plus</strong> shows the actual card-network cost separately from our markup. <strong>Flat-rate</strong> is one number, no math. Above ~$25K/month, interchange-plus usually saves money. Under that, flat-rate often wins cleaner.</p></div></details>
+            <details class="qa-q"><summary>Are there monthly fees, statement fees, or PCI fees?</summary><div class="qa-a"><p>Possible standard fees: monthly account fee, monthly minimum (only if volume triggers it), annual PCI program fee. <strong>What you won't see:</strong> PCI non-compliance fees, statement fees, mystery regulatory pass-throughs, batch-close fees. Every fee labeled in plain English.</p></div></details>
+            <details class="qa-q"><summary>Is there a setup fee?</summary><div class="qa-a"><p>No setup fee for standard Clover configurations. Custom integrations may carry a one-time engineering charge — quoted up-front, in writing, fixed scope.</p></div></details>
+            <details class="qa-q"><summary>Are Amex, contactless, or premium cards extra?</summary><div class="qa-a"><p>Premium credit cards carry higher interchange — card-network pricing, not ours. Pass-through on interchange-plus, blended on flat-rate. Contactless (tap, mobile wallets) priced the same as chip — no surcharge.</p></div></details>
+            <details class="qa-q"><summary>Can you raise my rates whenever you want?</summary><div class="qa-a"><p>Card-network cost changes pass through. Our markup changes only with <strong>30 days written notice</strong>. If you don't like a change, you can leave penalty-free.</p></div></details>
+            <details class="qa-q"><summary>Will you really beat my Square rate?</summary><div class="qa-a"><p>For most merchants over ~$25K/month, yes — Square's flat rate is expensive at scale. Below that, sometimes Square wins. <strong>We tell you honestly</strong> when staying on Square is the right call.</p></div></details>
+            <details class="qa-q"><summary>Itemized statement?</summary><div class="qa-a"><p>Yes. Every statement is line-itemized by transaction, by card type, by fee. If anything is unclear, your specialist walks you through it.</p></div></details>
+          </div>
+          <div class="qa-panel" id="qa-contract"><h3>Contracts &amp; cancellation</h3><p class="qa-panel-intro">No three-year auto-renew. No hidden penalties.</p>
+            <details class="qa-q"><summary>Am I locked into a long contract?</summary><div class="qa-a"><p>Processing is <strong>month-to-month</strong>. No multi-year auto-renewals. Hardware financing is separate, with its own term — you own the device at the end.</p></div></details>
+            <details class="qa-q"><summary>Early termination fee?</summary><div class="qa-a"><p>None on processing. Hardware financing/lease has its own terms (explained plainly up-front).</p></div></details>
+            <details class="qa-q"><summary>Cancellation notice period?</summary><div class="qa-a"><p>30 days written notice. No 60- or 90-day wind-downs.</p></div></details>
+            <details class="qa-q"><summary>See the contract before signing?</summary><div class="qa-a"><p>Yes. Full agreement before signing, with all rates, fees, and terms in plain language. Take it to your accountant.</p></div></details>
+            <details class="qa-q"><summary>30-day trial out?</summary><div class="qa-a"><p>Give us 30 days notice. We close your account, you keep your hardware. No retention department.</p></div></details>
+          </div>
+          <div class="qa-panel" id="qa-hardware"><h3>Hardware</h3><p class="qa-panel-intro">Buy, finance, or lease. What it actually costs.</p>
+            <details class="qa-q"><summary>How much does Clover hardware cost?</summary><div class="qa-a"><p>Approximate retail: <strong>Mini ~$799 · Flex ~$599 · Station Solo ~$1,349 · Station Duo ~$1,649 · Kiosk varies</strong>. Bundle discounts apply for multi-device orders.</p></div></details>
+            <details class="qa-q"><summary>Lease vs buy — what's better?</summary><div class="qa-a"><p>Buying outright wins on 3-year total cost. Financing through us spreads cost over 12/24/36 months — you own at the end. We don't push leasing.</p></div></details>
+            <details class="qa-q"><summary>What if a device breaks Saturday night?</summary><div class="qa-a"><p>Support staffed (EN/FR) every evening including weekends. Remote diagnosis first; hardware swap ships next business day. We recommend a backup on-site for high-volume locations.</p></div></details>
+            <details class="qa-q"><summary>Warranty?</summary><div class="qa-a"><p>1-year manufacturer warranty + our in-house replacement policy for 3 years of normal-use failures. Drops, liquids, misuse out of scope.</p></div></details>
+            <details class="qa-q"><summary>Shipping charges?</summary><div class="qa-a"><p>Standard shipping included. Expedited replacements for active customers — included. Rush shipping on new orders carries a small pass-through fee.</p></div></details>
+            <details class="qa-q"><summary>Peripherals — extras?</summary><div class="qa-a"><p>Quoted separately. Approximate: cash drawer ~$140, receipt printer ~$200, kitchen printer ~$400, scanner ~$200. Bundled into your quote with no markup.</p></div></details>
+            <details class="qa-q"><summary>Reuse my Square hardware?</summary><div class="qa-a"><p>No — Square hardware is locked to Square. Keep as backup or resell.</p></div></details>
+          </div>
+          <div class="qa-panel" id="qa-switching"><h3>Switching from Square</h3><p class="qa-panel-intro">Exactly what stays, what changes, how long.</p>
+            <details class="qa-q"><summary>What stays the same?</summary><div class="qa-a"><p>Your customers (different-looking receipt), your Square Online site (we replace only the processor), your menu data (we migrate it), your transaction history (CSV/PDF).</p></div></details>
+            <details class="qa-q"><summary>What changes?</summary><div class="qa-a"><p>Hardware. Daily dashboard. Settlement timing (usually faster). Support model (named human, not ticket queue).</p></div></details>
+            <details class="qa-q"><summary>Menu migration — manual?</summary><div class="qa-a"><p>We do it. You export from Square, send to us. Our team imports into Clover with modifiers, categories, pricing intact.</p></div></details>
+            <details class="qa-q"><summary>Outstanding Square gift cards?</summary><div class="qa-a"><p>Stay redeemable through Square during transition. We can migrate outstanding balances to a Clover gift program.</p></div></details>
+            <details class="qa-q"><summary>Run Square + Clover in parallel?</summary><div class="qa-a"><p>Yes — we recommend this for active restaurants. Square stays live 1–2 weeks while staff get comfortable. Then cancel Square.</p></div></details>
+            <details class="qa-q"><summary>Does Square charge me to leave?</summary><div class="qa-a"><p>No. Square is month-to-month with no termination fee.</p></div></details>
+          </div>
+          <div class="qa-panel" id="qa-support"><h3>Support &amp; service</h3><p class="qa-panel-intro">Real humans, in Laval, in your language.</p>
+            <details class="qa-q"><summary>Support hours?</summary><div class="qa-a"><p>Phone: <strong>Mon–Fri 7am–11pm, Sat–Sun 9am–11pm ET</strong>. After-hours emergency line 24/7.</p></div></details>
+            <details class="qa-q"><summary>French support overnight?</summary><div class="qa-a"><p>French support during all phone hours. After-midnight overnight is EN-only today; FR overnight coverage is coming as our team grows. No offshore call centers either way.</p></div></details>
+            <details class="qa-q"><summary>One named contact, or ticket queue?</summary><div class="qa-a"><p>Both, in a good way. Every account gets a <strong>named specialist</strong>. Support team handles after-hours with full visibility.</p></div></details>
+            <details class="qa-q"><summary>Average resolution time?</summary><div class="qa-a"><p>Phone answered: under 2 minutes (measured). First-call resolution: above 80%. Hardware replacement: next business day.</p></div></details>
+            <details class="qa-q"><summary>What if your team is unreachable?</summary><div class="qa-a"><p>Direct fallback to the underlying processor and acquiring bank. Numbers in your onboarding package.</p></div></details>
+            <details class="qa-q"><summary>Same specialist in 6 months?</summary><div class="qa-a"><p>Team is stable. If a specialist changes roles, we introduce you personally to your new specialist with full handover.</p></div></details>
+          </div>
+          <div class="qa-panel" id="qa-integration"><h3>Integrations</h3><p class="qa-panel-intro">Your existing stack stays. We connect Clover to it.</p>
+            <details class="qa-q"><summary>Does it talk to QuickBooks?</summary><div class="qa-a"><p>Yes. Native QBO integration via Clover App Market — configured during setup. Desktop and Sage via Commerce Sync or MyWorks.</p></div></details>
+            <details class="qa-q"><summary>Uber Eats, DoorDash, Skip?</summary><div class="qa-a"><p>Yes — all three. Orders flow into Clover kitchen display. Prices sync. End-of-day consolidates with dine-in.</p></div></details>
+            <details class="qa-q"><summary>Is online ordering really free?</summary><div class="qa-a"><p>Yes — included with the Clover software plan that fits your business (Table Service for full-service, Counter Service for QSR). No extra fee per online order.</p></div></details>
+            <details class="qa-q"><summary>Keep my current online ordering provider?</summary><div class="qa-a"><p>Often workable. We integrate most third-party platforms (ChowNow, Toast Online, custom) via middleware or direct API.</p></div></details>
+            <details class="qa-q"><summary>Payroll integration?</summary><div class="qa-a"><p>Wagepoint, Push Operations, 7shifts — native or middleware integration. Confirmed during setup.</p></div></details>
+          </div>
+          <div class="qa-panel" id="qa-security"><h3>Security &amp; PCI</h3><p class="qa-panel-intro">What you're protected from. What you're liable for.</p>
+            <details class="qa-q"><summary>PCI compliance — am I covered?</summary><div class="qa-a"><p>We <strong>help you stay compliant</strong> through Clover's built-in tools and an annual self-assessment we walk you through. No "PCI non-compliance" punishment fee.</p></div></details>
+            <details class="qa-q"><summary>Card data stolen — who pays?</summary><div class="qa-a"><p>Clover device or our infrastructure breach: our problem. Your-side breach (employee fraud, your network): you may be liable. PCI compliance reduces both.</p></div></details>
+            <details class="qa-q"><summary>Where is card data stored?</summary><div class="qa-a"><p>Never on your POS or business network. Encrypted at the terminal, transmitted directly to the processor. Tokenized references only.</p></div></details>
+            <details class="qa-q"><summary>EMV, contactless, chip-secure?</summary><div class="qa-a"><p>Every Clover: EMV chip, contactless (Apple Pay, Google Pay, Samsung Pay), magstripe. PCI PTS certified.</p></div></details>
+          </div>
+          <div class="qa-panel" id="qa-settlement"><h3>Settlement &amp; money</h3><p class="qa-panel-intro">When you get paid. What can delay it.</p>
+            <details class="qa-q"><summary>When does money hit my account?</summary><div class="qa-a"><p>Standard: <strong>next business day</strong>. Same-day for established accounts. Weekends/holidays delay to next business day.</p></div></details>
+            <details class="qa-q"><summary>Rolling reserve on a new account?</summary><div class="qa-a"><p>Most established small businesses: no reserve. High-risk verticals or very-new businesses: small temporary reserve may apply. Disclosed up-front.</p></div></details>
+            <details class="qa-q"><summary>Can you freeze my funds?</summary><div class="qa-a"><p>Only on unusual activity (10x volume spike, chargebacks over threshold, suspected fraud). We call you immediately. Most resolve in 24–48 hours.</p></div></details>
+            <details class="qa-q"><summary>Switch banks?</summary><div class="qa-a"><p>No. RBC, TD, BMO, Scotia, CIBC, National, Desjardins, credit unions — all standard.</p></div></details>
+            <details class="qa-q"><summary>Refund fees?</summary><div class="qa-a"><p>Original interchange/assessment is returned to you. Our processor markup on the original sale isn't. No additional refund fee from us.</p></div></details>
+          </div>
+          <div class="qa-panel" id="qa-multi"><h3>Multi-location</h3><p class="qa-panel-intro">Two locations or twenty.</p>
+            <details class="qa-q"><summary>Consolidated reporting?</summary><div class="qa-a"><p>Yes. Multi-location dashboard rolls up sales, labour, inventory, tips. Drill into one or view rollup. Real-time, web + mobile.</p></div></details>
+            <details class="qa-q"><summary>Different menus per location?</summary><div class="qa-a"><p>Yes. Each location: own menu, prices, taxes, hours. Shared items sync automatically.</p></div></details>
+            <details class="qa-q"><summary>Charge per location?</summary><div class="qa-a"><p>Per-location Clover software costs apply. Processing rates negotiated on total volume — more locations usually means better rates.</p></div></details>
+            <details class="qa-q"><summary>Grow from 2 to 5 locations?</summary><div class="qa-a"><p>Add new locations under existing account, deploy hardware, re-negotiate rates downward on new volume.</p></div></details>
+          </div>
+          <div class="qa-panel" id="qa-quebec"><h3>Quebec specifics</h3><p class="qa-panel-intro">Unique requirements. We know them cold.</p>
+            <details class="qa-q"><summary>Revenu Québec MEV / SRM?</summary><div class="qa-a"><p>Yes. Clover devices we ship to Quebec restaurants are configured with the certified SRM integration. We handle connection, paperwork, ongoing compliance.</p></div></details>
+            <details class="qa-q"><summary>GST/QST handled correctly?</summary><div class="qa-a"><p>Yes — both configured natively, applied per item, reported to your accountant.</p></div></details>
+            <details class="qa-q"><summary>Bilingual receipts?</summary><div class="qa-a"><p>EN, FR, or bilingual. Configurable per location.</p></div></details>
+            <details class="qa-q"><summary>French interface for staff?</summary><div class="qa-a"><p>Yes — full French interface, configured per-employee. Bilingual training materials.</p></div></details>
+          </div>
+          <div class="qa-panel" id="qa-team"><h3>The team &amp; company</h3><p class="qa-panel-intro">Who you're actually working with.</p>
+            <details class="qa-q"><summary>Who owns CleverPays?</summary><div class="qa-a"><p>Privately held, Quebec-based, Laval office. Over a decade in Canadian payments. Ownership details on request.</p></div></details>
+            <details class="qa-q"><summary>How many merchants?</summary><div class="qa-a"><p>Thousands across Quebec, Ontario, and broader Canada. Restaurants, retail, healthcare, franchise concentrated.</p></div></details>
+            <details class="qa-q"><summary>Talk to other merchants?</summary><div class="qa-a"><p>Yes — 2–3 Quebec merchants in your vertical (with their permission) after an initial conversation.</p></div></details>
+            <details class="qa-q"><summary>Visit your Laval office?</summary><div class="qa-a"><p>Absolutely. <strong>2285 Av Francis-Hughes, Laval, QC H7S 1N5</strong>.</p></div></details>
+            <details class="qa-q"><summary>What if CleverPays goes out of business?</summary><div class="qa-a"><p>Hardware is yours. Data is yours. Funds protected by the underlying processor and acquiring bank.</p></div></details>
+          </div>
+          <div class="qa-panel" id="qa-staff"><h3>Staff &amp; training</h3><p class="qa-panel-intro">Will your team hate the change? We work to make sure they don't.</p>
+            <details class="qa-q"><summary>How long to train staff?</summary><div class="qa-a"><p>Servers and cashiers: productive within an hour. We include a 30-minute walkthrough at go-live plus EN/FR quick-reference cards.</p></div></details>
+            <details class="qa-q"><summary>On-site or videos?</summary><div class="qa-a"><p>Both. Quebec/Ontario within driving distance: on-site at no extra charge. Other locations: live video training in EN or FR.</p></div></details>
+            <details class="qa-q"><summary>Training new hires?</summary><div class="qa-a"><p>Existing staff trains them. Bilingual onboarding guides and video walkthroughs free, anytime.</p></div></details>
+            <details class="qa-q"><summary>French training material?</summary><div class="qa-a"><p>Yes — every training video, reference card, and onboarding doc is bilingual.</p></div></details>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:40px; padding-top:32px; border-top:1px solid var(--cp-border-dark); text-align:center;">
+        <p style="font-size:16px; color:var(--cp-ink-on-dark-2); margin-bottom:20px;">Still have a question? You're not bothering us — that's literally why we're here.</p>
+        <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+          <a href="tel:+18882208060" class="btn btn-honey">Call +1 888-220-8060</a>
+          <a href="mailto:info@cleverpays.ca" class="btn btn-ghost-light">Email a question</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="closing">
+  <div class="container">
+    <div class="closing-card reveal">
+      <h2 class="closing-h2">Let's talk about <span class="serif accent-honey">your business.</span></h2>
+      <p class="closing-sub">A bilingual review of your setup within 24 hours. One named human on your account. Real answers — not a quote PDF.</p>
+      <div class="closing-ctas">
+        <a href="tel:+18882208060" class="btn btn-honey">Call +1 888-220-8060 <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        <a href="mailto:info@cleverpays.ca" class="btn btn-ghost-light">Email info@cleverpays.ca</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="logo" href="/home.html"><span class="logo-mark"><span>CP</span></span><span class="logo-text"><span class="clever">Clever</span><span class="pays">Pays</span></span></a>
+        <p>Clover Authorized Dealer. In-house support. In-house integration teams. Built in Quebec, bilingual by design, fair to merchants who deserve a real partner.</p>
+        <div class="footer-contact"><div><a href="tel:+18882208060">+1 888-220-8060</a></div><div><a href="mailto:info@cleverpays.ca">info@cleverpays.ca</a></div><div>2285 Av Francis-Hughes, Laval, QC H7S 1N5</div></div>
+      </div>
+      <div class="footer-col"><h4>Payment Processing</h4><ul><li><a href="/payment-processing/clover.html">Clover</a></li><li><a href="/payment-processing/other-solutions.html">Smart Terminals</a></li><li><a href="#">Virtual Terminal</a></li><li><a href="#">Online &amp; eCommerce</a></li></ul></div>
+      <div class="footer-col"><h4>Business Solutions</h4><ul><li><a href="/business-solutions/integrated-pos.html">Integrated POS</a></li><li><a href="#">Inventory Management</a></li><li><a href="#">Employee Management</a></li><li><a href="#">Reporting</a></li></ul></div>
+      <div class="footer-col"><h4>Industries</h4><ul><li><a href="#">Retail</a></li><li><a href="#">Restaurants</a></li><li><a href="#">Healthcare</a></li><li><a href="#">Multi-location</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="#why">About</a></li><li><a href="#questions">Pricing &amp; FAQ</a></li><li><a href="/calculator.html">Tools</a></li><li><a href="#closing">Contact</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 CleverPays · Laval, Québec · Montréal &amp; Toronto</span><div class="footer-trust"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Accessibility</a><a href="#">Security</a></div></div>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.locale-btn').forEach(btn => btn.addEventListener('click', () => {
+  document.querySelectorAll('.locale-btn').forEach(b => b.classList.toggle('active', b === btn));
+}));
+const drawer = document.getElementById('mobile-drawer');
+document.getElementById('menu-toggle')?.addEventListener('click', () => drawer.classList.add('open'));
+document.getElementById('drawer-close')?.addEventListener('click', () => drawer.classList.remove('open'));
+drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => drawer.classList.remove('open')));
+
+if ('IntersectionObserver' in window) {
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+} else document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+
+document.querySelectorAll('.qa-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.panel;
+    document.querySelectorAll('.qa-tab').forEach(t => t.classList.toggle('active', t === tab));
+    document.querySelectorAll('.qa-panel').forEach(p => p.classList.toggle('active', p.id === target));
+  });
+});
+</script>
+
+</body>
+</html>

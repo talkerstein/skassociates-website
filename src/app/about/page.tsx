@@ -205,7 +205,6 @@ export default function AboutPage() {
             </p>
           </motion.div>
 
-          {/* TODO: Replace text wordmarks with official partner logos when client supplies brand assets */}
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -221,51 +220,33 @@ export default function AboutPage() {
             {[
               {
                 key: "spire",
-                node: (
-                  <span className="inline-flex items-center gap-1.5">
-                    <span
-                      aria-hidden="true"
-                      className="inline-block h-0 w-0 border-y-[5px] border-l-[8px] border-y-transparent border-l-accent-500"
-                    />
-                    <span className="font-sans font-bold uppercase tracking-[0.18em] text-navy-900 text-base md:text-lg">
-                      SPIRE
-                    </span>
-                  </span>
-                ),
+                src: "/logos/spire.png",
+                alt: "Spire Authorized Partner",
+                maxH: "max-h-14",
               },
               {
                 key: "adagio",
-                node: (
-                  <span className="font-display italic text-navy-900 text-xl md:text-2xl leading-none">
-                    Adagio
-                  </span>
-                ),
+                src: "/logos/adagio.png",
+                alt: "Adagio Authorized Reseller",
+                maxH: "max-h-14",
               },
               {
                 key: "paydirt",
-                node: (
-                  <span className="font-sans font-bold text-navy-900 text-base md:text-lg tracking-tight">
-                    Pay<span className="text-accent-600">Dirt</span>
-                  </span>
-                ),
+                src: "/logos/paydirt.png",
+                alt: "PayDirt Payroll",
+                maxH: "max-h-8",
               },
               {
                 key: "crystal",
-                node: (
-                  <span className="text-navy-900 text-base md:text-lg leading-none">
-                    <span className="font-bold tracking-tight">Crystal</span>
-                    <span className="font-light ml-1">Reports</span>
-                  </span>
-                ),
+                src: "/logos/crystal-reports.png",
+                alt: "Crystal Reports",
+                maxH: "max-h-10",
               },
               {
-                key: "excel",
-                node: (
-                  <span className="font-sans font-semibold text-navy-900 text-base md:text-lg tracking-tight">
-                    Excel{" "}
-                    <span className="text-accent-600 font-light">+</span> Access
-                  </span>
-                ),
+                key: "access",
+                src: "/logos/microsoft-access.png",
+                alt: "Microsoft Access",
+                maxH: "max-h-10",
               },
             ].map((item) => (
               <motion.div
@@ -280,7 +261,12 @@ export default function AboutPage() {
                 }}
                 className="flex items-center"
               >
-                {item.node}
+                <img
+                  src={item.src}
+                  alt={`${item.alt} logo`}
+                  loading="lazy"
+                  className={`${item.maxH} w-auto object-contain`}
+                />
               </motion.div>
             ))}
           </motion.div>
