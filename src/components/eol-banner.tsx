@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
-import { AlertCircle, X } from "lucide-react";
+import { AlertCircle, ArrowRight, X } from "lucide-react";
 
 const EOL_DATE = new Date("2026-12-31T00:00:00Z").getTime();
 const STORAGE_KEY = "bv-eol-dismissed";
@@ -52,6 +52,11 @@ export function EolBanner() {
 
   if (!mounted) return null;
 
+  const fadeUp = {
+    initial: { opacity: 0, y: -4 },
+    animate: { opacity: 1, y: 0 },
+  };
+
   return (
     <AnimatePresence initial={false}>
       {visible && (
@@ -61,54 +66,91 @@ export function EolBanner() {
           animate={{ height: "auto", opacity: 1 }}
           exit={{ height: 0, opacity: 0 }}
           transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-          className="relative w-full overflow-hidden bg-navy-900 border-b border-accent-500/30"
+          className="relative w-full overflow-hidden border-b border-accent-500/25 bg-gradient-to-r from-navy-900 via-navy-950 to-navy-900"
           role="region"
           aria-label="BusinessVision end of life notice"
         >
+          {/* Animated highlight sweep along the bottom edge */}
+          <motion.span
+            aria-hidden
+            className="pointer-events-none absolute bottom-0 left-0 h-px w-32 bg-gradient-to-r from-transparent via-accent-500 to-transparent"
+            animate={{ x: ["-100%", "calc(100vw + 100%)"] }}
+            transition={{
+              duration: 14,
+              repeat: Infinity,
+              ease: "linear",
+              repeatDelay: 6,
+            }}
+          />
+
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4 py-2 sm:py-2 text-sm">
-              <div className="flex items-start sm:items-center gap-2.5 flex-1 min-w-0">
-                <AlertCircle
-                  className="w-4 h-4 flex-shrink-0 text-accent-400 mt-0.5 sm:mt-0"
-                  strokeWidth={1.75}
+            <div className="flex flex-wrap items-center justify-between gap-x-5 gap-y-2 py-2.5">
+              <div className="flex min-w-0 flex-1 items-center gap-3">
+                <motion.span
+                  {...fadeUp}
+                  transition={{ duration: 0.4, delay: 0.05 }}
+                  className="relative flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-accent-500/10 ring-1 ring-accent-500/30"
                   aria-hidden="true"
-                />
-                <p className="text-slate-300 leading-snug">
-                  <span className="font-medium text-white">
-                    BusinessVision reaches end of life December 31, 2026.
-                  </span>{" "}
-                  <span className="hidden sm:inline text-slate-500">·</span>{" "}
-                  <span>
-                    Spire is the natural upgrade — plan your migration before
-                    support ends.
-                  </span>{" "}
-                  <span className="hidden md:inline text-slate-500">·</span>{" "}
-                  <span className="inline-flex items-center gap-1.5 whitespace-nowrap">
-                    <span className="font-semibold text-accent-400">
+                >
+                  <AlertCircle
+                    className="h-3.5 w-3.5 text-accent-400"
+                    strokeWidth={2}
+                  />
+                  <motion.span
+                    className="absolute inset-0 rounded-full ring-1 ring-accent-500/40"
+                    animate={{ opacity: [0.6, 0, 0.6], scale: [1, 1.4, 1] }}
+                    transition={{
+                      duration: 3.2,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                  />
+                </motion.span>
+
+                <motion.div
+                  {...fadeUp}
+                  transition={{ duration: 0.4, delay: 0.15 }}
+                  className="min-w-0 leading-tight"
+                >
+                  <p className="flex flex-wrap items-baseline gap-x-2 text-white">
+                    <span className="font-display text-2xl tabular-nums text-accent-400 sm:text-[1.6rem]">
                       {days.toLocaleString()}
                     </span>
-                    <span className="text-slate-400">days remaining</span>
-                  </span>
-                </p>
+                    <span className="text-sm font-medium tracking-tight text-white sm:text-[0.95rem]">
+                      days until BusinessVision retires
+                    </span>
+                  </p>
+                  <p className="hidden text-xs text-slate-400 sm:block">
+                    Spire is the natural upgrade.
+                  </p>
+                </motion.div>
               </div>
 
-              <div className="flex items-center gap-2 sm:gap-4 flex-shrink-0">
+              <motion.div
+                {...fadeUp}
+                transition={{ duration: 0.4, delay: 0.25 }}
+                className="flex flex-shrink-0 items-center gap-1.5"
+              >
                 <Link
                   href="/assessment"
-                  className="text-sm font-medium text-accent-400 hover:text-accent-500 transition-colors duration-200 whitespace-nowrap"
+                  className="group inline-flex items-center gap-1.5 rounded-full bg-accent-500/15 px-3.5 py-1.5 text-xs font-medium text-accent-400 ring-1 ring-inset ring-accent-500/25 transition-all duration-200 hover:bg-accent-500/25 hover:text-accent-400 hover:ring-accent-500/40 sm:text-[0.8rem]"
                 >
-                  Get a Migration Plan{" "}
-                  <span aria-hidden="true">&rarr;</span>
+                  Get a migration plan
+                  <ArrowRight
+                    className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5"
+                    strokeWidth={2}
+                    aria-hidden="true"
+                  />
                 </Link>
                 <button
                   type="button"
                   onClick={handleDismiss}
                   aria-label="Dismiss end of life notice"
-                  className="inline-flex items-center justify-center w-7 h-7 rounded-md text-slate-400 hover:text-white hover:bg-white/5 transition-colors duration-200 cursor-pointer"
+                  className="inline-flex h-7 w-7 cursor-pointer items-center justify-center rounded-md text-slate-500 transition-colors duration-200 hover:bg-white/5 hover:text-white"
                 >
-                  <X className="w-4 h-4" strokeWidth={1.75} />
+                  <X className="h-3.5 w-3.5" strokeWidth={2} />
                 </button>
-              </div>
+              </motion.div>
             </div>
           </div>
         </motion.div>

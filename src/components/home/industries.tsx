@@ -11,7 +11,7 @@ const industries = [
     title: "Distribution & Wholesale",
     slug: "distribution",
     description:
-      "Inventory complexity, multi-warehouse operations, order volume, and vendor management — we configure systems that give you real-time control across the supply chain.",
+      "Inventory complexity, multi-warehouse operations, order volume, and vendor management. We configure systems that give you real-time control across the supply chain.",
     needs: [
       "Inventory accuracy",
       "Purchase order automation",
@@ -31,7 +31,7 @@ const industries = [
     title: "Service & Professional Organizations",
     slug: "service",
     description:
-      "Project tracking, time-based billing, job costing, and financial visibility — built into a system that keeps pace with how service companies actually operate.",
+      "Project tracking, time-based billing, job costing, and financial visibility, built into a system that keeps pace with how service companies actually operate.",
     needs: [
       "Job costing",
       "Time tracking",
@@ -51,7 +51,7 @@ const industries = [
     title: "Not-for-Profit & Community Organizations",
     slug: "nonprofit",
     description:
-      "Fund accounting, grant tracking, donor reporting, and board-ready financials — configured with the controls and transparency your stakeholders require.",
+      "Fund accounting, grant tracking, donor reporting, and board-ready financials, configured with the controls and transparency your stakeholders require.",
     needs: [
       "Fund accounting",
       "Grant reporting",

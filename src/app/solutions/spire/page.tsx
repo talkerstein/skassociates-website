@@ -46,7 +46,7 @@ const capabilities = [
     icon: Package,
     title: 'Strong Inventory & Order Entry Management',
     description:
-      'Maintain and manage Items, Kits, Bills of Materials, and Lot and Serial numbers with full traceability. Run production of raw materials into finished goods, plan jobs end-to-end, and price differently for individual Customers or Customer Groups — all in one place.',
+      'Maintain and manage Items, Kits, Bills of Materials, and Lot and Serial numbers with full traceability. Run production of raw materials into finished goods, plan jobs end-to-end, and price differently for individual Customers or Customer Groups, all in one place.',
   },
   {
     icon: ListFilter,
@@ -58,13 +58,13 @@ const capabilities = [
     icon: Download,
     title: 'One-Click Export to Excel',
     description:
-      'Every module list has a one-button export to Excel — straight from the records you are already looking at. No re-keying, no custom report request, no waiting.',
+      'Every module list has a one-button export to Excel, straight from the records you are already looking at. No re-keying, no custom report request, no waiting.',
   },
   {
     icon: Boxes,
     title: '20 Core Modules Included',
     description:
-      'G/L, A/R, A/P, Quotes, Job Costing, Inventory Control, Bills of Materials, Canadian Payroll, Sales and Purchase Orders, multi-currency and more — included in the core system rather than sold as bolt-ons.',
+      'G/L, A/R, A/P, Quotes, Job Costing, Inventory Control, Bills of Materials, Canadian Payroll, Sales and Purchase Orders, multi-currency and more, all included in the core system rather than sold as bolt-ons.',
   },
   {
     icon: Building2,
@@ -76,7 +76,7 @@ const capabilities = [
     icon: Bell,
     title: 'Built-In Alerts, CRM and Calendar',
     description:
-      'Set alerts so key follow-ups do not slip. Spire ships with native CRM and Calendar modules — assign any user to follow up on a specific date and a pop-up tells them exactly what needs to happen.',
+      'Set alerts so key follow-ups do not slip. Spire ships with native CRM and Calendar modules. Assign any user to follow up on a specific date and a pop-up tells them exactly what needs to happen.',
   },
   {
     icon: GraduationCap,
@@ -88,7 +88,7 @@ const capabilities = [
     icon: Network,
     title: 'Complete Integration Throughout the System',
     description:
-      'Every module is integrated. View and maintain sales and purchase orders wherever they live — on the Customer, on the Vendor, or on the Inventory item — and the data stays in sync automatically.',
+      'Every module is integrated. View and maintain sales and purchase orders wherever they live (on the Customer, on the Vendor, or on the Inventory item) and the data stays in sync automatically.',
   },
   {
     icon: MapPin,
@@ -100,7 +100,7 @@ const capabilities = [
     icon: Layers,
     title: 'Real-Time Visibility',
     description:
-      'Because operations and accounting share one data set, every dashboard, report, and inquiry reflects what is actually happening right now — not what happened at last night\'s sync.',
+      'Because operations and accounting share one data set, every dashboard, report, and inquiry reflects what is actually happening right now, not what happened at last night\'s sync.',
   },
 ];
 
@@ -142,7 +142,7 @@ export default function SpirePage() {
               custom={1}
               className="font-display text-[clamp(2.25rem,5vw,3.75rem)] leading-[1.08] tracking-tight text-ivory-50 text-balance"
             >
-              Spire — The Natural Upgrade from BusinessVision.
+              Spire: The Natural Upgrade from BusinessVision.
             </motion.h1>
             <motion.p
               variants={fadeUp}
@@ -192,7 +192,7 @@ export default function SpirePage() {
               </h2>
               <p className="text-[length:--font-size-body-lg] text-slate-600 leading-relaxed">
                 If you are running BusinessVision today, Spire is the most
-                logical and direct path forward — built by the same heritage,
+                logical and direct path forward, built by the same heritage,
                 with a modern foundation underneath.
               </p>
             </motion.div>
@@ -221,7 +221,7 @@ export default function SpirePage() {
                   </h3>
                   <p className="text-[length:--font-size-body] text-slate-600 leading-relaxed">
                     Moving to Spire from BusinessVision preserves the full
-                    depth of your historical data — customers, vendors,
+                    depth of your historical data: customers, vendors,
                     inventory, transactions, and the trail behind them. What
                     other accounting software upgrade can honestly make that
                     claim?
@@ -230,7 +230,7 @@ export default function SpirePage() {
               </div>
               <ul className="space-y-3 pt-6 border-t border-ivory-200">
                 {[
-                  'Direct upgrade path — designed for BusinessVision users',
+                  'Direct upgrade path designed for BusinessVision users',
                   'All historical records retained, not just opening balances',
                   'Familiar concepts and terminology, modernized',
                   'A migration we have done many times before',
@@ -314,7 +314,7 @@ export default function SpirePage() {
               We have done this migration more times than anyone else you&apos;ll talk to.
             </h2>
             <p className="text-[length:--font-size-body-lg] text-slate-300 leading-relaxed max-w-3xl mx-auto mb-10">
-              Spire is the recommended path forward from BusinessVision — and
+              Spire is the recommended path forward from BusinessVision, and
               we have spent decades doing exactly these migrations. We know
               where data needs cleaning, where defaults will hurt you, and how
               to bring the full history across without surprises after go-live.
@@ -343,7 +343,7 @@ export default function SpirePage() {
             <p className="text-[length:--font-size-body-lg] text-slate-300 max-w-2xl mx-auto mb-10">
               Whether you are moving off BusinessVision, evaluating Spire for
               the first time, or fixing an implementation that never landed
-              properly — start with a real conversation.
+              properly, start with a real conversation.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Button href="/contact" variant="accent" size="lg" arrow>

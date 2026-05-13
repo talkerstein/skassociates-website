@@ -53,7 +53,7 @@ const painPoints: PainPoint[] = [
   {
     title: 'Low team adoption',
     short: 'Shadow systems take over.',
-    long: "Staff avoid the system because it's confusing. Data ends up in shadow systems — sticky notes, side spreadsheets, one person's inbox. Trust in the data erodes.",
+    long: "Staff avoid the system because it's confusing. Data ends up in shadow systems: sticky notes, side spreadsheets, one person's inbox. Trust in the data erodes.",
     Icon: Users,
   },
   {
@@ -208,7 +208,7 @@ export function ProblemSection() {
           </h2>
           <p className="mt-6 text-body-lg leading-[1.75] text-slate-600">
             Spire and Adagio are both capable platforms. But powerful software
-            loses most of its value when it&apos;s poorly set up — and that
+            loses most of its value when it&apos;s poorly set up, and that
             happens far more often than it should.
           </p>
         </motion.div>

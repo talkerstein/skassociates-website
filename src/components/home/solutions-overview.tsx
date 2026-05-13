@@ -31,7 +31,7 @@ const solutions: Solution[] = [
     icon: Settings,
     title: "Implementation & Configuration",
     description:
-      "We set up Spire or Adagio to match how your business actually operates — chart of accounts, workflows, permissions, and reporting structures built right from day one.",
+      "We set up Spire or Adagio to match how your business actually operates: chart of accounts, workflows, permissions, and reporting structures built right from day one.",
     href: "/solutions/implementation",
     iconBg: "bg-blue-100",
     iconColor: "text-blue-700",
@@ -51,7 +51,7 @@ const solutions: Solution[] = [
     icon: GraduationCap,
     title: "Training & Ongoing Support",
     description:
-      "Real training that sticks — not a one-time walkthrough. Plus ongoing support when questions arise months or years after go-live.",
+      "Real training that sticks, not a one-time walkthrough. Plus ongoing support when questions arise months or years after go-live.",
     href: "/solutions/training",
     iconBg: "bg-emerald-100",
     iconColor: "text-emerald-700",
@@ -71,7 +71,7 @@ const solutions: Solution[] = [
     icon: CreditCard,
     title: "Payment Processing",
     description:
-      "Integrated payment workflows that connect to your accounting and operations system — not bolted-on afterthoughts.",
+      "Integrated payment workflows that connect to your accounting and operations system, not bolted-on afterthoughts.",
     href: "/contact",
     iconBg: "bg-rose-100",
     iconColor: "text-rose-700",

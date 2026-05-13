@@ -47,7 +47,7 @@ const trainingApproach = [
     icon: Users,
     title: 'Role-Based Training',
     description:
-      'Your AP clerk and your sales manager do not need the same training. We teach each role exactly what they need — no more, no less. Everyone leaves confident in their specific responsibilities.',
+      'Your AP clerk and your sales manager do not need the same training. We teach each role exactly what they need, no more, no less. Everyone leaves confident in their specific responsibilities.',
   },
   {
     icon: MessageSquare,
@@ -65,7 +65,7 @@ const trainingApproach = [
     icon: Video,
     title: 'Video & Reference Resources',
     description:
-      'Custom video walkthroughs and quick-reference guides for your specific configuration. Your team always has somewhere to turn when they need a refresher — without waiting for support.',
+      'Custom video walkthroughs and quick-reference guides for your specific configuration. Your team always has somewhere to turn when they need a refresher, without waiting for support.',
   },
   {
     icon: BookOpen,
@@ -77,7 +77,7 @@ const trainingApproach = [
     icon: Zap,
     title: 'New Hire Onboarding',
     description:
-      'When you bring on new team members, we provide focused onboarding training so they are productive quickly — without pulling experienced staff away from their work.',
+      'When you bring on new team members, we provide focused onboarding training so they are productive quickly, without pulling experienced staff away from their work.',
   },
 ];
 
@@ -85,7 +85,7 @@ const whyItMatters = [
   {
     problem: 'Untrained teams underuse the software',
     detail:
-      'When people do not understand what the system can do, they default to manual processes and spreadsheets — making the entire investment pointless.',
+      'When people do not understand what the system can do, they default to manual processes and spreadsheets, making the entire investment pointless.',
   },
   {
     problem: 'Workarounds multiply and compound',
@@ -95,7 +95,7 @@ const whyItMatters = [
   {
     problem: 'Errors become expensive',
     detail:
-      'A misposted payment, a duplicated invoice, an incorrect inventory adjustment — these are not just mistakes. They are audit findings, customer complaints, and lost revenue.',
+      'A misposted payment, a duplicated invoice, an incorrect inventory adjustment: these are not just mistakes. They are audit findings, customer complaints, and lost revenue.',
   },
   {
     problem: 'Key person dependency becomes a risk',
@@ -121,7 +121,7 @@ const supportFeatures = [
     icon: CheckCircle2,
     title: 'Proactive Guidance',
     description:
-      'We do not just fix problems — we help you anticipate them. Year-end preparation, version upgrade planning, and process refinements are part of every support relationship.',
+      'We do not just fix problems. We help you anticipate them. Year-end preparation, version upgrade planning, and process refinements are part of every support relationship.',
   },
 ];
 
@@ -172,7 +172,7 @@ export default function TrainingPage() {
             >
               Your software is only as good as the people using it. We
               deliver practical, role-based training that builds real
-              competence — and ongoing support from someone who actually
+              competence, and ongoing support from someone who actually
               knows your system.
             </motion.p>
             <motion.div
@@ -218,7 +218,7 @@ export default function TrainingPage() {
             </h2>
             <p className="text-[length:--font-size-body-lg] text-slate-600 leading-relaxed">
               The software itself is rarely the problem. The real cost comes
-              from teams that never learn to use it properly — leading to
+              from teams that never learn to use it properly, leading to
               errors, inefficiency, and the slow erosion of trust in the
               system.
             </p>
@@ -374,8 +374,8 @@ export default function TrainingPage() {
                 The Difference a Dedicated Partner Makes
               </h2>
               <p className="text-[length:--font-size-body-lg] text-slate-600 leading-relaxed mb-8">
-                Most software vendors offer training once — during
-                implementation — and then point you to a generic help desk.
+                Most software vendors offer training once, during
+                implementation, and then point you to a generic help desk.
                 That model fails because teams change, processes evolve, and
                 new questions arise months after go-live.
               </p>
@@ -383,7 +383,7 @@ export default function TrainingPage() {
                 With S. Kopstick & Associates, your training and support is
                 an ongoing relationship. We know your system because we
                 built it. We know your team because we trained them. And
-                when something changes, we are the first call — not the
+                when something changes, we are the first call, not the
                 last resort.
               </p>
             </motion.div>
@@ -481,7 +481,7 @@ export default function TrainingPage() {
             <p className="text-[length:--font-size-body-lg] text-slate-300 max-w-2xl mx-auto mb-10">
               Whether you need initial training for a new implementation,
               refresher sessions for your existing team, or ongoing support
-              from someone who knows your system — let us talk.
+              from someone who knows your system, let us talk.
             </p>
             <Button href="/contact" variant="accent" size="lg" arrow>
               Get Started with Training

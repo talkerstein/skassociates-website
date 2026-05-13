@@ -56,7 +56,7 @@ export function AboutSamuel() {
           <div className="space-y-5 text-[length:--font-size-body] leading-[--line-height-body] text-slate-600">
             <p>
               S. Kopstick &amp; Associates is a founder-led consulting practice.
-              When you call, you get Samuel — not a call centre, not a ticket
+              When you call, you get Samuel, not a call centre, not a ticket
               queue. That direct relationship is the foundation of everything
               we do.
             </p>
@@ -69,7 +69,7 @@ export function AboutSamuel() {
             </p>
             <p>
               The goal is always the same: make your system work the way your
-              business works, and be there when you need help — not just during
+              business works, and be there when you need help, not just during
               go-live, but for years after.
             </p>
           </div>

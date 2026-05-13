@@ -20,7 +20,7 @@ export function FinalCTA() {
           <p className="text-[length:--font-size-body-lg] leading-[--line-height-body] text-slate-300 max-w-2xl mx-auto mb-10">
             Book a free, no-pressure consultation. We&apos;ll discuss your
             current setup, your pain points, and whether Spire or Adagio is the
-            right fit — or if your existing system just needs better
+            right fit, or if your existing system just needs better
             configuration.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">

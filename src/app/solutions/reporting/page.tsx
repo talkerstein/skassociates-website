@@ -45,13 +45,13 @@ const reportingCapabilities = [
     icon: Filter,
     title: 'Filtered Views & Custom Reports',
     description:
-      'Stop scrolling through data you do not need. We build filtered views and custom reports that surface exactly the information each role requires — nothing more, nothing less.',
+      'Stop scrolling through data you do not need. We build filtered views and custom reports that surface exactly the information each role requires: nothing more, nothing less.',
   },
   {
     icon: LayoutDashboard,
     title: 'Dashboards & Visual Summaries',
     description:
-      'At-a-glance visibility into the metrics that drive your business. Sales performance, cash position, inventory levels, and receivables aging — all updated in real time.',
+      'At-a-glance visibility into the metrics that drive your business. Sales performance, cash position, inventory levels, and receivables aging, all updated in real time.',
   },
   {
     icon: FileSpreadsheet,
@@ -69,13 +69,13 @@ const reportingCapabilities = [
     icon: Workflow,
     title: 'Process Optimization',
     description:
-      'Reporting often reveals process problems. We do not just build the report — we help you fix the underlying workflows so the data is cleaner and the processes are faster.',
+      'Reporting often reveals process problems. We do not just build the report. We help you fix the underlying workflows so the data is cleaner and the processes are faster.',
   },
   {
     icon: BarChart3,
     title: 'Automated Scheduling',
     description:
-      'Reports that generate and distribute themselves on schedule. Monthly financials, weekly sales summaries, daily exception reports — delivered to the right people without anyone pressing a button.',
+      'Reports that generate and distribute themselves on schedule. Monthly financials, weekly sales summaries, daily exception reports, all delivered to the right people without anyone pressing a button.',
   },
 ];
 
@@ -84,7 +84,7 @@ const painPoints = [
     icon: AlertTriangle,
     title: 'Data Exists But You Cannot Get to It',
     description:
-      'Your system is full of valuable information — transactions, trends, patterns — but extracting it requires manual effort, workarounds, or waiting for someone with technical skills.',
+      'Your system is full of valuable information (transactions, trends, patterns) but extracting it requires manual effort, workarounds, or waiting for someone with technical skills.',
   },
   {
     icon: Clock,
@@ -156,7 +156,7 @@ export default function ReportingPage() {
               custom={2}
               className="mt-6 text-[length:--font-size-body-lg] leading-relaxed text-slate-300 max-w-2xl"
             >
-              Your data is one of your most valuable assets — but only if
+              Your data is one of your most valuable assets, but only if
               you can access it, understand it, and act on it. We build the
               reports, dashboards, and processes that turn raw data into
               clear decisions.
@@ -201,7 +201,7 @@ export default function ReportingPage() {
             </h2>
             <p className="text-[length:--font-size-body-lg] text-slate-600 leading-relaxed">
               These are the problems we hear about most. The software
-              already has the data — the gap is in getting it out in a
+              already has the data. The gap is in getting it out in a
               format that is actually useful.
             </p>
           </motion.div>
@@ -255,7 +255,7 @@ export default function ReportingPage() {
               Reporting That Works for Your Business
             </h2>
             <p className="mt-4 text-[length:--font-size-body-lg] text-slate-600 max-w-2xl mx-auto">
-              Good reporting is not about more data — it is about the right
+              Good reporting is not about more data. It is about the right
               data, presented clearly, available when you need it.
             </p>
           </motion.div>
@@ -386,7 +386,7 @@ export default function ReportingPage() {
               <p className="text-[length:--font-size-body] text-slate-600 leading-relaxed">
                 We do not just build the report and walk away. We help you
                 fix the underlying processes so the data is clean at the
-                source — which means every report downstream becomes more
+                source, which means every report downstream becomes more
                 reliable, automatically.
               </p>
             </motion.div>

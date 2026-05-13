@@ -21,7 +21,7 @@ const industries = [
     title: "Distribution & Wholesale",
     subtitle: "Inventory, logistics, and operational control",
     description:
-      "Distribution companies need real-time visibility into inventory levels, purchase orders, sales pipelines, and multi-warehouse operations. Generic accounting software cannot keep up — and spreadsheet workarounds create more problems than they solve.",
+      "Distribution companies need real-time visibility into inventory levels, purchase orders, sales pipelines, and multi-warehouse operations. Generic accounting software cannot keep up, and spreadsheet workarounds create more problems than they solve.",
     painPoints: [
       "Inventory counts that don’t match reality",
       "Manual purchase order tracking across vendors",
@@ -41,7 +41,7 @@ const industries = [
     title: "Service & Professional Organizations",
     subtitle: "Job costing, billing, and project visibility",
     description:
-      "Service businesses run on time, projects, and accurate billing. Your accounting system needs to track job costs, manage billing workflows, and give you clear visibility into project profitability — not just record transactions after the fact.",
+      "Service businesses run on time, projects, and accurate billing. Your accounting system needs to track job costs, manage billing workflows, and give you clear visibility into project profitability, not just record transactions after the fact.",
     painPoints: [
       "Job costs scattered across spreadsheets",
       "Billing delays from manual invoice generation",

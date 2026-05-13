@@ -230,7 +230,7 @@ export function Navigation() {
         <Link
           href="/"
           className="relative z-10 flex items-center gap-3"
-          aria-label="S. Kopstick & Associates Inc. — Home"
+          aria-label="S. Kopstick & Associates Inc., Home"
         >
           {/* Monogram */}
           <span

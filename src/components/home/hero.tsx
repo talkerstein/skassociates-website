@@ -289,7 +289,7 @@ export function Hero() {
               className="mt-6 text-lg leading-relaxed text-slate-300 max-w-xl"
             >
               Expert implementation, training, and ongoing support for Spire
-              and Adagio — Toronto-based, serving Canada and beyond.
+              and Adagio. Toronto-based, serving Canada and beyond.
             </motion.p>
 
             {/* CTAs */}

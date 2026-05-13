@@ -11,50 +11,46 @@ interface Platform {
   subtitle: string;
   /** Logo file path under /public */
   logo: string;
-  /** Aspect tweak — some logos render better at slightly different max heights */
-  maxHeight?: string;
   /** Optional destination — wraps the card in a Link when present */
   href?: string;
 }
 
 const platforms: Platform[] = [
   {
-    name: "Spire — Authorized Partner",
+    name: "Spire Authorized Partner",
     subtitle: "Business Management",
     logo: "/logos/spire.png",
-    // Spire Authorized Partner variant has the certification bar — give it
-    // the same vertical space as Adagio so both trust signals read clearly.
-    maxHeight: "max-h-16",
     href: "/solutions/spire",
   },
   {
-    name: "Adagio — Authorized Reseller",
+    name: "Adagio Authorized Reseller",
     subtitle: "Accounting Software",
     logo: "/logos/adagio.png",
-    // Adagio Authorized Reseller variant is taller (has the certification bar) —
-    // give it slightly more height so the trust signal reads clearly.
-    maxHeight: "max-h-16",
     href: "/solutions/adagio",
   },
   {
     name: "PayDirt Payroll",
     subtitle: "Payroll",
     logo: "/logos/paydirt.png",
-    maxHeight: "max-h-16",
   },
   {
     name: "Crystal Reports",
     subtitle: "Reporting",
     logo: "/logos/crystal-reports.png",
-    maxHeight: "max-h-16",
   },
   {
     name: "Microsoft Access",
     subtitle: "Custom Databases",
     logo: "/logos/microsoft-access.png",
-    maxHeight: "max-h-16",
   },
 ];
+
+// Unified visual canvas for every logo card so different aspect ratios all
+// land at the same perceived weight. The inner box is 64px tall; each logo
+// fills with object-contain and gets the same max constraints.
+const LOGO_CONTAINER = "flex h-16 w-full items-center justify-center";
+const LOGO_IMG =
+  "max-h-16 max-w-[180px] w-auto h-auto object-contain transition-transform duration-300 group-hover:scale-[1.03]";
 
 export function PlatformsStrip() {
   return (
@@ -90,15 +86,15 @@ export function PlatformsStrip() {
             (platform.href ? " cursor-pointer hover:border-accent-500/40" : "");
           const cardInner = (
             <>
-              <div className="flex h-20 w-full items-center justify-center">
+              <div className={LOGO_CONTAINER}>
                 <img
                   src={platform.logo}
                   alt={`${platform.name} logo`}
                   loading="lazy"
-                  className={`${platform.maxHeight ?? "max-h-12"} w-auto object-contain transition-transform duration-300 group-hover:scale-[1.03]`}
+                  className={LOGO_IMG}
                 />
               </div>
-              <p className="mt-3 text-[length:--font-size-caption] font-medium uppercase tracking-[0.12em] text-slate-500">
+              <p className="mt-4 text-[length:--font-size-caption] font-medium uppercase tracking-[0.12em] text-slate-500">
                 {platform.subtitle}
               </p>
             </>

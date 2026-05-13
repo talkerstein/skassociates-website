@@ -66,13 +66,13 @@ export function CaseStudies() {
               </div>
 
               <h3 className="font-display text-[length:--font-size-h1] leading-[--line-height-heading] text-navy-900 mb-5 text-balance">
-                Medina Supply Inc. — From legacy Sage to Spire Cloud
+                Medina Supply Inc.: From legacy Sage to Spire Cloud
               </h3>
 
               <p className="text-[length:--font-size-body-lg] leading-[--line-height-body] text-slate-600 mb-8">
                 Medina Supply is a distributor and manufacturer of industrial
                 equipment. We migrated them off an aging Sage 300 / Accpac
-                install onto Spire Cloud — importing over 16,000 items across
+                install onto Spire Cloud, importing over 16,000 items across
                 nearly 40 product codes and leaving more than 20 years of
                 obsolete data behind for a clean fresh start.
               </p>

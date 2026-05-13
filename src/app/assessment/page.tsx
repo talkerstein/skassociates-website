@@ -59,7 +59,7 @@ const QUESTIONS: Question[] = [
     options: [
       {
         id: "inv-critical",
-        label: "Critical — we live in our inventory system",
+        label: "Critical: we live in our inventory system",
         score: { spire: 3, adagio: 0 },
       },
       {
@@ -80,7 +80,7 @@ const QUESTIONS: Question[] = [
     options: [
       {
         id: "ctrl-critical",
-        label: "Critical — we are audited or have strict controls",
+        label: "Critical: we are audited or have strict controls",
         score: { spire: 0, adagio: 3 },
       },
       { id: "ctrl-important", label: "Important", score: { spire: 0, adagio: 1 } },
@@ -108,8 +108,8 @@ const QUESTIONS: Question[] = [
         label: "BusinessVision",
         note: "Ending support Dec 2026",
       },
-      { id: "cur-adagio", label: "Adagio", note: "Existing — likely upgrade" },
-      { id: "cur-spire", label: "Spire", note: "Existing — likely optimization" },
+      { id: "cur-adagio", label: "Adagio", note: "Existing, likely upgrade" },
+      { id: "cur-spire", label: "Spire", note: "Existing, likely optimization" },
       { id: "cur-excel", label: "Excel / Manual" },
       { id: "cur-other", label: "Other ERP" },
     ],
@@ -126,7 +126,7 @@ const QUESTIONS: Question[] = [
       { id: "drv-eol", label: "Current vendor is going end-of-life" },
       {
         id: "drv-payments",
-        label: "Payment processing — we want better systems for this",
+        label: "Payment processing: we want better systems for this",
       },
       { id: "drv-answers", label: "Team can't get answers from the data" },
     ],
@@ -182,7 +182,7 @@ function buildReasons(answers: Answers, winner: "Spire" | "Adagio" | "Both") {
   if (winner === "Spire") {
     if (industryAns === "distribution" || industryAns === "manufacturing") {
       reasons.push(
-        "Your industry leans on inventory, orders, and operational flow — Spire's core strength."
+        "Your industry leans on inventory, orders, and operational flow, which is Spire's core strength."
       );
     }
     if (invAns === "inv-critical" || invAns === "inv-important") {
@@ -213,17 +213,17 @@ function buildReasons(answers: Answers, winner: "Spire" | "Adagio" | "Both") {
     }
     if (volumeAns === "vol-low" || volumeAns === "vol-mid") {
       reasons.push(
-        "Your transaction profile fits Adagio's sweet spot — depth of accounting without ERP overhead."
+        "Your transaction profile fits Adagio's sweet spot: depth of accounting without ERP overhead."
       );
     }
     if (invAns === "inv-none") {
       reasons.push(
-        "You don't live in inventory, so you don't need to pay for it — Adagio keeps the focus on the books."
+        "You don't live in inventory, so you don't need to pay for it. Adagio keeps the focus on the books."
       );
     }
   } else {
     reasons.push(
-      "Your answers map well to both platforms — the right call depends on weighting trade-offs (operations vs. accounting depth)."
+      "Your answers map well to both platforms. The right call depends on weighting trade-offs (operations vs. accounting depth)."
     );
     reasons.push(
       "We can walk through the specific differences against your top priorities in a short conversation."
@@ -232,7 +232,7 @@ function buildReasons(answers: Answers, winner: "Spire" | "Adagio" | "Both") {
 
   if (currentAns === "cur-bv") {
     reasons.push(
-      "BusinessVision support ends December 2026 — moving sooner gives you room to plan, not react."
+      "BusinessVision support ends December 2026. Moving sooner gives you room to plan, not react."
     );
   }
 
@@ -408,7 +408,7 @@ export default function AssessmentPage() {
     }
 
     const payload = {
-      _subject: `New Fit Assessment — ${recommended}`,
+      _subject: `New Fit Assessment: ${recommended}`,
       _template: "table",
       _captcha: "false",
       name: contact.name,
@@ -546,7 +546,7 @@ export default function AssessmentPage() {
               But the right answer depends on more than a quiz.
             </h2>
             <p className="mt-3 text-slate-300 leading-relaxed max-w-xl mx-auto">
-              Let's talk through your specific situation — your data, your team,
+              Let's talk through your specific situation: your data, your team,
               and what's actually slowing you down today.
             </p>
             <div className="mt-7 flex justify-center">
@@ -572,8 +572,8 @@ export default function AssessmentPage() {
             Seven questions. A real recommendation.
           </h1>
           <p className="mt-3 text-slate-600 max-w-xl mx-auto">
-            Built from decades of accounting software implementation experience
-            — not a generic quiz.
+            Built from decades of accounting software implementation experience,
+            not a generic quiz.
           </p>
         </div>
 

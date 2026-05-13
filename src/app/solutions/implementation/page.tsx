@@ -65,7 +65,7 @@ const missedItems = [
     icon: BarChart3,
     title: 'Reporting Setup',
     description:
-      'Standard reports are enabled but custom reports — the ones you actually need — are never built. Dashboards are empty.',
+      'Standard reports are enabled but custom reports, the ones you actually need, are never built. Dashboards are empty.',
   },
   {
     icon: ClipboardCheck,
@@ -86,13 +86,13 @@ const ourApproach = [
     step: '01',
     title: 'Business Process Review',
     description:
-      'We map your actual workflows — not what the org chart says, but what people actually do every day. This is where we identify configuration requirements, automation opportunities, and integration needs.',
+      'We map your actual workflows, not what the org chart says, but what people actually do every day. This is where we identify configuration requirements, automation opportunities, and integration needs.',
   },
   {
     step: '02',
     title: 'System Design & Configuration',
     description:
-      'Every module is configured specifically for your business. Chart of accounts structure, tax settings, inventory rules, approval workflows, user permissions — all tailored to how you operate.',
+      'Every module is configured specifically for your business. Chart of accounts structure, tax settings, inventory rules, approval workflows, user permissions, all tailored to how you operate.',
   },
   {
     step: '03',
@@ -104,7 +104,7 @@ const ourApproach = [
     step: '04',
     title: 'Testing & Quality Assurance',
     description:
-      'End-to-end testing using realistic scenarios. We run your month-end close, process sample transactions, and generate the reports you need — all before go-live.',
+      'End-to-end testing using realistic scenarios. We run your month-end close, process sample transactions, and generate the reports you need, all before go-live.',
   },
   {
     step: '05',
@@ -167,7 +167,7 @@ export default function ImplementationPage() {
               custom={1}
               className="font-display text-[clamp(2.25rem,5vw,3.75rem)] leading-[1.08] tracking-tight text-ivory-50 text-balance"
             >
-              Implementation Done Right — The First Time
+              Implementation Done Right, The First Time
             </motion.h1>
             <motion.p
               variants={fadeUp}
@@ -220,7 +220,7 @@ export default function ImplementationPage() {
             </h2>
             <p className="text-[length:--font-size-body-lg] text-slate-600 leading-relaxed">
               Most implementation failures are not dramatic. They are quiet.
-              The system works — technically. But nobody trusts the numbers,
+              The system works, technically. But nobody trusts the numbers,
               workarounds multiply, and within six months your team is back
               to spreadsheets. Here is what typically gets overlooked:
             </p>
@@ -276,14 +276,14 @@ export default function ImplementationPage() {
               </h2>
               <p className="text-[length:--font-size-body-lg] text-slate-300 leading-relaxed mb-6">
                 After three decades of accounting system implementations, we
-                have seen most of the ways a project can go sideways — and we
+                have seen most of the ways a project can go sideways, and we
                 have built our process to prevent them. Every engagement starts
                 with understanding your business, not your software requirements.
               </p>
               <p className="text-[length:--font-size-body] text-slate-400 leading-relaxed">
                 We do not hand you a questionnaire and disappear for three
                 weeks. We sit with your team, watch how work actually flows,
-                and build the system around reality — not assumptions.
+                and build the system around reality, not assumptions.
               </p>
             </motion.div>
 
@@ -410,7 +410,7 @@ export default function ImplementationPage() {
               <p className="text-[length:--font-size-body-lg] text-slate-600 leading-relaxed mb-6">
                 Data migration is where most implementations go wrong.
                 Historical transactions, customer records, vendor data,
-                inventory counts, open orders — all of it needs to move
+                inventory counts, open orders. All of it needs to move
                 cleanly, tie out perfectly, and be verified before anyone
                 touches the new system.
               </p>

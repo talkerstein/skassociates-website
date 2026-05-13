@@ -107,7 +107,7 @@ export default function DistributionPage() {
             </h1>
             <p className="mt-6 text-lg leading-relaxed text-slate-300 max-w-2xl">
               Inventory complexity, multi-warehouse operations, order volume,
-              and vendor management — we configure systems that give you
+              and vendor management. We configure systems that give you
               real-time control across the entire supply chain.
             </p>
             <div className="mt-8 inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/[0.06] border border-white/[0.08] text-[length:--font-size-body-sm] text-slate-300">
@@ -196,7 +196,7 @@ export default function DistributionPage() {
               <p>
                 Spire is a full-suite ERP designed specifically for companies
                 that manage inventory, purchasing, and sales orders. It is not a
-                general-purpose accounting tool with inventory bolted on — it
+                general-purpose accounting tool with inventory bolted on. It
                 was built from the ground up for distribution and wholesale
                 operations.
               </p>
@@ -204,7 +204,7 @@ export default function DistributionPage() {
                 We configure Spire to match your specific workflows: your
                 warehouse layout, your vendor terms, your pricing tiers, your
                 reporting needs. The result is a system that your team actually
-                uses — because it works the way they work.
+                uses, because it works the way they work.
               </p>
             </div>
           </motion.div>

@@ -9,6 +9,7 @@ import { SectionWrapper } from "@/components/ui/section-wrapper";
 const platforms = [
   {
     name: "Spire",
+    logo: "/logos/spire.png",
     tagline: "Operations-driven businesses",
     description:
       "Full-suite ERP designed for companies managing inventory, purchasing, sales orders, and multi-location operations. Best fit for distribution, wholesale, and manufacturing.",
@@ -22,24 +23,23 @@ const platforms = [
     ],
     href: "/solutions/spire",
     accent: "border-navy-700/20",
-    badge: "bg-navy-900 text-ivory-50",
   },
   {
     name: "Adagio",
+    logo: "/logos/adagio.png",
     tagline: "Accounting-focused organizations",
     description:
       "Modular accounting suite built for organizations that need deep financial controls, fund accounting, and flexible reporting. Strong fit for service firms, nonprofits, and professional practices.",
     strengths: [
       "General ledger & fund accounting",
       "Accounts payable & receivable",
-      "Modular — pay only for what you need",
+      "Modular: pay only for what you need",
       "Robust financial reporting",
       "Bank reconciliation & audit trails",
       "Payroll integration",
     ],
     href: "/solutions/adagio",
     accent: "border-accent-500/20",
-    badge: "bg-accent-600 text-white",
   },
 ];
 
@@ -58,7 +58,7 @@ export function PlatformComparison() {
       >
         <p className="eyebrow text-accent-400 mb-4">Find Your Fit</p>
         <h2 className="font-display text-[length:--font-size-display-sm] md:text-[length:--font-size-display] leading-[--line-height-display] tracking-[--letter-spacing-display] text-balance text-ivory-50">
-          Spire vs. Adagio — which platform fits your business?
+          Spire vs. Adagio: which platform fits your business?
         </h2>
         <p className="mt-5 text-[length:--font-size-body-lg] leading-[--line-height-body] text-slate-300">
           Both are powerful. Both are proven. The right choice depends on your
@@ -83,11 +83,15 @@ export function PlatformComparison() {
               href={platform.href}
               className={`group block h-full rounded-2xl border ${platform.accent} bg-white p-8 lg:p-10 shadow-card transition-all duration-500 ease-[var(--ease-out-expo)] hover:shadow-card-hover hover:-translate-y-0.5`}
             >
-              <span
-                className={`inline-block ${platform.badge} text-[length:--font-size-body-sm] font-semibold px-3.5 py-1.5 rounded-lg mb-6`}
-              >
-                {platform.name}
-              </span>
+              {/* Real logo replaces the previous text badge */}
+              <div className="flex h-14 items-center justify-start mb-6">
+                <img
+                  src={platform.logo}
+                  alt={`${platform.name} logo`}
+                  loading="lazy"
+                  className="max-h-14 max-w-[160px] w-auto h-auto object-contain object-left"
+                />
+              </div>
               <p className="eyebrow text-slate-500 mb-3">{platform.tagline}</p>
               <p className="text-[length:--font-size-body] leading-[--line-height-body] text-slate-600 mb-8">
                 {platform.description}

@@ -49,7 +49,7 @@ export function Footer() {
             <Link
               href="/"
               className="inline-flex items-center gap-3 mb-5"
-              aria-label="S. Kopstick & Associates Inc. — Home"
+              aria-label="S. Kopstick & Associates Inc., Home"
             >
               {/* Monogram */}
               <span

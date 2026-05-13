@@ -109,7 +109,7 @@ export default function ContactPage() {
               <input
                 type="hidden"
                 name="_subject"
-                value="New Consultation Request — skassociates.ca"
+                value="New Consultation Request: skassociates.ca"
               />
               <input type="hidden" name="_captcha" value="true" />
               <input type="hidden" name="_template" value="table" />

@@ -42,7 +42,7 @@ const solutions = [
     icon: Compass,
     title: 'Software Fit Guidance',
     description:
-      'Not sure whether Spire or Adagio is right for your organization? We assess your workflows, growth plans, and reporting needs to recommend the platform that fits — not the one with the biggest feature list.',
+      'Not sure whether Spire or Adagio is right for your organization? We assess your workflows, growth plans, and reporting needs to recommend the platform that fits, not the one with the biggest feature list.',
     href: '/solutions/spire',
     linkLabel: 'Learn about Spire',
   },
@@ -58,7 +58,7 @@ const solutions = [
     icon: ArrowRightLeft,
     title: 'Migration & Data',
     description:
-      'Moving from legacy systems or spreadsheets? We handle the full data migration — mapping, cleansing, validation, and verification — so nothing falls through the cracks.',
+      'Moving from legacy systems or spreadsheets? We handle the full data migration, including mapping, cleansing, validation, and verification, so nothing falls through the cracks.',
     href: '/solutions/implementation',
     linkLabel: 'Migration details',
   },
@@ -74,7 +74,7 @@ const solutions = [
     icon: BarChart3,
     title: 'Reporting & Process Improvement',
     description:
-      'Your data is an asset — but only if you can get to it. We build custom reports, dashboards, and streamlined workflows so you spend less time digging and more time deciding.',
+      'Your data is an asset, but only if you can get to it. We build custom reports, dashboards, and streamlined workflows so you spend less time digging and more time deciding.',
     href: '/solutions/reporting',
     linkLabel: 'Improve your reporting',
   },
@@ -172,7 +172,7 @@ export default function SolutionsPage() {
               custom={2}
               className="mt-6 text-[length:--font-size-body-lg] leading-relaxed text-slate-300 max-w-2xl"
             >
-              From software fit guidance to ongoing support — we help
+              From software fit guidance to ongoing support, we help
               organizations get lasting value from Spire and Adagio. No
               bloated feature demos. No cookie-cutter rollouts. Just the
               right system, configured the right way, with the right people
@@ -244,13 +244,13 @@ export default function SolutionsPage() {
               <p className="text-[length:--font-size-body-lg] text-slate-600 leading-relaxed mb-8">
                 Anyone can install accounting software. Making it work for
                 your specific workflows, your reporting needs, and your
-                team — that takes deep product knowledge, implementation
+                team. That takes deep product knowledge, implementation
                 experience, and the patience to get every detail right.
               </p>
               <p className="text-[length:--font-size-body] text-slate-600 leading-relaxed">
-                With over three decades of accounting software experience —
+                With over three decades of accounting software experience,
                 including the years before Spire and Adagio came to dominate
-                the mid-market — we have seen what works and what does not.
+                the mid-market, we have seen what works and what does not.
                 Your implementation benefits from every lesson learned along
                 the way.
               </p>
@@ -352,7 +352,7 @@ export default function SolutionsPage() {
             </h2>
             <p className="text-[length:--font-size-body-lg] text-slate-300 max-w-2xl mx-auto mb-10">
               That is exactly what the first conversation is for. No sales
-              pitch — just an honest assessment of where you are and what
+              pitch, just an honest assessment of where you are and what
               would actually help.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-4">

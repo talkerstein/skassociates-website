@@ -110,7 +110,7 @@ export default function ServicePage() {
             </h1>
             <p className="mt-6 text-lg leading-relaxed text-slate-300 max-w-2xl">
               Job costing, project tracking, billing workflows, and time
-              management — built into a system that keeps pace with how
+              management, built into a system that keeps pace with how
               service companies actually operate.
             </p>
             <div className="mt-8 inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/[0.06] border border-white/[0.08] text-[length:--font-size-body-sm] text-slate-300">

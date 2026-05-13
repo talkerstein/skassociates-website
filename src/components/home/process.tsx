@@ -19,19 +19,19 @@ const steps: Step[] = [
     number: "01",
     title: "Discovery Call",
     description:
-      "We start with a candid conversation about your current systems, pain points, and goals. No pressure, no pitch — just clarity. We need to understand where you are before we recommend where to go.",
+      "We start with a candid conversation about your current systems, pain points, and goals. No pressure, no pitch, just clarity. We need to understand where you are before we recommend where to go.",
     image:
       "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1200&h=900&fit=crop",
-    caption: "Step 01 — Discovery Call",
+    caption: "Step 01: Discovery Call",
   },
   {
     number: "02",
     title: "Assessment & Recommendation",
     description:
-      "We review your workflows and data, then recommend the platform and configuration that fits your business — not the other way around. If your current system just needs better setup, we will tell you. Honesty over upsell.",
+      "We review your workflows and data, then recommend the platform and configuration that fits your business, not the other way around. If your current system just needs better setup, we will tell you. Honesty over upsell.",
     image:
       "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&h=900&fit=crop",
-    caption: "Step 02 — Assessment & Recommendation",
+    caption: "Step 02: Assessment & Recommendation",
   },
   {
     number: "03",
@@ -40,25 +40,25 @@ const steps: Step[] = [
       "We configure the system around your operations, migrate your data cleanly, and test everything before go-live. You see the system running on your real data before anyone depends on it.",
     image:
       "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1200&h=900&fit=crop",
-    caption: "Step 03 — Implementation & Migration",
+    caption: "Step 03: Implementation & Migration",
   },
   {
     number: "04",
     title: "Training & Go-Live",
     description:
-      "Your team gets hands-on training tailored to their roles — not a generic walkthrough. We stay close during go-live to handle anything that comes up. Confidence on day one, not month three.",
+      "Your team gets hands-on training tailored to their roles, not a generic walkthrough. We stay close during go-live to handle anything that comes up. Confidence on day one, not month three.",
     image:
       "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1200&h=900&fit=crop",
-    caption: "Step 04 — Training & Go-Live",
+    caption: "Step 04: Training & Go-Live",
   },
   {
     number: "05",
     title: "Ongoing Support",
     description:
-      "We don't disappear after the invoice. Ongoing support, system optimization, and guidance — for as long as you need it. The relationship lasts as long as the system does.",
+      "We don't disappear after the invoice. Ongoing support, system optimization, and guidance, for as long as you need it. The relationship lasts as long as the system does.",
     image:
       "https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=1200&h=900&fit=crop",
-    caption: "Step 05 — Ongoing Support",
+    caption: "Step 05: Ongoing Support",
   },
 ];
 
@@ -145,7 +145,7 @@ export function Process() {
           A process built around your business.
         </h2>
         <p className="mt-5 text-[length:--font-size-body-lg] leading-[--line-height-body] text-slate-600">
-          Every engagement follows a clear, proven structure — but the details
+          Every engagement follows a clear, proven structure, but the details
           are always tailored to your specific situation.
         </p>
       </motion.div>

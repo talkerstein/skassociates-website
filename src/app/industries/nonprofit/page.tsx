@@ -204,7 +204,7 @@ export default function NonprofitPage() {
                 We configure Adagio specifically for nonprofit requirements:
                 fund-level tracking, grant reporting structures, board
                 financial packages, and audit-ready documentation. The result
-                is a system that makes compliance easier — not harder.
+                is a system that makes compliance easier, not harder.
               </p>
             </div>
           </motion.div>

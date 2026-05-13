@@ -40,7 +40,7 @@ const strengths = [
     icon: FileText,
     title: 'Exceptional Financial Reporting',
     description:
-      'Adagio lets you build any financial statement in the format you actually need to report — not a fixed template. Departmental and consolidated reporting are particularly strong, which is why so many finance-led organizations have stayed with it for years.',
+      'Adagio lets you build any financial statement in the format you actually need to report, not a fixed template. Departmental and consolidated reporting are particularly strong, which is why so many finance-led organizations have stayed with it for years.',
   },
   {
     icon: BarChart3,
@@ -52,7 +52,7 @@ const strengths = [
     icon: Eye,
     title: 'Sophisticated Online Views with GridView',
     description:
-      'The Adagio GridView module creates executive snapshots of your data that can be run without granting access to the rest of the accounting system — useful when you want managers and staff to view reports without ever touching the accounting program itself.',
+      'The Adagio GridView module creates executive snapshots of your data that can be run without granting access to the rest of the accounting system. Useful when you want managers and staff to view reports without ever touching the accounting program itself.',
   },
   {
     icon: Download,
@@ -64,7 +64,7 @@ const strengths = [
     icon: Heart,
     title: 'A Strong Fit for Non-Profit Organizations',
     description:
-      'Adagio has a long-standing client base in the non-profit sector and offers discounts on module purchases for non-profits. Generate all of your financials and reporting in one place — so you are no longer late producing detailed financial statements and the other reports the board needs.',
+      'Adagio has a long-standing client base in the non-profit sector and offers discounts on module purchases for non-profits. Generate all of your financials and reporting in one place, so you are no longer late producing detailed financial statements and the other reports the board needs.',
   },
 ];
 
@@ -106,7 +106,7 @@ export default function AdagioPage() {
               custom={1}
               className="font-display text-[clamp(2.25rem,5vw,3.75rem)] leading-[1.08] tracking-tight text-ivory-50 text-balance"
             >
-              Adagio — Proven Financial Reporting and Control.
+              Adagio: Proven Financial Reporting and Control.
             </motion.h1>
             <motion.p
               variants={fadeUp}
@@ -219,7 +219,7 @@ export default function AdagioPage() {
                 <p className="text-[length:--font-size-body-lg] text-slate-600 leading-relaxed mb-4">
                   If you currently run on Adagio, we provide ongoing
                   implementation refinement, training, custom reporting, and
-                  support — for as long as you continue using the platform.
+                  support, for as long as you continue using the platform.
                 </p>
                 <p className="text-[length:--font-size-body] text-slate-600 leading-relaxed mb-8">
                   Whether you need a small tune-up, a new report built, or a
@@ -250,7 +250,7 @@ export default function AdagioPage() {
               Wondering whether Adagio is the right fit?
             </h2>
             <p className="text-[length:--font-size-body-lg] text-slate-300 max-w-2xl mx-auto mb-10">
-              We will give you a straight answer — whether that is yes,
+              We will give you a straight answer, whether that is yes,
               whether that is a different platform, or whether your current
               Adagio setup just needs better support behind it.
             </p>
