@@ -43,7 +43,7 @@ const industries = [
     iconBg: "bg-accent-500/[0.08]",
     iconColor: "text-accent-600",
     image:
-      "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&h=600&fit=crop",
     imageAlt: "Professional consultation between two people",
   },
   {
@@ -63,7 +63,7 @@ const industries = [
     iconBg: "bg-gold-400/[0.10]",
     iconColor: "text-gold-500",
     image:
-      "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&h=600&fit=crop",
     imageAlt: "Community organization meeting",
   },
 ] as const;

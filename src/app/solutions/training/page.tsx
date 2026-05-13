@@ -17,6 +17,8 @@ import {
   ArrowRight,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Faq } from '@/components/ui/faq';
+import { trainingFaqs } from '@/data/faqs';
 
 /* ------------------------------------------------------------------ */
 /*  Animation helpers                                                  */
@@ -461,6 +463,8 @@ export default function TrainingPage() {
           </motion.div>
         </div>
       </section>
+
+      <Faq items={trainingFaqs} heading="About training, support, and what comes after go-live." />
 
       {/* ── CTA ── */}
       <section className="bg-navy-950 py-24 lg:py-32">

@@ -12,6 +12,8 @@ import {
 } from "lucide-react";
 import { SectionWrapper } from "@/components/ui/section-wrapper";
 import { Button } from "@/components/ui/button";
+import { Faq } from "@/components/ui/faq";
+import { serviceFaqs } from "@/data/faqs";
 
 const painPoints = [
   {
@@ -125,7 +127,7 @@ export default function ServicePage() {
           >
             <div className="rounded-2xl overflow-hidden border border-white/10 shadow-elevated">
               <img
-                src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&h=600&fit=crop"
+                src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop"
                 alt="Professional services consulting session"
                 loading="lazy"
                 referrerPolicy="no-referrer"
@@ -296,6 +298,12 @@ export default function ServicePage() {
           </motion.div>
         </div>
       </section>
+
+      <Faq
+        items={serviceFaqs}
+        heading="Questions from service organizations."
+        background="light"
+      />
 
       {/* CTA */}
       <SectionWrapper background="ivory" padding="large">

@@ -16,6 +16,8 @@ import {
   Quote,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Faq } from '@/components/ui/faq';
+import { spireFaqs } from '@/data/faqs';
 
 /* ------------------------------------------------------------------ */
 /*  Animation helpers                                                  */
@@ -457,6 +459,8 @@ export default function SpirePage() {
           </motion.div>
         </div>
       </section>
+
+      <Faq items={spireFaqs} heading="Spire questions, answered." />
 
       {/* ── CTA ── */}
       <section className="bg-navy-950 py-24 lg:py-32">

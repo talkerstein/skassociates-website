@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clover — CleverPays · Clover Authorized Dealer</title>
+<meta name="description" content="The full Clover lineup — Flex, Mini, Station Duo, Solo, Kiosk, Integrated — provisioned, configured, and supported by a Clover Authorized Dealer. Bilingual EN/FR.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<style>
+  /* Inner nav (sticky page-level subnav) */
+  .inner-nav {
+    position: sticky; top: 76px; z-index: 50;
+    background: rgba(10,20,48,0.9);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--cp-border-dark);
+  }
+  .inner-nav-inner {
+    max-width: 1280px; margin: 0 auto; padding: 0 32px;
+    display: flex; align-items: center; gap: 8px;
+    overflow-x: auto; -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .inner-nav-inner::-webkit-scrollbar { display: none; }
+  .inner-nav-link {
+    padding: 14px 14px;
+    font-size: 13.5px; font-weight: 500;
+    color: var(--cp-ink-on-dark-2);
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    transition: all 200ms var(--cp-ease);
+  }
+  .inner-nav-link:hover { color: var(--cp-ink-on-dark); }
+  .inner-nav-link.active { color: var(--cp-honey-400); border-bottom-color: var(--cp-honey-500); }
+
+  /* Page hero (smaller than home) */
+  .page-hero { padding: 80px 0 60px; position: relative; overflow: hidden; }
+  .page-hero-grid {
+    display: grid; grid-template-columns: 1.2fr 1fr; gap: 64px;
+    align-items: center; position: relative; z-index: 1;
+  }
+  @media (max-width: 1023px) { .page-hero-grid { grid-template-columns: 1fr; gap: 40px; } }
+  .page-hero-visual {
+    position: relative;
+    aspect-ratio: 4/3;
+    background: linear-gradient(135deg, var(--cp-bg-elev-2), var(--cp-bg-base));
+    border: 1px solid var(--cp-border-dark);
+    border-radius: var(--cp-radius-xl);
+    overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+    padding: 32px;
+  }
+  .page-hero-visual img {
+    max-width: 100%; max-height: 100%;
+    filter: drop-shadow(0 24px 48px rgba(0,0,0,0.6));
+  }
+  .breadcrumb {
+    display: flex; gap: 8px; align-items: center;
+    font-size: 13px; color: var(--cp-ink-on-dark-3);
+    margin-bottom: 24px;
+  }
+  .breadcrumb a { color: var(--cp-ink-on-dark-3); transition: color 160ms; }
+  .breadcrumb a:hover { color: var(--cp-honey-400); }
+  .breadcrumb .sep { color: var(--cp-ink-on-dark-3); opacity: 0.4; }
+
+  /* Device showcase block */
+  .device-feature {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+    margin-bottom: 120px;
+  }
+  .device-feature:last-of-type { margin-bottom: 0; }
+  @media (max-width: 960px) { .device-feature { grid-template-columns: 1fr; gap: 32px; margin-bottom: 80px; } }
+  .device-feature.reverse { direction: rtl; }
+  .device-feature.reverse > * { direction: ltr; }
+  @media (max-width: 960px) { .device-feature.reverse { direction: ltr; } }
+
+  .device-feature-img {
+    aspect-ratio: 1;
+    background: var(--cp-bg-cream);
+    border-radius: var(--cp-radius-xl);
+    display: flex; align-items: center; justify-content: center;
+    padding: 48px;
+    position: relative; overflow: hidden;
+  }
+  .device-feature-img::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 40% at 50% 30%, rgba(232,181,71,0.15), transparent 60%);
+    pointer-events: none;
+  }
+  .device-feature-img img {
+    max-width: 78%; max-height: 78%;
+    object-fit: contain;
+    filter: drop-shadow(0 24px 48px rgba(10,20,48,0.25));
+    position: relative; z-index: 1;
+  }
+
+  .device-spec-list { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-top: 24px; }
+  .device-spec-list li {
+    display: flex; gap: 12px; align-items: flex-start;
+    font-size: 15px; color: var(--cp-ink-on-dark-2);
+  }
+  .device-spec-list li::before {
+    content: ''; flex-shrink: 0;
+    width: 6px; height: 6px; border-radius: 50%; background: var(--cp-honey-500);
+    margin-top: 10px;
+  }
+  .device-spec-list li strong { color: var(--cp-ink-on-dark); font-weight: 600; }
+
+  .device-tag-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
+  .device-chip {
+    padding: 6px 14px;
+    background: rgba(232,181,71,0.08);
+    border: 1px solid rgba(232,181,71,0.25);
+    border-radius: var(--cp-radius-pill);
+    font-size: 12px; font-weight: 600;
+    color: var(--cp-honey-300);
+  }
+
+  /* Feature card row (online ordering etc) */
+  .feature-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+  }
+  @media (max-width: 960px) { .feature-grid { grid-template-columns: 1fr; } }
+
+  .feature-card {
+    background: var(--cp-bg-elev);
+    border: 1px solid var(--cp-border-dark);
+    border-radius: var(--cp-radius-lg);
+    overflow: hidden;
+    transition: all 320ms var(--cp-ease);
+  }
+  .feature-card:hover { border-color: var(--cp-honey-500); transform: translateY(-4px); }
+  .feature-card img { aspect-ratio: 16/10; object-fit: cover; width: 100%; }
+  .feature-card-body { padding: 28px; }
+  .feature-card h3 { font-size: 19px; font-weight: 700; margin-bottom: 10px; }
+  .feature-card p { font-size: 14.5px; color: var(--cp-ink-on-dark-2); line-height: 1.6; }
+
+  /* Why block */
+  .why-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;
+  }
+  @media (max-width: 768px) { .why-grid { grid-template-columns: 1fr; } }
+  .why-item {
+    padding: 28px;
+    background: var(--cp-bg-elev);
+    border: 1px solid var(--cp-border-dark);
+    border-radius: var(--cp-radius-md);
+  }
+  .why-item h4 { font-size: 17px; font-weight: 700; margin-bottom: 8px; color: var(--cp-honey-400); }
+  .why-item p { font-size: 14.5px; color: var(--cp-ink-on-dark-2); line-height: 1.55; }
+
+  /* Compare table */
+  .compare-table {
+    background: var(--cp-bg-elev);
+    border: 1px solid var(--cp-border-dark);
+    border-radius: var(--cp-radius-lg);
+    overflow: hidden;
+    overflow-x: auto;
+  }
+  table.compare {
+    width: 100%; min-width: 720px;
+    border-collapse: collapse;
+  }
+  table.compare th, table.compare td {
+    padding: 16px 18px;
+    text-align: left;
+    border-bottom: 1px solid var(--cp-border-dark);
+    font-size: 14px;
+  }
+  table.compare thead th {
+    background: var(--cp-bg-elev-2);
+    color: var(--cp-honey-400);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 12px;
+  }
+  table.compare tr:last-child td { border-bottom: none; }
+  table.compare td strong { color: var(--cp-ink-on-dark); font-weight: 600; }
+  table.compare td { color: var(--cp-ink-on-dark-2); }
+</style>
+</head>
+<body>
+
+<!-- nav -->
+<nav class="nav" aria-label="Primary">
+  <div class="nav-inner">
+    <a class="logo" href="/home.html">
+      <span class="logo-mark" aria-hidden="true"><span>CP</span></span>
+      <span class="logo-text"><span class="clever">Clever</span><span class="pays">Pays</span></span>
+    </a>
+    <div class="nav-links">
+      <a class="nav-link" href="/payment-processing/clover.html" style="color: var(--cp-honey-400);">Payment Processing</a>
+      <a class="nav-link" href="/business-solutions/integrated-pos.html">Business Solutions</a>
+      <a class="nav-link" href="/home.html#industries">Industries</a>
+      <a class="nav-link" href="#">Pricing</a>
+      <a class="nav-link" href="/calculator.html">Tools</a>
+      <a class="nav-link" href="#">About</a>
+    </div>
+    <div class="nav-right">
+      <div class="locale-toggle">
+        <button class="locale-btn active">EN</button>
+        <button class="locale-btn">FR</button>
+      </div>
+      <a class="btn-nav" href="#talk">Talk to us</a>
+      <button class="menu-toggle" id="menu-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+    </div>
+  </div>
+</nav>
+
+<!-- inner nav -->
+<div class="inner-nav">
+  <div class="inner-nav-inner">
+    <a class="inner-nav-link" href="#overview">Overview</a>
+    <a class="inner-nav-link" href="#flex">Flex</a>
+    <a class="inner-nav-link" href="#mini">Mini</a>
+    <a class="inner-nav-link" href="#station-duo">Station Duo</a>
+    <a class="inner-nav-link" href="#station-solo">Station Solo</a>
+    <a class="inner-nav-link" href="#kiosk">Kiosk</a>
+    <a class="inner-nav-link" href="#integrated">Integrated</a>
+    <a class="inner-nav-link" href="#compare">Compare</a>
+    <a class="inner-nav-link" href="#software">Software</a>
+    <a class="inner-nav-link" href="#why">Why us</a>
+    <a class="inner-nav-link" href="#faq">FAQ</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="page-hero" id="overview">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-orb hero-orb-1" aria-hidden="true"></div>
+
+  <div class="container">
+    <div class="page-hero-grid">
+      <div>
+        <div class="breadcrumb">
+          <a href="/home.html">Home</a>
+          <span class="sep">/</span>
+          <a href="#">Payment Processing</a>
+          <span class="sep">/</span>
+          <span>Clover</span>
+        </div>
+
+        <div class="authorized-pill reveal" style="margin-bottom: 24px;">
+          <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#0A1430" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+          Clover Authorized Dealer
+        </div>
+
+        <h1 class="display-lg reveal">
+          The full Clover lineup,<br>
+          <span class="serif accent-honey">set up right.</span>
+        </h1>
+
+        <p class="hero-sub reveal" style="margin-top: 24px;">
+          Six device families. One ecosystem. Every unit provisioned, configured, and supported by our in-house team — so it works the day it arrives and stays working.
+        </p>
+
+        <div class="hero-ctas reveal">
+          <a href="#talk" class="btn btn-honey">
+            Get a quote
+            <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="#compare" class="btn btn-ghost-light">Compare devices</a>
+        </div>
+      </div>
+
+      <div class="page-hero-visual reveal">
+        <img src="https://cleverpays.ca/wp-content/uploads/2024/04/pos-group.webp" alt="Full Clover device lineup">
+      </div>
+    </div>
+
+    <!-- quick stats -->
+    <div class="trust-strip" style="margin-top: 56px;">
+      <div class="trust-cell">
+        <div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div><div class="trust-label">No</div><div class="trust-value">Long-term contracts</div></div>
+      </div>
+      <div class="trust-cell">
+        <div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div><div class="trust-label">No</div><div class="trust-value">Surprise monthly fees</div></div>
+      </div>
+      <div class="trust-cell">
+        <div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+        <div><div class="trust-label">Setup</div><div class="trust-value">Minutes, not weeks</div></div>
+      </div>
+      <div class="trust-cell">
+        <div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div>
+        <div><div class="trust-label">Configured</div><div class="trust-value">Before it ships</div></div>
+      </div>
+      <div class="trust-cell">
+        <div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
+        <div><div class="trust-label">Bilingual</div><div class="trust-value">EN/FR support &amp; docs</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO COPY -->
+<section class="section-tight">
+  <div class="container-narrow">
+    <p class="lede reveal" style="font-size: clamp(20px, 1.8vw, 24px); text-align: center;">
+      Clover is what the iPhone is to phones: an ecosystem of devices, software, and apps that works together. Every Clover we deliver is configured for your business, integrated with your stack, and backed by a team that picks up the phone — in English or French.
+    </p>
+  </div>
+</section>
+
+<!-- ============================== FLEX ============================== -->
+<section class="section" id="flex">
+  <div class="container">
+    <div class="device-feature">
+      <div>
+        <div class="device-chip reveal" style="display: inline-block;">Handheld POS · Wireless</div>
+        <h2 class="section-h2 reveal" style="margin-top: 16px;">Clover <span class="serif accent-honey">Flex</span></h2>
+        <p class="lede reveal" style="margin-top: 20px;">
+          The handheld Clover, built for businesses that don't stay still. Take payments at the counter, in line, tableside, curbside, on the floor, or in the field. Same device, same software, same reliability.
+        </p>
+        <ul class="device-spec-list reveal">
+          <li><strong>Wireless &amp; ready to roam</strong> — 4G LTE + Wi-Fi, all-day battery.</li>
+          <li><strong>Tap, dip, swipe, scan</strong> — every modern payment method, plus a built-in barcode scanner.</li>
+          <li><strong>Receipt printer built-in</strong> — no peripheral required.</li>
+          <li><strong>Runs the full Clover app suite</strong> — inventory, reporting, employees, gift cards.</li>
+        </ul>
+        <div class="device-tag-row">
+          <span class="device-chip">Best for: full-service restaurants</span>
+          <span class="device-chip">Mobile retail</span>
+          <span class="device-chip">Field service</span>
+        </div>
+        <div style="margin-top: 32px; display: flex; gap: 12px; flex-wrap: wrap;">
+          <a href="#talk" class="btn btn-honey btn-sm">Get a Flex quote <span class="arrow">→</span></a>
+          <a href="#compare" class="text-link">Compare with other Clover devices →</a>
+        </div>
+      </div>
+      <div class="device-feature-img reveal">
+        <img src="https://cleverpays.ca/wp-content/uploads/2024/04/Clover_Flex_2_Left_ret_cs_11.5-3.png" alt="Clover Flex handheld POS">
+      </div>
+    </div>
+
+    <!-- MINI -->
+    <div class="device-feature reverse" id="mini">
+      <div>
+        <div class="device-chip reveal" style="display: inline-block;">Countertop POS · Compact</div>
+        <h2 class="section-h2 reveal" style="margin-top: 16px;">Clover <span class="serif accent-honey">Mini</span></h2>
+        <p class="lede reveal" style="margin-top: 20px;">
+          The compact countertop Clover. Mighty in a small footprint — perfect for cafes, boutiques, salons, and any counter where space is at a premium.
+        </p>
+        <ul class="device-spec-list reveal">
+          <li><strong>Compact 8" touchscreen</strong> — fits where a Station won't.</li>
+          <li><strong>Accepts every payment type</strong> — chip, tap, swipe, NFC, mobile wallets.</li>
+          <li><strong>Built-in receipt printer</strong> — high-speed thermal.</li>
+          <li><strong>Customer-facing flip</strong> — easy to hand off for tips and signatures.</li>
+        </ul>
+        <div class="device-tag-row">
+          <span class="device-chip">Best for: cafes</span>
+          <span class="device-chip">Boutique retail</span>
+          <span class="device-chip">Salons &amp; services</span>
+        </div>
+        <div style="margin-top: 32px; display: flex; gap: 12px; flex-wrap: wrap;">
+          <a href="#talk" class="btn btn-honey btn-sm">Get a Mini quote <span class="arrow">→</span></a>
+        </div>
+      </div>
+      <div class="device-feature-img reveal">
+        <img src="https://cleverpays.ca/wp-content/uploads/2024/04/clover-img-1.jpg" alt="Clover Mini">
+      </div>
+    </div>
+
+    <!-- STATION DUO -->
+    <div class="device-feature" id="station-duo">
+      <div>
+        <div class="device-chip reveal" style="display: inline-block;">Countertop POS · Dual screen</div>
+        <h2 class="section-h2 reveal" style="margin-top: 16px;">Clover <span class="serif accent-honey">Station Duo</span></h2>
+        <p class="lede reveal" style="margin-top: 20px;">
+          The flagship Clover countertop system. A 14" merchant-facing screen plus a dedicated customer-facing display, full peripheral support, and the horsepower to run busy QSR, retail, and service operations.
+        </p>
+        <ul class="device-spec-list reveal">
+          <li><strong>Dual displays</strong> — 14" merchant + 8" customer-facing.</li>
+          <li><strong>Full peripheral support</strong> — cash drawer, receipt printer, kitchen printer, barcode scanner, scale.</li>
+          <li><strong>High-throughput hardware</strong> — built for line speed.</li>
+          <li><strong>Customer engagement</strong> — show carts, tips, loyalty prompts on the customer display.</li>
+        </ul>
+        <div class="device-tag-row">
+          <span class="device-chip">Best for: QSR</span>
+          <span class="device-chip">Multi-station retail</span>
+          <span class="device-chip">High-volume counters</span>
+        </div>
+        <div style="margin-top: 32px; display: flex; gap: 12px; flex-wrap: wrap;">
+          <a href="#talk" class="btn btn-honey btn-sm">Get a Station Duo quote <span class="arrow">→</span></a>
+        </div>
+      </div>
+      <div class="device-feature-img reveal">
+        <img src="https://cleverpays.ca/wp-content/uploads/2024/04/Stationduo_3_4_Right_WCB_Merchant_Facing_with-Shadow-1.png" alt="Clover Station Duo">
+      </div>
+    </div>
+
+    <!-- STATION SOLO -->
+    <div class="device-feature reverse" id="station-solo">
+      <div>
+        <div class="device-chip reveal" style="display: inline-block;">Countertop POS · Single screen</div>
+        <h2 class="section-h2 reveal" style="margin-top: 16px;">Clover <span class="serif accent-honey">Station Solo</span></h2>
+        <p class="lede reveal" style="margin-top: 20px;">
+          The flexible countertop Clover. Same Station hardware horsepower as the Duo, single merchant-facing display. Pair with a separate customer-facing screen if you need it, or run lean.
+        </p>
+        <ul class="device-spec-list reveal">
+          <li><strong>14" merchant display</strong> — same generous screen as the Duo.</li>
+          <li><strong>Add peripherals as you grow</strong> — cash drawer, printers, scanner — modular.</li>
+          <li><strong>Lower cost than Duo</strong> — without compromising on speed.</li>
+          <li><strong>Upgrade path</strong> — start Solo, add a customer display later.</li>
+        </ul>
+        <div class="device-tag-row">
+          <span class="device-chip">Best for: smaller retail</span>
+          <span class="device-chip">Service businesses</span>
+          <span class="device-chip">Single-station ops</span>
+        </div>
+        <div style="margin-top: 32px; display: flex; gap: 12px; flex-wrap: wrap;">
+          <a href="#talk" class="btn btn-honey btn-sm">Get a Station Solo quote <span class="arrow">→</span></a>
+        </div>
+      </div>
+      <div class="device-feature-img reveal">
+        <img src="https://cleverpays.ca/wp-content/uploads/2024/04/2021-02-03-station-solo-WCB-Merchant-Facing-Center-Home-no-shadows-np-1.png" alt="Clover Station Solo">
+      </div>
+    </div>
+
+    <!-- KIOSK -->
+    <div class="device-feature" id="kiosk">
+      <div>
+        <div class="device-chip reveal" style="display: inline-block;">Self-service</div>
+        <h2 class="section-h2 reveal" style="margin-top: 16px;">Clover <span class="serif accent-honey">Kiosk</span></h2>
+        <p class="lede reveal" style="margin-top: 20px;">
+          Self-service ordering — the Samsung KM24A kiosk paired with Nanonation software and Clover payment processing. Reduce lines, lift average ticket, and free your staff for higher-value work.
+        </p>
+        <ul class="device-spec-list reveal">
+          <li><strong>24" touchscreen kiosk</strong> — large, clear, intentionally inviting.</li>
+          <li><strong>Branded checkout flow</strong> — your logo, your menu, your photography.</li>
+          <li><strong>Tap, insert, mobile wallet</strong> — every modern payment type, secure.</li>
+          <li><strong>Connected to your Clover ecosystem</strong> — orders flow straight to KDS.</li>
+        </ul>
+        <div class="device-tag-row">
+          <span class="device-chip">Best for: QSR</span>
+          <span class="device-chip">Counter service</span>
+          <span class="device-chip">High-traffic retail</span>
+        </div>
+        <div style="margin-top: 32px; display: flex; gap: 12px; flex-wrap: wrap;">
+          <a href="#talk" class="btn btn-honey btn-sm">Get a Kiosk quote <span class="arrow">→</span></a>
+        </div>
+      </div>
+      <div class="device-feature-img reveal">
+        <img src="https://cleverpays.ca/wp-content/uploads/2024/04/clover_kiosk-scaled.webp" alt="Clover Kiosk">
+      </div>
+    </div>
+
+    <!-- INTEGRATED -->
+    <div class="device-feature reverse" id="integrated">
+      <div>
+        <div class="device-chip reveal" style="display: inline-block;">Semi-integrated</div>
+        <h2 class="section-h2 reveal" style="margin-top: 16px;">Clover <span class="serif accent-honey">Integrated</span></h2>
+        <p class="lede reveal" style="margin-top: 20px;">
+          Keep the POS you already love. Add Clover payments through a semi-integrated terminal connected to your existing system. The merchant experience is unchanged — you just get better payments underneath.
+        </p>
+        <ul class="device-spec-list reveal">
+          <li><strong>Works with most existing POS systems</strong> — restaurant, retail, healthcare.</li>
+          <li><strong>Your workflow stays the same</strong> — staff don't relearn anything.</li>
+          <li><strong>EMV-secure, PCI-compliant</strong> — no card data touches your POS.</li>
+          <li><strong>Our integration team handles setup</strong> — we configure both sides.</li>
+        </ul>
+        <div class="device-tag-row">
+          <span class="device-chip">Best for: existing POS users</span>
+          <span class="device-chip">Multi-vendor environments</span>
+          <span class="device-chip">Specialty verticals</span>
+        </div>
+        <div style="margin-top: 32px; display: flex; gap: 12px; flex-wrap: wrap;">
+          <a href="/business-solutions/integrated-pos.html" class="btn btn-honey btn-sm">See integration options <span class="arrow">→</span></a>
+        </div>
+      </div>
+      <div class="device-feature-img reveal">
+        <img src="https://cleverpays.ca/wp-content/uploads/2024/05/cp_carousel_3.webp" alt="Clover Integrated terminal">
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================== COMPARE ============================== -->
+<section class="section" id="compare" style="background: linear-gradient(180deg, transparent, rgba(232,181,71,0.04) 50%, transparent);">
+  <div class="container">
+    <span class="section-eyebrow reveal">Side by side</span>
+    <h2 class="section-h2 reveal">Compare the <span class="serif accent-honey">lineup.</span></h2>
+    <p class="lede reveal" style="margin: 24px 0 40px;">Not sure which Clover is right for your business? Quick reference.</p>
+
+    <div class="compare-table reveal">
+      <table class="compare">
+        <thead>
+          <tr>
+            <th>Device</th>
+            <th>Form factor</th>
+            <th>Display</th>
+            <th>Best for</th>
+            <th>Mobility</th>
+            <th>Customer display</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Flex</strong></td><td>Handheld</td><td>5.5"</td><td>Restaurants, field, mobile retail</td><td>Wireless</td><td>Flip device</td></tr>
+          <tr><td><strong>Mini</strong></td><td>Countertop</td><td>8"</td><td>Cafes, boutique retail, services</td><td>Stationary</td><td>Built-in flip</td></tr>
+          <tr><td><strong>Station Solo</strong></td><td>Countertop</td><td>14"</td><td>Single-station retail &amp; service</td><td>Stationary</td><td>Optional add-on</td></tr>
+          <tr><td><strong>Station Duo</strong></td><td>Countertop</td><td>14" + 8"</td><td>QSR, multi-station, high volume</td><td>Stationary</td><td>Dedicated customer screen</td></tr>
+          <tr><td><strong>Kiosk</strong></td><td>Self-service</td><td>24"</td><td>QSR, counter service, retail</td><td>Stationary</td><td>Customer is the user</td></tr>
+          <tr><td><strong>Integrated</strong></td><td>Semi-integrated</td><td>Varies</td><td>Existing POS environments</td><td>Stationary or wireless</td><td>Depends on host POS</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== SOFTWARE ============================== -->
+<section class="section clover-band" id="software">
+  <div class="clover-band-bg" aria-hidden="true"></div>
+  <div class="container clover-band-inner">
+    <div class="clover-band-header">
+      <div>
+        <span class="section-eyebrow on-cream reveal">Clover software</span>
+        <h2 class="section-h2 reveal">More than hardware. <span class="serif accent-honey">A full toolkit.</span></h2>
+      </div>
+      <p class="lede on-cream reveal">
+        Every Clover comes with the software toolkit you need to actually run your business — and access to the App Market when you want to extend it.
+      </p>
+    </div>
+
+    <div class="feature-grid">
+
+      <div class="feature-card reveal">
+        <img src="https://cleverpays.ca/wp-content/uploads/2024/04/clover-online-ordering-scaled.webp" alt="Clover Online Ordering">
+        <div class="feature-card-body">
+          <h3>Online Ordering — included</h3>
+          <p>Branded online ordering, included free with Table Service. Direct-to-kitchen integration, your menu, your photography, your domain.</p>
+        </div>
+      </div>
+
+      <div class="feature-card reveal reveal-delay-1">
+        <img src="https://cleverpays.ca/wp-content/uploads/2024/04/clover_order_manager-scaled.webp" alt="Clover Order Manager">
+        <div class="feature-card-body">
+          <h3>Order Manager</h3>
+          <p>Take orders at the table, fire to the kitchen, route to the right station. One source of truth from FOH to BOH. No paper, no shouting, no lost tickets.</p>
+        </div>
+      </div>
+
+      <div class="feature-card reveal reveal-delay-2">
+        <img src="https://cleverpays.ca/wp-content/uploads/2024/04/clover_scan_to_order-scaled.webp" alt="Clover Scan to Order">
+        <div class="feature-card-body">
+          <h3>Scan to Order</h3>
+          <p>Guests scan a QR, browse the menu, order and pay. Fewer staff trips per table, faster turns, higher tickets.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="margin-top: 56px; text-align: center;">
+      <p class="lede on-cream" style="margin: 0 auto 24px; max-width: 640px;">Plus the full Clover App Market — third-party integrations for inventory, accounting, marketing, loyalty, and more. Our team helps you choose, install, and configure.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================== WHY US ============================== -->
+<section class="section" id="why">
+  <div class="container">
+    <span class="section-eyebrow reveal">Why a Clover from us</span>
+    <h2 class="section-h2 reveal">A device is <span class="serif accent-honey">half the job.</span></h2>
+    <p class="lede reveal" style="margin: 24px 0 48px;">
+      Hardware is a commodity. What you actually buy from us is everything that happens around the hardware.
+    </p>
+
+    <div class="why-grid">
+
+      <div class="why-item reveal">
+        <h4>Provisioned for your business before it ships</h4>
+        <p>Tax rates, tip settings, menu structure, employee roles, peripherals — configured by our team before the box leaves us. You plug it in, sign in, and sell.</p>
+      </div>
+
+      <div class="why-item reveal reveal-delay-1">
+        <h4>Integrated with what you already run</h4>
+        <p>Accounting, inventory, ecommerce, scheduling, custom in-house tools — our in-house engineers connect Clover to whatever you've already built.</p>
+      </div>
+
+      <div class="why-item reveal">
+        <h4>Bilingual support from day one</h4>
+        <p>EN or FR, first language, real humans. Calls answered in under two minutes on average. Same team for setup, support, and integration questions.</p>
+      </div>
+
+      <div class="why-item reveal reveal-delay-1">
+        <h4>No long-term contracts</h4>
+        <p>Month-to-month processing. No three-year auto-renew traps. If we're not earning our keep, you can leave. We don't lock the door behind you.</p>
+      </div>
+
+      <div class="why-item reveal">
+        <h4>Hardware in stock</h4>
+        <p>We hold inventory locally. New devices ship next business day, not "in 4–6 weeks." Replacements expedited when something breaks.</p>
+      </div>
+
+      <div class="why-item reveal reveal-delay-1">
+        <h4>One accountable owner per account</h4>
+        <p>Every merchant gets a named contact — not a queue. Your specialist knows your stack, your peripherals, your industry, and your peak hours.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================== FAQ ============================== -->
+<section class="section" id="faq">
+  <div class="container">
+    <div style="text-align: center; margin-bottom: 56px;">
+      <span class="section-eyebrow reveal">Common questions</span>
+      <h2 class="section-h2 reveal">Things merchants <span class="serif accent-honey">ask us most.</span></h2>
+    </div>
+
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary class="faq-summary">Do I have to sign a long-term contract?</summary>
+        <div class="faq-body"><p>No. Our Clover processing is month-to-month. We don't believe in three-year auto-renew traps. If our service isn't earning your business, you should be able to leave — and you can.</p></div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-summary">How fast can a Clover be set up?</summary>
+        <div class="faq-body"><p>Most merchants are accepting payments within a few business days of saying yes. Hardware is in stock, configured before it ships, and ready to plug in. Integration into accounting or inventory systems is usually completed within a week.</p></div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-summary">Can I keep my current POS and just use Clover for payments?</summary>
+        <div class="faq-body"><p>Yes — that's exactly what Clover Integrated is for, and it's one of our most-requested setups. <a href="/business-solutions/integrated-pos.html" class="text-link">Learn more about Integrated POS</a>.</p></div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-summary">What does "Clover Authorized Dealer" mean for me?</summary>
+        <div class="faq-body"><p>It means we have direct authority to provision Clover devices, configure your merchant account, push software updates, troubleshoot deeply, and escalate to Clover's engineering team when needed. We're not a reseller routing your call to someone else.</p></div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-summary">Is support actually in-house and bilingual?</summary>
+        <div class="faq-body"><p>Yes. Our support team is in our Laval office. EN or FR, first language. Average answer time is under two minutes on our support line. The agent you speak with sits beside the engineer who can fix integration issues.</p></div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-summary">What if I outgrow my first Clover?</summary>
+        <div class="faq-body"><p>You scale within the ecosystem. A merchant who starts with a Mini can add a Flex, expand to a Station Duo, deploy Kiosks, or add Integrated terminals — all on the same Clover account, same software, same reporting. We help plan and execute every upgrade.</p></div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-summary">Do you handle multi-location setups?</summary>
+        <div class="faq-body"><p>Yes — Clover scales cleanly across locations with consolidated reporting and per-location permissions. We've deployed everything from two-location operators to multi-province franchises.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== CLOSING ============================== -->
+<section class="section" id="talk">
+  <div class="container">
+    <div class="closing-card reveal">
+      <div class="authorized-pill" style="margin-bottom: 24px;">
+        <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#0A1430" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+        Clover Authorized Dealer
+      </div>
+      <h2 class="closing-h2">Let's pick the right Clover <br><span class="serif accent-honey">for your business.</span></h2>
+      <p class="closing-sub">
+        A bilingual specialist will walk through your operation, recommend the right Clover lineup, and price it transparently. No hard sell.
+      </p>
+      <div class="closing-ctas">
+        <a href="tel:+18882208060" class="btn btn-honey">Call +1 888-220-8060 <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        <a href="mailto:info@cleverpays.ca" class="btn btn-ghost-light">Email info@cleverpays.ca</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- footer -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="logo" href="/home.html"><span class="logo-mark"><span>CP</span></span><span class="logo-text"><span class="clever">Clever</span><span class="pays">Pays</span></span></a>
+        <p>Clover Authorized Dealer. In-house support. In-house integration teams. Built in Quebec, bilingual by design.</p>
+        <div class="footer-contact">
+          <div><a href="tel:+18882208060">+1 888-220-8060</a></div>
+          <div><a href="mailto:info@cleverpays.ca">info@cleverpays.ca</a></div>
+          <div>2285 Av Francis-Hughes, Laval, QC H7S 1N5</div>
+        </div>
+      </div>
+      <div class="footer-col"><h4>Payment Processing</h4><ul><li><a href="/payment-processing/clover.html">Clover</a></li><li><a href="/payment-processing/other-solutions.html">Smart Terminals</a></li><li><a href="#">Virtual Terminal</a></li><li><a href="#">Online &amp; eCommerce</a></li></ul></div>
+      <div class="footer-col"><h4>Business Solutions</h4><ul><li><a href="/business-solutions/integrated-pos.html">Integrated POS</a></li><li><a href="#">Inventory Management</a></li><li><a href="#">Employee Management</a></li><li><a href="#">Reporting</a></li></ul></div>
+      <div class="footer-col"><h4>Industries</h4><ul><li><a href="#">Retail</a></li><li><a href="#">Restaurants</a></li><li><a href="#">Healthcare</a></li><li><a href="#">Multi-location</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="#">About</a></li><li><a href="#">Pricing</a></li><li><a href="/calculator.html">Tools</a></li><li><a href="#">Contact</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 CleverPays · Laval, Québec</span>
+      <div class="footer-trust"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Accessibility</a><a href="#">Security</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // locale + drawer
+  document.querySelectorAll('.locale-btn').forEach(btn => btn.addEventListener('click', () => {
+    document.querySelectorAll('.locale-btn').forEach(b => { b.classList.toggle('active', b === btn); });
+  }));
+
+  // reveal
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  } else document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+
+  // inner-nav active state
+  const innerLinks = document.querySelectorAll('.inner-nav-link');
+  const sections = Array.from(innerLinks).map(l => document.querySelector(l.getAttribute('href'))).filter(Boolean);
+  const setActive = () => {
+    const pos = window.scrollY + 150;
+    let activeIdx = 0;
+    sections.forEach((s, i) => { if (s.offsetTop <= pos) activeIdx = i; });
+    innerLinks.forEach((l, i) => l.classList.toggle('active', i === activeIdx));
+  };
+  window.addEventListener('scroll', setActive, { passive: true });
+  setActive();
+</script>
+
+</body>
+</html>

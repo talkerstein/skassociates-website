@@ -15,6 +15,8 @@ import {
   Quote,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Faq } from '@/components/ui/faq';
+import { adagioFaqs } from '@/data/faqs';
 
 /* ------------------------------------------------------------------ */
 /*  Animation helpers                                                  */
@@ -394,6 +396,8 @@ export default function AdagioPage() {
           </motion.div>
         </div>
       </section>
+
+      <Faq items={adagioFaqs} heading="Adagio questions, answered." />
 
       {/* ── CTA ── */}
       <section className="bg-navy-950 py-24 lg:py-32">

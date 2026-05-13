@@ -14,6 +14,8 @@ import {
 } from "lucide-react";
 import { SectionWrapper } from "@/components/ui/section-wrapper";
 import { Button } from "@/components/ui/button";
+import { Faq } from "@/components/ui/faq";
+import { distributionFaqs } from "@/data/faqs";
 
 const painPoints = [
   {
@@ -122,7 +124,7 @@ export default function DistributionPage() {
           >
             <div className="rounded-2xl overflow-hidden border border-white/10 shadow-elevated">
               <img
-                src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&h=600&fit=crop"
+                src="https://images.unsplash.com/photo-1530229540764-5f6ef9e6e51d?w=800&h=600&fit=crop"
                 alt="Distribution warehouse operations"
                 loading="lazy"
                 referrerPolicy="no-referrer"
@@ -261,6 +263,12 @@ export default function DistributionPage() {
           </motion.div>
         </div>
       </section>
+
+      <Faq
+        items={distributionFaqs}
+        heading="Questions from distribution organizations."
+        background="light"
+      />
 
       {/* CTA */}
       <SectionWrapper background="ivory" padding="large">

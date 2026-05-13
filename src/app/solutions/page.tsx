@@ -12,6 +12,8 @@ import {
   CheckCircle2,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Faq } from '@/components/ui/faq';
+import { solutionsFaqs } from '@/data/faqs';
 
 /* ------------------------------------------------------------------ */
 /*  Animation variants                                                 */
@@ -332,6 +334,8 @@ export default function SolutionsPage() {
           </motion.div>
         </div>
       </section>
+
+      <Faq items={solutionsFaqs} />
 
       {/* â”€â”€ Bottom CTA â”€â”€ */}
       <section className="bg-navy-950 py-24 lg:py-32">

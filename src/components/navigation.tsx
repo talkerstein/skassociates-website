@@ -41,7 +41,7 @@ const links: NavLink[] = [
     ],
   },
   { label: "Case Studies", href: "/case-studies" },
-  { label: "Resources", href: "/resources" },
+  { label: "Articles", href: "/resources" },
   { label: "About", href: "/about" },
 ];
 

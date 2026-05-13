@@ -15,6 +15,8 @@ import {
   Quote,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Faq } from '@/components/ui/faq';
+import { reportingFaqs } from '@/data/faqs';
 
 /* ------------------------------------------------------------------ */
 /*  Animation helpers                                                  */
@@ -466,6 +468,8 @@ export default function ReportingPage() {
           </motion.div>
         </div>
       </section>
+
+      <Faq items={reportingFaqs} heading="Reporting questions, answered." />
 
       {/* ── CTA ── */}
       <section className="bg-navy-950 py-24 lg:py-32">

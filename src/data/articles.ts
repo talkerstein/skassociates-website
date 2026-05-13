@@ -11,17 +11,17 @@ export interface Article {
 }
 
 const WAREHOUSE_IMG =
-  "https://images.unsplash.com/photo-1553413077-190dd305871c?w=1600&h=900&fit=crop";
+  "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1600&h=900&fit=crop";
 const STRATEGY_IMG =
   "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1600&h=900&fit=crop";
 const DATA_IMG =
   "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1600&h=900&fit=crop";
 const WORKING_IMG =
-  "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1600&h=900&fit=crop";
+  "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1600&h=900&fit=crop";
 const COMMUNITY_IMG =
   "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=1600&h=900&fit=crop";
 const DISTRIBUTION_IMG =
-  "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1600&h=900&fit=crop";
+  "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=1600&h=900&fit=crop";
 
 export const articles: Article[] = [
   {

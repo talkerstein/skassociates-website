@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import {
   Phone,
@@ -12,11 +13,17 @@ import {
 } from "lucide-react";
 import { SectionWrapper } from "@/components/ui/section-wrapper";
 
-const platformOptions = [
-  { value: "", label: "Select a platform..." },
-  { value: "spire", label: "Spire" },
-  { value: "adagio", label: "Adagio" },
-  { value: "not-sure", label: "Not sure yet" },
+const topicOptions: { value: string; label: string }[] = [
+  { value: "Spire implementation or support", label: "Spire implementation or support" },
+  { value: "Adagio implementation or support", label: "Adagio implementation or support" },
+  {
+    value: "Migration from another system",
+    label: "Migration from another system (QuickBooks, BusinessVision, etc.)",
+  },
+  { value: "Training for our team", label: "Training for our team" },
+  { value: "Reporting & process improvement", label: "Reporting & process improvement" },
+  { value: "Payment processing", label: "Payment processing" },
+  { value: "Other", label: "Other (let's chat)" },
 ];
 
 const expectations = [
@@ -41,6 +48,14 @@ const expectations = [
 ];
 
 export default function ContactPage() {
+  const [selectedTopics, setSelectedTopics] = useState<string[]>([]);
+
+  function toggleTopic(value: string) {
+    setSelectedTopics((prev) =>
+      prev.includes(value) ? prev.filter((v) => v !== value) : [...prev, value]
+    );
+  }
+
   return (
     <>
       {/* Hero */}
@@ -190,27 +205,54 @@ export default function ContactPage() {
                   </div>
                 </div>
 
-                {/* Platform */}
-                <div>
-                  <label
-                    htmlFor="platform"
-                    className="block text-[length:--font-size-body-sm] font-medium text-navy-900 mb-2"
-                  >
-                    Which platform interests you?
-                  </label>
-                  <select
-                    id="platform"
-                    name="platform"
-                    defaultValue=""
-                    className="w-full rounded-lg border border-ivory-300 bg-ivory-50 px-4 py-3 text-[length:--font-size-body] text-navy-900 focus:outline-none focus:ring-2 focus:ring-accent-500/30 focus:border-accent-500 transition-all duration-200 appearance-none"
-                  >
-                    {platformOptions.map((opt) => (
-                      <option key={opt.value} value={opt.value}>
-                        {opt.label}
-                      </option>
-                    ))}
-                  </select>
-                </div>
+                {/* Topics */}
+                <fieldset>
+                  <legend className="block text-[length:--font-size-body-sm] font-medium text-navy-900 mb-3">
+                    What would you like to discuss?
+                  </legend>
+                  <div className="grid sm:grid-cols-2 gap-3">
+                    {topicOptions.map((opt) => {
+                      const checked = selectedTopics.includes(opt.value);
+                      return (
+                        <label
+                          key={opt.value}
+                          className={`group flex items-start gap-3 rounded-lg border px-4 py-3 cursor-pointer transition-all duration-200 ${
+                            checked
+                              ? "border-accent-600 bg-accent-500/[0.06]"
+                              : "border-ivory-300 bg-ivory-50 hover:border-navy-900/25"
+                          }`}
+                        >
+                          <input
+                            type="checkbox"
+                            name="topics"
+                            value={opt.value}
+                            checked={checked}
+                            onChange={() => toggleTopic(opt.value)}
+                            className="sr-only"
+                          />
+                          <span
+                            aria-hidden="true"
+                            className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md border transition-colors ${
+                              checked
+                                ? "border-accent-600 bg-accent-600 text-white"
+                                : "border-navy-900/25 bg-white"
+                            }`}
+                          >
+                            {checked && (
+                              <CheckCircle
+                                className="w-3.5 h-3.5"
+                                strokeWidth={2.5}
+                              />
+                            )}
+                          </span>
+                          <span className="text-[length:--font-size-body-sm] leading-snug text-navy-900 font-medium">
+                            {opt.label}
+                          </span>
+                        </label>
+                      );
+                    })}
+                  </div>
+                </fieldset>
 
                 {/* Message */}
                 <div>

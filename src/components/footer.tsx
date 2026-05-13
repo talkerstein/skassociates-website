@@ -125,11 +125,27 @@ export function Footer() {
       {/* Divider + Copyright */}
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="border-t border-white/5 py-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-x-3 gap-y-1">
+            <p className="text-[length:--font-size-caption] text-slate-500">
+              &copy; 2026 S. Kopstick &amp; Associates Inc. All rights reserved.
+            </p>
+            <span className="hidden sm:inline text-slate-600" aria-hidden="true">
+              &middot;
+            </span>
+            <p className="text-[length:--font-size-caption] text-slate-500">
+              Serving clients across Canada
+            </p>
+          </div>
           <p className="text-[length:--font-size-caption] text-slate-500">
-            &copy; 2026 S. Kopstick &amp; Associates Inc. All rights reserved.
-          </p>
-          <p className="text-[length:--font-size-caption] text-slate-500">
-            Serving clients across Canada
+            Handcrafted by{" "}
+            <a
+              href="https://talkerstein.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-300 hover:text-accent-400 transition-colors duration-200"
+            >
+              Talkerstein Consulting
+            </a>
           </p>
         </div>
       </div>

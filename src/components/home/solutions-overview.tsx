@@ -8,6 +8,7 @@ import {
   ArrowRightLeft,
   GraduationCap,
   BarChart3,
+  CreditCard,
   ArrowRight,
 } from "lucide-react";
 import { SectionWrapper } from "@/components/ui/section-wrapper";
@@ -40,6 +41,13 @@ const solutions = [
     description:
       "Custom reports, automated workflows, and system optimizations that turn your accounting software into a genuine decision-making tool.",
     href: "/solutions/reporting",
+  },
+  {
+    icon: CreditCard,
+    title: "Payment Processing",
+    description:
+      "Integrated payment workflows that connect to your accounting and operations system — not bolted-on afterthoughts.",
+    href: "/contact",
   },
 ];
 
@@ -75,7 +83,7 @@ export function SolutionsOverview() {
         </p>
       </motion.div>
 
-      <div className="grid sm:grid-cols-2 gap-6">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {solutions.map((solution, i) => {
           const Icon = solution.icon;
           return (

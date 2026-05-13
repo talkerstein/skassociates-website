@@ -124,6 +124,10 @@ const QUESTIONS: Question[] = [
       { id: "drv-inventory", label: "Inventory issues" },
       { id: "drv-controls", label: "Need better controls" },
       { id: "drv-eol", label: "Current vendor is going end-of-life" },
+      {
+        id: "drv-payments",
+        label: "Payment processing — we want better systems for this",
+      },
       { id: "drv-answers", label: "Team can't get answers from the data" },
     ],
   },

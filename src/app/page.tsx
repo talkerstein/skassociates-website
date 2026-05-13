@@ -1,5 +1,6 @@
 import { Hero } from "@/components/home/hero";
 import { ProofStrip } from "@/components/home/proof-strip";
+import { PlatformsStrip } from "@/components/home/platforms-strip";
 import { ProblemSection } from "@/components/home/problem-section";
 import { SolutionsOverview } from "@/components/home/solutions-overview";
 import { PlatformComparison } from "@/components/home/platform-comparison";
@@ -9,12 +10,15 @@ import { CaseStudies } from "@/components/home/case-studies";
 import { Testimonials } from "@/components/home/testimonials";
 import { AboutSamuel } from "@/components/home/about-samuel";
 import { FinalCTA } from "@/components/home/final-cta";
+import { Faq } from "@/components/ui/faq";
+import { homeFaqs } from "@/data/faqs";
 
 export default function HomePage() {
   return (
     <>
       <Hero />
       <ProofStrip />
+      <PlatformsStrip />
       <ProblemSection />
       <SolutionsOverview />
       <PlatformComparison />
@@ -23,6 +27,7 @@ export default function HomePage() {
       <CaseStudies />
       <Testimonials />
       <AboutSamuel />
+      <Faq items={homeFaqs} heading="Common questions, answered plainly." />
       <FinalCTA />
     </>
   );

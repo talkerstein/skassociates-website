@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Integrated POS — CleverPays · Your POS, our payments</title>
+<meta name="description" content="Keep the POS you already love. CleverPays integrates payments into your existing system via FLEX, Datacap, Eigen, or PaymentTree — middleware our in-house team configures and supports.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<style>
+  .inner-nav { position: sticky; top: 76px; z-index: 50; background: rgba(10,20,48,0.9); backdrop-filter: blur(20px); border-bottom: 1px solid var(--cp-border-dark); }
+  .inner-nav-inner { max-width: 1280px; margin: 0 auto; padding: 0 32px; display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; }
+  .inner-nav-inner::-webkit-scrollbar { display: none; }
+  .inner-nav-link { padding: 14px 14px; font-size: 13.5px; font-weight: 500; color: var(--cp-ink-on-dark-2); border-bottom: 2px solid transparent; white-space: nowrap; transition: all 200ms var(--cp-ease); }
+  .inner-nav-link:hover { color: var(--cp-ink-on-dark); }
+  .inner-nav-link.active { color: var(--cp-honey-400); border-bottom-color: var(--cp-honey-500); }
+
+  .page-hero { padding: 80px 0 60px; position: relative; overflow: hidden; }
+  .breadcrumb { display: flex; gap: 8px; font-size: 13px; color: var(--cp-ink-on-dark-3); margin-bottom: 24px; }
+  .breadcrumb a:hover { color: var(--cp-honey-400); }
+  .breadcrumb .sep { opacity: 0.4; }
+
+  /* Hex network — bigger, central */
+  .hex-feature {
+    position: relative;
+    aspect-ratio: 1.2;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .hex-feature svg { width: 100%; height: 100%; }
+  .hex-cell {
+    fill: var(--cp-bg-elev);
+    stroke: var(--cp-border-dark-strong);
+    stroke-width: 1;
+    transition: all 320ms var(--cp-ease);
+  }
+  .hex-cell-center { fill: url(#center-grad); stroke: var(--cp-honey-500); stroke-width: 2; }
+  .hex-feature:hover .hex-cell:not(.hex-cell-center) { stroke: var(--cp-honey-500); }
+
+  /* Middleware cards */
+  .middleware-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  @media (max-width: 960px) { .middleware-grid { grid-template-columns: 1fr; } }
+
+  .middleware-card {
+    padding: 36px;
+    background: linear-gradient(180deg, var(--cp-bg-elev), var(--cp-bg-base));
+    border: 1px solid var(--cp-border-dark);
+    border-radius: var(--cp-radius-lg);
+    transition: all 320ms var(--cp-ease);
+    position: relative; overflow: hidden;
+  }
+  .middleware-card:hover { border-color: var(--cp-honey-500); transform: translateY(-4px); box-shadow: var(--cp-shadow-lg); }
+  .middleware-tag {
+    display: inline-block;
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.10em; font-weight: 700;
+    color: var(--cp-honey-400);
+    margin-bottom: 12px;
+  }
+  .middleware-card h3 { font-size: 26px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 14px; }
+  .middleware-card p { font-size: 15px; color: var(--cp-ink-on-dark-2); line-height: 1.6; margin-bottom: 20px; }
+  .middleware-features {
+    list-style: none;
+    display: flex; flex-direction: column; gap: 8px;
+    margin-bottom: 24px;
+  }
+  .middleware-features li {
+    font-size: 14px; color: var(--cp-ink-on-dark-2);
+    padding-left: 22px; position: relative;
+  }
+  .middleware-features li::before {
+    content: '✓';
+    position: absolute; left: 0; top: 0;
+    color: var(--cp-jade-500); font-weight: 700;
+  }
+  .middleware-pair {
+    display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px;
+  }
+  .pair-tag {
+    padding: 6px 14px;
+    background: rgba(91,192,232,0.08);
+    border: 1px solid rgba(91,192,232,0.25);
+    border-radius: var(--cp-radius-pill);
+    font-size: 12px; font-weight: 600;
+    color: var(--cp-sky-300);
+  }
+
+  /* POS systems supported */
+  .pos-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+  @media (max-width: 768px) { .pos-grid { grid-template-columns: repeat(2, 1fr); } }
+  .pos-pill {
+    padding: 18px 16px;
+    background: var(--cp-bg-elev);
+    border: 1px solid var(--cp-border-dark);
+    border-radius: var(--cp-radius-md);
+    text-align: center;
+    transition: all 240ms var(--cp-ease);
+  }
+  .pos-pill:hover { border-color: var(--cp-honey-500); background: var(--cp-bg-elev-2); }
+  .pos-name { font-size: 14px; font-weight: 600; color: var(--cp-ink-on-dark); }
+  .pos-cat { font-size: 12px; color: var(--cp-ink-on-dark-3); margin-top: 4px; }
+
+  /* How-it-works */
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 56px;
+  }
+  @media (max-width: 960px) { .steps { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 540px) { .steps { grid-template-columns: 1fr; } }
+  .step {
+    padding: 28px;
+    background: var(--cp-bg-elev);
+    border: 1px solid var(--cp-border-dark);
+    border-radius: var(--cp-radius-lg);
+    position: relative;
+  }
+  .step-num {
+    font-family: 'Instrument Serif', serif; font-style: italic;
+    font-size: 48px; line-height: 1;
+    color: var(--cp-honey-400);
+    margin-bottom: 16px;
+  }
+  .step h4 { font-size: 17px; font-weight: 700; margin-bottom: 10px; }
+  .step p { font-size: 14px; color: var(--cp-ink-on-dark-2); line-height: 1.55; }
+
+  /* Tech advantage row */
+  .tech-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  @media (max-width: 960px) { .tech-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="logo" href="/home.html">
+      <span class="logo-mark"><span>CP</span></span>
+      <span class="logo-text"><span class="clever">Clever</span><span class="pays">Pays</span></span>
+    </a>
+    <div class="nav-links">
+      <a class="nav-link" href="/payment-processing/clover.html">Payment Processing</a>
+      <a class="nav-link" href="/business-solutions/integrated-pos.html" style="color: var(--cp-honey-400);">Business Solutions</a>
+      <a class="nav-link" href="/home.html#industries">Industries</a>
+      <a class="nav-link" href="#">Pricing</a>
+      <a class="nav-link" href="/calculator.html">Tools</a>
+      <a class="nav-link" href="#">About</a>
+    </div>
+    <div class="nav-right">
+      <div class="locale-toggle"><button class="locale-btn active">EN</button><button class="locale-btn">FR</button></div>
+      <a class="btn-nav" href="#talk">Talk to us</a>
+    </div>
+  </div>
+</nav>
+
+<div class="inner-nav">
+  <div class="inner-nav-inner">
+    <a class="inner-nav-link" href="#overview">Overview</a>
+    <a class="inner-nav-link" href="#how">How it works</a>
+    <a class="inner-nav-link" href="#middleware">Middleware</a>
+    <a class="inner-nav-link" href="#pos">Supported POS</a>
+    <a class="inner-nav-link" href="#tech">Technical</a>
+    <a class="inner-nav-link" href="#faq">FAQ</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="page-hero" id="overview">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-orb hero-orb-1" aria-hidden="true"></div>
+
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="/home.html">Home</a><span class="sep">/</span>
+      <a href="#">Business Solutions</a><span class="sep">/</span>
+      <span>Integrated POS</span>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;">
+      <div>
+        <div class="eyebrow-chip reveal">
+          <span class="eyebrow-dot"></span>
+          <span>For merchants who love their current POS</span>
+        </div>
+
+        <h1 class="display-lg reveal">
+          Your POS. <br>
+          Our payments. <br>
+          <span class="serif accent-honey">One seamless flow.</span>
+        </h1>
+
+        <p class="hero-sub reveal" style="margin-top: 24px;">
+          Already running a POS system that works for you? Keep it. We integrate CleverPays into your existing software through purpose-built middleware — FLEX, Datacap, Eigen, PaymentTree. Our in-house team configures both sides and supports it forever.
+        </p>
+
+        <div class="hero-ctas reveal">
+          <a href="#talk" class="btn btn-honey">
+            See if your POS is supported
+            <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="#how" class="btn btn-ghost-light">How it works</a>
+        </div>
+      </div>
+
+      <div class="hex-feature reveal">
+        <svg viewBox="0 0 600 500" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="center-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#E8B547"/>
+              <stop offset="100%" stop-color="#F7D88B"/>
+            </linearGradient>
+            <linearGradient id="line-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#E8B547" stop-opacity="0.5"/>
+              <stop offset="100%" stop-color="#5BC0E8" stop-opacity="0.5"/>
+            </linearGradient>
+          </defs>
+
+          <!-- connecting lines -->
+          <g stroke="url(#line-grad)" stroke-width="1.5" fill="none" opacity="0.6" stroke-dasharray="4 6">
+            <line x1="300" y1="250" x2="180" y2="120"/>
+            <line x1="300" y1="250" x2="420" y2="120"/>
+            <line x1="300" y1="250" x2="120" y2="250"/>
+            <line x1="300" y1="250" x2="480" y2="250"/>
+            <line x1="300" y1="250" x2="180" y2="380"/>
+            <line x1="300" y1="250" x2="420" y2="380"/>
+          </g>
+
+          <!-- outer hexagons -->
+          <g>
+            <!-- top left: Clover -->
+            <polygon class="hex-cell" points="180,80 230,110 230,170 180,200 130,170 130,110"/>
+            <text x="180" y="148" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="14" fill="#E8B547">Clover</text>
+
+            <!-- top right: Shopify -->
+            <polygon class="hex-cell" points="420,80 470,110 470,170 420,200 370,170 370,110"/>
+            <text x="420" y="148" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="14" fill="#5BC0E8">Shopify</text>
+
+            <!-- left: QuickBooks -->
+            <polygon class="hex-cell" points="120,210 170,240 170,300 120,330 70,300 70,240"/>
+            <text x="120" y="278" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="11" fill="#88E0A9">QuickBooks</text>
+
+            <!-- right: WooCommerce -->
+            <polygon class="hex-cell" points="480,210 530,240 530,300 480,330 430,300 430,240"/>
+            <text x="480" y="278" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="11" fill="#E8B547">Woo</text>
+
+            <!-- bottom left: Verifone -->
+            <polygon class="hex-cell" points="180,340 230,370 230,430 180,460 130,430 130,370"/>
+            <text x="180" y="408" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="12" fill="#F1CB6E">Verifone</text>
+
+            <!-- bottom right: Pax -->
+            <polygon class="hex-cell" points="420,340 470,370 470,430 420,460 370,430 370,370"/>
+            <text x="420" y="408" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="14" fill="#5BC0E8">Pax</text>
+
+            <!-- center: CP -->
+            <polygon class="hex-cell-center" points="300,180 365,217 365,287 300,324 235,287 235,217"/>
+            <text x="300" y="262" text-anchor="middle" font-family="Inter, sans-serif" font-weight="900" font-size="32" fill="#0A1430">CP</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <div class="trust-strip" style="margin-top: 64px;">
+      <div class="trust-cell"><div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div><div><div class="trust-label">Keep your</div><div class="trust-value">Current POS &amp; workflows</div></div></div>
+      <div class="trust-cell"><div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div><div><div class="trust-label">In-house</div><div class="trust-value">Integration engineering</div></div></div>
+      <div class="trust-cell"><div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div><div><div class="trust-label">Security</div><div class="trust-value">PCI · TLS 1.2 · P2PE</div></div></div>
+      <div class="trust-cell"><div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><div class="trust-label">Typical setup</div><div class="trust-value">Days, not weeks</div></div></div>
+      <div class="trust-cell"><div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></div><div><div class="trust-label">Support</div><div class="trust-value">Bilingual · End-to-end</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="section-tight">
+  <div class="container-narrow">
+    <p class="lede reveal" style="font-size: clamp(20px, 1.8vw, 24px); text-align: center;">
+      Integrated POS means your point-of-sale software handles the customer-facing experience — menus, orders, inventory, scheduling — while CleverPays runs the payment underneath, securely and invisibly. Same workflow your staff already knows. Better payments. Better support.
+    </p>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section" id="how">
+  <div class="container">
+    <span class="section-eyebrow reveal">How it works</span>
+    <h2 class="section-h2 reveal">From your POS to settlement, <span class="serif accent-honey">in four steps.</span></h2>
+
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">01</div>
+        <h4>Customer pays at your POS</h4>
+        <p>Cashier rings the sale on your existing POS — Clover, Lightspeed, Toast, custom — exactly the way they always have.</p>
+      </div>
+      <div class="step reveal reveal-delay-1">
+        <div class="step-num">02</div>
+        <h4>POS hands off to terminal</h4>
+        <p>Your POS sends the amount to the payment terminal through middleware (FLEX, Datacap, or Eigen). Card data never touches your POS.</p>
+      </div>
+      <div class="step reveal reveal-delay-2">
+        <div class="step-num">03</div>
+        <h4>Terminal processes securely</h4>
+        <p>The terminal accepts tap, dip, or swipe, encrypts the data, and submits it through CleverPays' processing infrastructure.</p>
+      </div>
+      <div class="step reveal reveal-delay-3">
+        <div class="step-num">04</div>
+        <h4>Confirmation flows back</h4>
+        <p>Authorization confirmation returns to the POS, the receipt prints, and the sale closes — all in under a few seconds end-to-end.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MIDDLEWARE -->
+<section class="section clover-band" id="middleware">
+  <div class="clover-band-bg" aria-hidden="true"></div>
+  <div class="container clover-band-inner">
+
+    <span class="section-eyebrow on-cream reveal">The middleware we configure</span>
+    <h2 class="section-h2 reveal">The bridge between <span class="serif accent-honey">your POS and our payments.</span></h2>
+    <p class="lede on-cream reveal" style="margin: 24px 0 48px;">
+      Four middleware platforms, depending on what your POS and terminal need. We configure all of them — and we support them.
+    </p>
+
+    <div class="middleware-grid">
+
+      <div class="middleware-card reveal" style="background: var(--cp-bg-white); border-color: var(--cp-border-cream); color: var(--cp-ink-on-cream);">
+        <div class="middleware-tag" style="color: var(--cp-honey-700);">Semi-integrated · Most common</div>
+        <h3 style="color: var(--cp-ink-on-cream);">FLEX</h3>
+        <p style="color: var(--cp-ink-on-cream-2);">The most widely-deployed semi-integrated payment solution. FLEX lets virtually any POS talk to virtually any terminal — minimal POS changes required, maximum flexibility on the hardware side.</p>
+        <ul class="middleware-features">
+          <li style="color: var(--cp-ink-on-cream-2);">Works with most major POS systems</li>
+          <li style="color: var(--cp-ink-on-cream-2);">Pairs with Clover, Ingenico, Pax, Verifone terminals</li>
+          <li style="color: var(--cp-ink-on-cream-2);">No card data on the POS — secure by design</li>
+          <li style="color: var(--cp-ink-on-cream-2);">Streamlined transactions, faster line speed</li>
+        </ul>
+        <div class="middleware-pair">
+          <span class="pair-tag" style="color: var(--cp-sky-700); background: rgba(91,192,232,0.12); border-color: rgba(91,192,232,0.30);">Most POS systems</span>
+          <span class="pair-tag" style="color: var(--cp-sky-700); background: rgba(91,192,232,0.12); border-color: rgba(91,192,232,0.30);">All major terminals</span>
+        </div>
+      </div>
+
+      <div class="middleware-card reveal reveal-delay-1" style="background: var(--cp-bg-white); border-color: var(--cp-border-cream); color: var(--cp-ink-on-cream);">
+        <div class="middleware-tag" style="color: var(--cp-honey-700);">PIN-pad bridge · NETePay</div>
+        <h3 style="color: var(--cp-ink-on-cream);">Datacap</h3>
+        <p style="color: var(--cp-ink-on-cream-2);">For integrated PIN-pad scenarios. Datacap's NETePay sits between the POS and the PIN pad (commonly Verifone P400) — encrypted, certified, and reliable. The retail-standard middleware in North America.</p>
+        <ul class="middleware-features">
+          <li style="color: var(--cp-ink-on-cream-2);">Pairs P400 PIN pad with most retail POS systems</li>
+          <li style="color: var(--cp-ink-on-cream-2);">TLS 1.2 encryption, full PCI compliance</li>
+          <li style="color: var(--cp-ink-on-cream-2);">High availability — used by national chains</li>
+          <li style="color: var(--cp-ink-on-cream-2);">Direct support escalation through us</li>
+        </ul>
+        <div class="middleware-pair">
+          <span class="pair-tag" style="color: var(--cp-sky-700); background: rgba(91,192,232,0.12); border-color: rgba(91,192,232,0.30);">Retail POS</span>
+          <span class="pair-tag" style="color: var(--cp-sky-700); background: rgba(91,192,232,0.12); border-color: rgba(91,192,232,0.30);">Verifone P400</span>
+        </div>
+      </div>
+
+      <div class="middleware-card reveal" style="background: var(--cp-bg-white); border-color: var(--cp-border-cream); color: var(--cp-ink-on-cream);">
+        <div class="middleware-tag" style="color: var(--cp-honey-700);">Engage platform · MiraServ</div>
+        <h3 style="color: var(--cp-ink-on-cream);">Eigen</h3>
+        <p style="color: var(--cp-ink-on-cream-2);">For Verifone's Engage line — V400m, V400c, P400. Eigen's MiraServ middleware exposes a clean integration API and handles secure connectivity to gateways. Common in hospitality and specialty retail.</p>
+        <ul class="middleware-features">
+          <li style="color: var(--cp-ink-on-cream-2);">Verifone Engage terminals (V400m, V400c, P400)</li>
+          <li style="color: var(--cp-ink-on-cream-2);">Modern API for POS partners</li>
+          <li style="color: var(--cp-ink-on-cream-2);">Excellent for multi-location operators</li>
+          <li style="color: var(--cp-ink-on-cream-2);">Robust offline behavior</li>
+        </ul>
+        <div class="middleware-pair">
+          <span class="pair-tag" style="color: var(--cp-sky-700); background: rgba(91,192,232,0.12); border-color: rgba(91,192,232,0.30);">Hospitality POS</span>
+          <span class="pair-tag" style="color: var(--cp-sky-700); background: rgba(91,192,232,0.12); border-color: rgba(91,192,232,0.30);">Verifone Engage</span>
+        </div>
+      </div>
+
+      <div class="middleware-card reveal reveal-delay-1" style="background: var(--cp-bg-white); border-color: var(--cp-border-cream); color: var(--cp-ink-on-cream);">
+        <div class="middleware-tag" style="color: var(--cp-honey-700);">Clover-friendly</div>
+        <h3 style="color: var(--cp-ink-on-cream);">PaymentTree</h3>
+        <p style="color: var(--cp-ink-on-cream-2);">Specialty middleware for POS systems integrating with Clover terminals. Bridges front-end POS software with Clover's payment infrastructure cleanly — common when merchants love their POS but want Clover's reliability and reporting.</p>
+        <ul class="middleware-features">
+          <li style="color: var(--cp-ink-on-cream-2);">Optimized for Clover terminal integration</li>
+          <li style="color: var(--cp-ink-on-cream-2);">Strong with hospitality and restaurant POS</li>
+          <li style="color: var(--cp-ink-on-cream-2);">Fast to deploy</li>
+          <li style="color: var(--cp-ink-on-cream-2);">Full reporting passthrough</li>
+        </ul>
+        <div class="middleware-pair">
+          <span class="pair-tag" style="color: var(--cp-sky-700); background: rgba(91,192,232,0.12); border-color: rgba(91,192,232,0.30);">Restaurant POS</span>
+          <span class="pair-tag" style="color: var(--cp-sky-700); background: rgba(91,192,232,0.12); border-color: rgba(91,192,232,0.30);">Clover terminals</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SUPPORTED POS -->
+<section class="section" id="pos">
+  <div class="container">
+    <span class="section-eyebrow reveal">POS systems we work with</span>
+    <h2 class="section-h2 reveal">If you run it, <span class="serif accent-honey">we likely integrate with it.</span></h2>
+    <p class="lede reveal" style="margin: 24px 0 48px;">
+      A non-exhaustive list of POS systems we've successfully integrated with CleverPays. If yours isn't here, ask — our in-house team has integrated with a lot more than we've put on this page.
+    </p>
+
+    <div class="pos-grid">
+      <div class="pos-pill reveal"><div class="pos-name">Clover</div><div class="pos-cat">POS · Hardware</div></div>
+      <div class="pos-pill reveal"><div class="pos-name">Lightspeed Retail</div><div class="pos-cat">Retail POS</div></div>
+      <div class="pos-pill reveal"><div class="pos-name">Lightspeed Restaurant</div><div class="pos-cat">Restaurant POS</div></div>
+      <div class="pos-pill reveal"><div class="pos-name">Toast</div><div class="pos-cat">Restaurant POS</div></div>
+      <div class="pos-pill reveal reveal-delay-1"><div class="pos-name">TouchBistro</div><div class="pos-cat">Restaurant POS</div></div>
+      <div class="pos-pill reveal reveal-delay-1"><div class="pos-name">Aldelo</div><div class="pos-cat">Restaurant POS</div></div>
+      <div class="pos-pill reveal reveal-delay-1"><div class="pos-name">Maitre'D</div><div class="pos-cat">Restaurant POS</div></div>
+      <div class="pos-pill reveal reveal-delay-1"><div class="pos-name">Aloha</div><div class="pos-cat">Restaurant POS</div></div>
+      <div class="pos-pill reveal reveal-delay-2"><div class="pos-name">Shopify POS</div><div class="pos-cat">Retail / Commerce</div></div>
+      <div class="pos-pill reveal reveal-delay-2"><div class="pos-name">Square (migration)</div><div class="pos-cat">Retail POS</div></div>
+      <div class="pos-pill reveal reveal-delay-2"><div class="pos-name">WooCommerce</div><div class="pos-cat">eCommerce</div></div>
+      <div class="pos-pill reveal reveal-delay-2"><div class="pos-name">Magento</div><div class="pos-cat">eCommerce</div></div>
+      <div class="pos-pill reveal reveal-delay-3"><div class="pos-name">NCR Aloha</div><div class="pos-cat">Restaurant POS</div></div>
+      <div class="pos-pill reveal reveal-delay-3"><div class="pos-name">Talech</div><div class="pos-cat">Retail POS</div></div>
+      <div class="pos-pill reveal reveal-delay-3"><div class="pos-name">Revel</div><div class="pos-cat">Retail / Restaurant</div></div>
+      <div class="pos-pill reveal reveal-delay-3"><div class="pos-name">Custom / Other</div><div class="pos-cat">Built by your team</div></div>
+    </div>
+
+    <div style="text-align: center; margin-top: 40px;">
+      <p class="lede" style="margin: 0 auto;">Don't see yours? <a href="#talk" class="text-link">Tell us what you run →</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- TECHNICAL -->
+<section class="section" id="tech" style="background: linear-gradient(180deg, transparent, rgba(91,192,232,0.04) 50%, transparent);">
+  <div class="container">
+    <span class="section-eyebrow reveal">Technical advantages</span>
+    <h2 class="section-h2 reveal">Under the <span class="serif accent-honey">hood.</span></h2>
+    <p class="lede reveal" style="margin: 24px 0 48px;">For the technically inclined — what semi-integrated POS actually gives you.</p>
+
+    <div class="tech-grid">
+      <div class="card reveal">
+        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+        <h3>PCI scope reduced</h3>
+        <p>Card data never enters your POS network or application. The terminal handles capture, encryption, and transmission. Your PCI compliance scope drops dramatically.</p>
+      </div>
+      <div class="card reveal reveal-delay-1">
+        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <h3>Fewer points of failure</h3>
+        <p>Payments and POS are independent processes. If your POS hiccups, payments keep flowing. If a terminal needs replacing, your POS doesn't care.</p>
+      </div>
+      <div class="card reveal reveal-delay-2">
+        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+        <h3>Consolidated reporting</h3>
+        <p>You get one reconciled view — payments side from us, sales detail from your POS — that we help you connect through your accounting or BI tool.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="container">
+    <div style="text-align: center; margin-bottom: 56px;">
+      <span class="section-eyebrow reveal">Common questions</span>
+      <h2 class="section-h2 reveal">Integrated POS <span class="serif accent-honey">FAQ.</span></h2>
+    </div>
+
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary class="faq-summary">What is "semi-integrated" exactly?</summary>
+        <div class="faq-body"><p>Semi-integrated means your POS sends the amount to the payment terminal, but never touches the card data itself. The terminal handles encryption, transmission, and confirmation. The POS sees only an authorized/declined response. This dramatically reduces your PCI scope and isolates payment failures from POS failures.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-summary">Will my staff need retraining?</summary>
+        <div class="faq-body"><p>Almost never. The cashier rings the sale exactly as before. The terminal handles everything else — staff just confirm the customer has completed the payment. We provide bilingual quick-reference cards and we run a walk-through with your team during go-live.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-summary">Does this affect tip prompts, gift cards, or split payments?</summary>
+        <div class="faq-body"><p>All three are supported and configured on a per-merchant basis. Tip prompts live on the terminal (where the customer is anyway). Gift cards integrate through the terminal or through your POS, depending on which platform owns the gift program. Split payments work natively.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-summary">What if my POS isn't on your supported list?</summary>
+        <div class="faq-body"><p>Ask us. The list above is just the most common — our in-house engineering team integrates with POS systems regularly, including custom-built and in-house tools. If your POS has an API or a documented integration spec, there's a strong chance we can connect to it.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-summary">Is there a setup fee?</summary>
+        <div class="faq-body"><p>Most standard integrations have no setup fee. Custom integrations (POS systems we haven't worked with, or unusual requirements) may have a one-time engineering charge — we tell you up-front, in writing, with a fixed scope. No surprises.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-summary">Who supports it after launch?</summary>
+        <div class="faq-body"><p>We do. End-to-end. Same in-house, bilingual support team that handles every other CleverPays account. If the issue turns out to be your POS vendor's responsibility, we coordinate the escalation on your behalf rather than handing you a phone number.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section class="section" id="talk">
+  <div class="container">
+    <div class="closing-card reveal">
+      <h2 class="closing-h2">Let's see if your POS <br><span class="serif accent-honey">is ready to connect.</span></h2>
+      <p class="closing-sub">
+        Tell us what you run. We'll tell you exactly what integration path fits, what it costs, and how long it takes — within 24 hours.
+      </p>
+      <div class="closing-ctas">
+        <a href="tel:+18882208060" class="btn btn-honey">Call +1 888-220-8060 <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        <a href="mailto:info@cleverpays.ca" class="btn btn-ghost-light">Email info@cleverpays.ca</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="logo" href="/home.html"><span class="logo-mark"><span>CP</span></span><span class="logo-text"><span class="clever">Clever</span><span class="pays">Pays</span></span></a>
+        <p>Clover Authorized Dealer. In-house support. In-house integration teams. Built in Quebec, bilingual by design.</p>
+        <div class="footer-contact">
+          <div><a href="tel:+18882208060">+1 888-220-8060</a></div>
+          <div><a href="mailto:info@cleverpays.ca">info@cleverpays.ca</a></div>
+          <div>2285 Av Francis-Hughes, Laval, QC H7S 1N5</div>
+        </div>
+      </div>
+      <div class="footer-col"><h4>Payment Processing</h4><ul><li><a href="/payment-processing/clover.html">Clover</a></li><li><a href="/payment-processing/other-solutions.html">Smart Terminals</a></li><li><a href="#">Virtual Terminal</a></li><li><a href="#">Online &amp; eCommerce</a></li></ul></div>
+      <div class="footer-col"><h4>Business Solutions</h4><ul><li><a href="/business-solutions/integrated-pos.html">Integrated POS</a></li><li><a href="#">Inventory Management</a></li><li><a href="#">Employee Management</a></li><li><a href="#">Reporting</a></li></ul></div>
+      <div class="footer-col"><h4>Industries</h4><ul><li><a href="#">Retail</a></li><li><a href="#">Restaurants</a></li><li><a href="#">Healthcare</a></li><li><a href="#">Multi-location</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="#">About</a></li><li><a href="#">Pricing</a></li><li><a href="/calculator.html">Tools</a></li><li><a href="#">Contact</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 CleverPays · Laval, Québec</span><div class="footer-trust"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Accessibility</a><a href="#">Security</a></div></div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.locale-btn').forEach(btn => btn.addEventListener('click', () => {
+    document.querySelectorAll('.locale-btn').forEach(b => b.classList.toggle('active', b === btn));
+  }));
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  } else document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+
+  const innerLinks = document.querySelectorAll('.inner-nav-link');
+  const sections = Array.from(innerLinks).map(l => document.querySelector(l.getAttribute('href'))).filter(Boolean);
+  const setActive = () => {
+    const pos = window.scrollY + 150;
+    let i = 0;
+    sections.forEach((s, idx) => { if (s.offsetTop <= pos) i = idx; });
+    innerLinks.forEach((l, idx) => l.classList.toggle('active', idx === i));
+  };
+  window.addEventListener('scroll', setActive, { passive: true });
+  setActive();
+</script>
+
+</body>
+</html>

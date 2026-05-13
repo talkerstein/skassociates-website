@@ -13,6 +13,8 @@ import {
 } from "lucide-react";
 import { SectionWrapper } from "@/components/ui/section-wrapper";
 import { Button } from "@/components/ui/button";
+import { Faq } from "@/components/ui/faq";
+import { nonprofitFaqs } from "@/data/faqs";
 
 const painPoints = [
   {
@@ -121,7 +123,7 @@ export default function NonprofitPage() {
           >
             <div className="rounded-2xl overflow-hidden border border-white/10 shadow-elevated">
               <img
-                src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=800&h=600&fit=crop"
+                src="https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?w=800&h=600&fit=crop"
                 alt="Non-profit community organization gathering"
                 loading="lazy"
                 referrerPolicy="no-referrer"
@@ -261,6 +263,12 @@ export default function NonprofitPage() {
           </motion.div>
         </div>
       </section>
+
+      <Faq
+        items={nonprofitFaqs}
+        heading="Questions from not-for-profit organizations."
+        background="light"
+      />
 
       {/* CTA */}
       <SectionWrapper background="ivory" padding="large">

@@ -51,9 +51,9 @@ export default function ResourcesPage() {
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="max-w-3xl"
           >
-            <p className="eyebrow text-accent-400 mb-4">Resources</p>
+            <p className="eyebrow text-accent-400 mb-4">Articles &amp; Insights</p>
             <h1 className="font-display text-[clamp(2.25rem,5vw,3.75rem)] leading-[1.08] tracking-tight text-ivory-50 text-balance">
-              Insights, Use Cases &amp; Plain-Language Guides
+              Articles, Use Cases &amp; Plain-Language Guides
             </h1>
             <p className="mt-6 text-lg leading-relaxed text-slate-300 max-w-2xl">
               Practical writing on Spire, Adagio, migrations, reporting, and the

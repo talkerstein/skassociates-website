@@ -17,6 +17,8 @@ import {
   Quote,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Faq } from '@/components/ui/faq';
+import { implementationFaqs } from '@/data/faqs';
 
 /* ------------------------------------------------------------------ */
 /*  Animation helpers                                                  */
@@ -488,6 +490,8 @@ export default function ImplementationPage() {
           </motion.div>
         </div>
       </section>
+
+      <Faq items={implementationFaqs} heading="What to expect from a real implementation." />
 
       {/* â”€â”€ CTA â”€â”€ */}
       <section className="bg-navy-950 py-24 lg:py-32">

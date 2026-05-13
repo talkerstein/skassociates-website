@@ -13,6 +13,8 @@ import {
 } from "lucide-react";
 import { SectionWrapper } from "@/components/ui/section-wrapper";
 import { Button } from "@/components/ui/button";
+import { Faq } from "@/components/ui/faq";
+import { aboutFaqs } from "@/data/faqs";
 
 const values = [
   {
@@ -188,6 +190,103 @@ export default function AboutPage() {
         </div>
       </SectionWrapper>
 
+      {/* Certifications & Platform Expertise — compact strip */}
+      <section className="bg-ivory-50 border-t border-ivory-200">
+        <div className="mx-auto max-w-6xl px-6 lg:px-8 py-12 md:py-16">
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="text-center mb-8"
+          >
+            <p className="eyebrow text-slate-500">
+              Certifications &amp; Platform Expertise
+            </p>
+          </motion.div>
+
+          {/* TODO: Replace text wordmarks with official partner logos when client supplies brand assets */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-40px" }}
+            variants={{
+              hidden: {},
+              visible: {
+                transition: { staggerChildren: 0.07, delayChildren: 0.1 },
+              },
+            }}
+            className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 md:gap-x-14"
+          >
+            {[
+              {
+                key: "spire",
+                node: (
+                  <span className="inline-flex items-center gap-1.5">
+                    <span
+                      aria-hidden="true"
+                      className="inline-block h-0 w-0 border-y-[5px] border-l-[8px] border-y-transparent border-l-accent-500"
+                    />
+                    <span className="font-sans font-bold uppercase tracking-[0.18em] text-navy-900 text-base md:text-lg">
+                      SPIRE
+                    </span>
+                  </span>
+                ),
+              },
+              {
+                key: "adagio",
+                node: (
+                  <span className="font-display italic text-navy-900 text-xl md:text-2xl leading-none">
+                    Adagio
+                  </span>
+                ),
+              },
+              {
+                key: "paydirt",
+                node: (
+                  <span className="font-sans font-bold text-navy-900 text-base md:text-lg tracking-tight">
+                    Pay<span className="text-accent-600">Dirt</span>
+                  </span>
+                ),
+              },
+              {
+                key: "crystal",
+                node: (
+                  <span className="text-navy-900 text-base md:text-lg leading-none">
+                    <span className="font-bold tracking-tight">Crystal</span>
+                    <span className="font-light ml-1">Reports</span>
+                  </span>
+                ),
+              },
+              {
+                key: "excel",
+                node: (
+                  <span className="font-sans font-semibold text-navy-900 text-base md:text-lg tracking-tight">
+                    Excel{" "}
+                    <span className="text-accent-600 font-light">+</span> Access
+                  </span>
+                ),
+              },
+            ].map((item) => (
+              <motion.div
+                key={item.key}
+                variants={{
+                  hidden: { opacity: 0, y: 12 },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
+                  },
+                }}
+                className="flex items-center"
+              >
+                {item.node}
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
       {/* Values */}
       <SectionWrapper background="light" padding="large">
         <motion.div
@@ -310,6 +409,8 @@ export default function AboutPage() {
           </motion.div>
         </div>
       </section>
+
+      <Faq items={aboutFaqs} heading="About the firm, in your own words." />
 
       {/* Why Clients Stay */}
       <section className="bg-navy-950 py-20 md:py-28">

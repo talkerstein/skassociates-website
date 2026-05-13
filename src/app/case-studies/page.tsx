@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import { Quote, ArrowRight, Package, Briefcase, Heart } from "lucide-react";
 import { SectionWrapper } from "@/components/ui/section-wrapper";
 import { Button } from "@/components/ui/button";
+import { Faq } from "@/components/ui/faq";
+import { caseStudiesFaqs } from "@/data/faqs";
 
 const caseStudies = [
   {
@@ -13,7 +15,7 @@ const caseStudies = [
     platform: "Spire",
     headline: "From 35-minute reports to instant insights",
     image:
-      "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1200&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1601598851547-4302969d0614?w=1200&h=600&fit=crop",
     imageAlt: "Distribution warehouse operations",
     problem:
       "Kilo Gateaux, a growing distribution company, was spending over 35 minutes generating each key business report. Data lived in multiple spreadsheets, inventory counts were unreliable, and the team was spending more time wrestling with their systems than running the business. Month-end close was a multi-day ordeal that consumed the entire accounting team.",
@@ -40,7 +42,7 @@ const caseStudies = [
     platform: "Adagio",
     headline: "A clean migration from QuickBooks to Adagio",
     image:
-      "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1200&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1200&h=600&fit=crop",
     imageAlt: "Professional consulting session",
     problem:
       "A mid-size professional services firm had outgrown QuickBooks. Their chart of accounts was a mess, departmental reporting was impossible, and their growing complexity meant they needed proper financial controls, approval workflows, and audit trails that QuickBooks simply could not provide.",
@@ -67,7 +69,7 @@ const caseStudies = [
     platform: "Adagio",
     headline: "From spreadsheets to proper fund accounting",
     image:
-      "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=1200&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1593113646773-028c64a8f1b8?w=1200&h=600&fit=crop",
     imageAlt: "Community organization meeting",
     problem:
       "A community nonprofit was managing all of their fund accounting in spreadsheets. Restricted and unrestricted funds were tracked manually, grant reporting took days to compile, board financial packages were assembled by hand before every meeting, and audit preparation consumed weeks of staff time each year.",
@@ -240,6 +242,8 @@ export default function CaseStudiesPage() {
           })}
         </div>
       </SectionWrapper>
+
+      <Faq items={caseStudiesFaqs} />
 
       {/* CTA */}
       <section className="bg-navy-950 py-20 md:py-28">

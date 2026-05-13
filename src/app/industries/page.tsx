@@ -11,6 +11,8 @@ import {
 } from "lucide-react";
 import { SectionWrapper } from "@/components/ui/section-wrapper";
 import { Button } from "@/components/ui/button";
+import { Faq } from "@/components/ui/faq";
+import { industriesFaqs } from "@/data/faqs";
 
 const industries = [
   {
@@ -187,6 +189,8 @@ export default function IndustriesPage() {
           })}
         </div>
       </SectionWrapper>
+
+      <Faq items={industriesFaqs} />
 
       <section className="bg-navy-950 py-20 md:py-28">
         <div className="mx-auto max-w-4xl px-6 lg:px-8 text-center">

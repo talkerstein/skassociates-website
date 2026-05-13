@@ -16,7 +16,7 @@ const caseStudies = [
       "A growing distribution company was drowning in manual reports that took over 35 minutes each. We implemented Spire and configured real-time dashboards that deliver the same insights instantly.",
     href: "/case-studies",
     image:
-      "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1601598851547-4302969d0614?w=800&h=600&fit=crop",
     imageAlt: "Distribution warehouse operations with inventory",
   },
   {
@@ -28,7 +28,7 @@ const caseStudies = [
       "A mid-size professional services firm had outgrown QuickBooks. We planned and executed a seamless migration to Adagio with zero data loss and minimal disruption to daily operations.",
     href: "/case-studies",
     image:
-      "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&h=600&fit=crop",
     imageAlt: "Service consulting conversation",
   },
   {
@@ -40,7 +40,7 @@ const caseStudies = [
       "A community nonprofit was managing fund accounting in spreadsheets. We moved them to Adagio with proper fund tracking, grant reporting, and board-ready financials.",
     href: "/case-studies",
     image:
-      "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1593113646773-028c64a8f1b8?w=800&h=600&fit=crop",
     imageAlt: "Community gathering",
   },
 ];
