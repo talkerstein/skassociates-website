@@ -1,0 +1,118 @@
+@import "tailwindcss";
+
+@theme {
+  /* Premium Navy Foundation */
+  --color-navy-950: #0a0f1e;
+  --color-navy-900: #0f172a;
+  --color-navy-800: #1a2240;
+  --color-navy-700: #253158;
+  --color-navy-600: #334470;
+
+  /* Slate Support */
+  --color-slate-800: #1e293b;
+  --color-slate-700: #334155;
+  --color-slate-600: #475569;
+  --color-slate-500: #64748b;
+  --color-slate-400: #94a3b8;
+  --color-slate-300: #cbd5e1;
+  --color-slate-200: #e2e8f0;
+  --color-slate-100: #f1f5f9;
+  --color-slate-50: #f8fafc;
+
+  /* Warm Ivory Backgrounds */
+  --color-ivory-50: #fefdfb;
+  --color-ivory-100: #faf8f5;
+  --color-ivory-200: #f5f0ea;
+  --color-ivory-300: #ebe4d9;
+
+  /* Restrained Accent */
+  --color-accent-600: #b45309;
+  --color-accent-500: #c2702b;
+  --color-accent-400: #d4863a;
+
+  /* Subtle Gold */
+  --color-gold-500: #b8960c;
+  --color-gold-400: #d4ad0e;
+
+  /* Typography Scale */
+  --font-family-display: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-family-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  --font-size-display-xl: 4.5rem;
+  --font-size-display-lg: 3.75rem;
+  --font-size-display: 3rem;
+  --font-size-display-sm: 2.25rem;
+  --font-size-h1: 2rem;
+  --font-size-h2: 1.5rem;
+  --font-size-h3: 1.25rem;
+  --font-size-body-lg: 1.125rem;
+  --font-size-body: 1rem;
+  --font-size-body-sm: 0.875rem;
+  --font-size-eyebrow: 0.8125rem;
+  --font-size-caption: 0.75rem;
+
+  --line-height-display: 1.1;
+  --line-height-heading: 1.25;
+  --line-height-body: 1.7;
+
+  --letter-spacing-eyebrow: 0.15em;
+  --letter-spacing-tight: -0.02em;
+  --letter-spacing-display: -0.03em;
+
+  /* Spacing */
+  --spacing-section: 7rem;
+  --spacing-section-sm: 5rem;
+
+  /* Shadows */
+  --shadow-card: 0 1px 3px rgba(15, 23, 42, 0.04), 0 4px 12px rgba(15, 23, 42, 0.06);
+  --shadow-card-hover: 0 4px 16px rgba(15, 23, 42, 0.08), 0 8px 32px rgba(15, 23, 42, 0.04);
+  --shadow-elevated: 0 8px 32px rgba(15, 23, 42, 0.12);
+
+  /* Transitions */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer base {
+  html {
+    font-family: var(--font-family-body);
+    color: var(--color-navy-900);
+    background-color: var(--color-ivory-50);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-family-body);
+    font-weight: 600;
+  }
+
+  ::selection {
+    background-color: var(--color-navy-900);
+    color: var(--color-ivory-50);
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-family-display);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .eyebrow {
+    font-size: var(--font-size-eyebrow);
+    font-weight: 600;
+    letter-spacing: var(--letter-spacing-eyebrow);
+    text-transform: uppercase;
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, var(--color-navy-900) 0%, var(--color-navy-700) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}

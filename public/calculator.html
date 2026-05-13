@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Effective Rate Calculator — CleverPays</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cp-bg-deep:#0A0E1A;
+    --cp-bg-base:#0F1626;
+    --cp-bg-elev:#141D32;
+    --cp-bg-elev-2:#1A2440;
+    --cp-bg-light:#FFFFFF;
+    --cp-ink-on-dark:#FFFFFF;
+    --cp-ink-on-dark-2:#B4BBCB;
+    --cp-ink-muted:#8A93A6;
+    --cp-green-600:#11B981;
+    --cp-green-500:#25C78F;
+    --cp-green-200:#BDF1DC;
+    --cp-cyan-500:#41E0FF;
+    --cp-cyan-glow:rgba(65,224,255,0.18);
+    --cp-border:rgba(255,255,255,0.08);
+    --cp-border-strong:rgba(255,255,255,0.16);
+  }
+  *,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+  html { -webkit-font-smoothing:antialiased; }
+  body {
+    font-family:'Inter',system-ui,-apple-system,sans-serif;
+    background:var(--cp-bg-deep);
+    color:var(--cp-ink-on-dark);
+    min-height:100vh;
+    line-height:1.5;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(65,224,255,0.10), transparent 70%),
+      radial-gradient(ellipse 60% 40% at 90% 20%, rgba(17,185,129,0.06), transparent 70%);
+  }
+  a { color:inherit; }
+  button { font-family:inherit; cursor:pointer; border:none; background:none; color:inherit; }
+
+  /* Header */
+  .nav {
+    display:flex; align-items:center; justify-content:space-between;
+    padding:20px 32px; border-bottom:1px solid var(--cp-border);
+    position:sticky; top:0; backdrop-filter:blur(12px);
+    background:rgba(10,14,26,0.7); z-index:50;
+  }
+  .logo {
+    font-weight:700; font-size:18px; letter-spacing:-0.01em;
+    display:flex; align-items:center; gap:8px;
+  }
+  .logo-mark {
+    width:24px; height:24px; border-radius:6px;
+    background:linear-gradient(135deg, var(--cp-green-600), var(--cp-cyan-500));
+    display:inline-block;
+  }
+  .nav-right { display:flex; align-items:center; gap:16px; }
+  .locale-toggle {
+    display:flex; background:var(--cp-bg-elev); border:1px solid var(--cp-border);
+    border-radius:8px; overflow:hidden;
+  }
+  .locale-btn {
+    padding:6px 12px; font-size:13px; font-weight:600;
+    color:var(--cp-ink-on-dark-2);
+    transition:all 160ms ease;
+  }
+  .locale-btn.active { background:var(--cp-bg-elev-2); color:#fff; }
+  .locale-btn:hover:not(.active) { color:#fff; }
+  .nav-cta {
+    padding:8px 16px; background:var(--cp-green-600); color:#fff;
+    border-radius:8px; font-weight:600; font-size:14px;
+    transition:all 160ms ease;
+  }
+  .nav-cta:hover { background:var(--cp-green-500); transform:translateY(-1px); }
+
+  /* Container */
+  .container { max-width:1280px; margin:0 auto; padding:0 32px; }
+  @media (max-width:768px) { .container, .nav { padding-left:20px; padding-right:20px; } }
+
+  /* Hero */
+  .hero { padding:80px 0 48px; max-width:760px; margin:0 auto; text-align:center; }
+  .eyebrow {
+    text-transform:uppercase; font-size:12px; letter-spacing:0.12em; font-weight:600;
+    color:var(--cp-cyan-500); margin-bottom:16px;
+  }
+  h1 {
+    font-size:clamp(36px,5vw,56px); font-weight:700; letter-spacing:-0.02em;
+    line-height:1.1; margin-bottom:20px;
+  }
+  .hero-sub { font-size:18px; color:var(--cp-ink-on-dark-2); max-width:560px; margin:0 auto; }
+
+  /* Calculator grid */
+  .calc-grid {
+    display:grid; grid-template-columns:1fr 1fr; gap:32px;
+    padding:0 0 64px;
+  }
+  @media (max-width:960px) { .calc-grid { grid-template-columns:1fr; } }
+
+  .panel {
+    background:var(--cp-bg-base); border:1px solid var(--cp-border);
+    border-radius:16px; padding:32px;
+    box-shadow:0 1px 2px rgba(0,0,0,0.4), 0 24px 48px -16px rgba(0,0,0,0.5);
+  }
+  @media (max-width:768px) { .panel { padding:24px; } }
+
+  .panel-title { font-size:13px; font-weight:600; text-transform:uppercase;
+    letter-spacing:0.10em; color:var(--cp-ink-on-dark-2); margin-bottom:24px; }
+
+  /* Input groups */
+  .input-group { margin-bottom:28px; }
+  .input-group:last-child { margin-bottom:0; }
+  .input-label {
+    display:flex; justify-content:space-between; align-items:baseline;
+    margin-bottom:12px;
+  }
+  .input-name { font-size:15px; font-weight:600; }
+  .input-value {
+    font-size:16px; font-weight:700; color:var(--cp-green-500);
+    font-variant-numeric:tabular-nums;
+  }
+  .input-hint { font-size:12px; color:var(--cp-ink-muted); margin-top:6px; }
+
+  /* Range slider */
+  .slider {
+    -webkit-appearance:none; appearance:none; width:100%; height:6px;
+    background:var(--cp-bg-elev-2); border-radius:999px; outline:none;
+  }
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance:none; appearance:none;
+    width:22px; height:22px; border-radius:50%;
+    background:var(--cp-green-600); border:3px solid #fff;
+    cursor:pointer; transition:all 120ms ease;
+    box-shadow:0 0 0 6px rgba(17,185,129,0);
+  }
+  .slider::-webkit-slider-thumb:hover { box-shadow:0 0 0 6px rgba(17,185,129,0.2); }
+  .slider::-webkit-slider-thumb:active { transform:scale(1.1); }
+  .slider::-moz-range-thumb {
+    width:18px; height:18px; border-radius:50%;
+    background:var(--cp-green-600); border:3px solid #fff; cursor:pointer;
+  }
+  .slider:focus-visible { outline:2px solid var(--cp-cyan-500); outline-offset:6px; border-radius:8px; }
+
+  /* Segmented control */
+  .segmented {
+    display:grid; grid-auto-flow:column; grid-auto-columns:1fr;
+    background:var(--cp-bg-elev); border:1px solid var(--cp-border);
+    border-radius:10px; padding:4px;
+  }
+  .seg-btn {
+    padding:10px 12px; font-size:13px; font-weight:600;
+    border-radius:7px; color:var(--cp-ink-on-dark-2);
+    transition:all 160ms ease;
+  }
+  .seg-btn:hover:not(.active) { color:#fff; background:var(--cp-bg-elev-2); }
+  .seg-btn.active {
+    background:var(--cp-green-600); color:#fff;
+    box-shadow:0 1px 2px rgba(0,0,0,0.3);
+  }
+  .seg-btn:focus-visible { outline:2px solid var(--cp-cyan-500); outline-offset:2px; }
+
+  /* Channel split (special - shows when "Both") */
+  .channel-split { margin-top:16px; display:none; }
+  .channel-split.visible { display:block; }
+  .channel-split-label {
+    display:flex; justify-content:space-between; font-size:13px;
+    color:var(--cp-ink-on-dark-2); margin-bottom:8px;
+  }
+
+  /* Checkbox */
+  .check-row {
+    display:flex; align-items:center; gap:12px; padding:14px;
+    background:var(--cp-bg-elev); border:1px solid var(--cp-border);
+    border-radius:10px; cursor:pointer; transition:all 160ms ease;
+  }
+  .check-row:hover { border-color:var(--cp-border-strong); }
+  .check-row.checked { border-color:var(--cp-green-600); background:rgba(17,185,129,0.06); }
+  .check-row input { appearance:none; width:20px; height:20px; border-radius:6px;
+    border:2px solid var(--cp-border-strong); position:relative; flex-shrink:0;
+    cursor:pointer; transition:all 160ms ease; }
+  .check-row.checked input { background:var(--cp-green-600); border-color:var(--cp-green-600); }
+  .check-row.checked input::after {
+    content:''; position:absolute; left:5px; top:1px; width:5px; height:10px;
+    border:solid #fff; border-width:0 2px 2px 0; transform:rotate(45deg);
+  }
+  .check-row-text { flex:1; font-size:14px; font-weight:500; }
+
+  /* OUTPUT PANEL */
+  .output-panel {
+    background:linear-gradient(180deg, var(--cp-bg-elev) 0%, var(--cp-bg-base) 100%);
+    position:relative; overflow:hidden;
+  }
+  .output-panel::before {
+    content:''; position:absolute; top:0; left:50%; transform:translateX(-50%);
+    width:200px; height:1px; background:var(--cp-cyan-500); opacity:0.5;
+    box-shadow:0 0 24px 2px var(--cp-cyan-glow);
+  }
+  .output-label {
+    font-size:13px; text-transform:uppercase; letter-spacing:0.10em;
+    color:var(--cp-ink-on-dark-2); margin-bottom:12px; font-weight:600;
+  }
+  .rate-range {
+    font-size:clamp(48px,8vw,72px); font-weight:700; letter-spacing:-0.03em;
+    line-height:1; font-variant-numeric:tabular-nums;
+    background:linear-gradient(135deg, #fff, var(--cp-cyan-500));
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+    background-clip:text;
+    margin-bottom:8px;
+  }
+  .rate-meta {
+    font-size:14px; color:var(--cp-ink-on-dark-2); margin-bottom:24px;
+  }
+  .rate-meta strong { color:#fff; }
+  .interp {
+    font-size:15px; color:var(--cp-ink-on-dark-2); line-height:1.5;
+    padding:16px; background:var(--cp-bg-base); border:1px solid var(--cp-border);
+    border-radius:10px; margin-bottom:24px;
+  }
+  .interp-em { color:var(--cp-cyan-500); font-weight:600; }
+
+  /* Sparkline */
+  .sparkline-wrap { margin-bottom:24px; }
+  .sparkline-label {
+    font-size:12px; text-transform:uppercase; letter-spacing:0.08em;
+    color:var(--cp-ink-muted); margin-bottom:8px; font-weight:600;
+  }
+  .sparkline { width:100%; height:80px; }
+  .spark-area { fill:url(#spark-gradient); }
+  .spark-line { stroke:var(--cp-green-500); stroke-width:2; fill:none; }
+  .spark-dot { fill:var(--cp-cyan-500); }
+  .spark-dot-pulse { fill:var(--cp-cyan-500); opacity:0.3; }
+
+  /* Monthly cost */
+  .cost-row {
+    display:flex; justify-content:space-between; padding:12px 0;
+    border-top:1px solid var(--cp-border);
+    font-size:14px;
+  }
+  .cost-label { color:var(--cp-ink-on-dark-2); }
+  .cost-value { font-weight:600; font-variant-numeric:tabular-nums; }
+
+  /* Disclaimer band */
+  .disclaimer-band {
+    background:var(--cp-bg-elev); border:1px solid var(--cp-border);
+    border-radius:12px; padding:20px 24px; margin:0 0 32px;
+    display:flex; gap:16px; align-items:flex-start;
+  }
+  .disclaimer-icon {
+    flex-shrink:0; width:24px; height:24px; border-radius:50%;
+    background:rgba(247,169,59,0.15); color:#F7A93B;
+    display:flex; align-items:center; justify-content:center;
+    font-weight:700; font-size:14px;
+  }
+  .disclaimer-text { font-size:14px; color:var(--cp-ink-on-dark-2); line-height:1.5; }
+  .disclaimer-text strong { color:#fff; }
+
+  /* CTA band */
+  .cta-band {
+    background:linear-gradient(135deg, var(--cp-bg-elev-2), var(--cp-bg-base));
+    border:1px solid var(--cp-border-strong); border-radius:16px;
+    padding:40px; margin-bottom:80px; text-align:center;
+    position:relative; overflow:hidden;
+  }
+  .cta-band::before {
+    content:''; position:absolute; inset:0;
+    background:radial-gradient(circle at 50% 0%, var(--cp-cyan-glow), transparent 60%);
+    pointer-events:none;
+  }
+  .cta-band-content { position:relative; z-index:1; }
+  .cta-title { font-size:clamp(22px,3vw,28px); font-weight:700; margin-bottom:12px; letter-spacing:-0.01em; }
+  .cta-sub { font-size:16px; color:var(--cp-ink-on-dark-2); margin-bottom:24px; max-width:560px; margin-left:auto; margin-right:auto; }
+  .cta-buttons { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+  .btn-primary {
+    padding:14px 28px; background:var(--cp-green-600); color:#fff;
+    border-radius:10px; font-weight:600; font-size:15px;
+    transition:all 200ms ease;
+    box-shadow:0 4px 16px -4px rgba(17,185,129,0.5);
+  }
+  .btn-primary:hover { background:var(--cp-green-500); transform:translateY(-1px); box-shadow:0 6px 24px -4px rgba(17,185,129,0.6); }
+  .btn-secondary {
+    padding:14px 28px; background:transparent; color:#fff;
+    border:1.5px solid var(--cp-border-strong); border-radius:10px;
+    font-weight:600; font-size:15px; transition:all 200ms ease;
+  }
+  .btn-secondary:hover { border-color:#fff; background:rgba(255,255,255,0.04); }
+
+  /* Save / share */
+  .save-row { display:flex; gap:8px; justify-content:flex-end; margin-bottom:16px; }
+  .save-btn {
+    padding:8px 14px; font-size:13px; font-weight:600;
+    border:1px solid var(--cp-border); border-radius:8px;
+    color:var(--cp-ink-on-dark-2); transition:all 160ms ease;
+    display:inline-flex; align-items:center; gap:6px;
+  }
+  .save-btn:hover { color:#fff; border-color:var(--cp-border-strong); }
+  .save-btn.copied { color:var(--cp-green-500); border-color:var(--cp-green-500); }
+
+  /* Footer */
+  footer { padding:32px 0 48px; border-top:1px solid var(--cp-border); margin-top:32px; }
+  .footer-row { display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; font-size:13px; color:var(--cp-ink-muted); }
+  .footer-row a:hover { color:#fff; }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration:0.01ms !important; transition-duration:0.01ms !important; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Primary">
+  <a class="logo" href="#" aria-label="CleverPays home">
+    <span class="logo-mark" aria-hidden="true"></span>
+    <span>CleverPays</span>
+  </a>
+  <div class="nav-right">
+    <div class="locale-toggle" role="group" aria-label="Language">
+      <button class="locale-btn active" data-locale="en" aria-pressed="true">EN</button>
+      <button class="locale-btn" data-locale="fr" aria-pressed="false">FR</button>
+    </div>
+    <a class="nav-cta" href="#cta" data-i18n="navCta">Upload Statement</a>
+  </div>
+</nav>
+
+<main class="container">
+
+  <section class="hero">
+    <div class="eyebrow" data-i18n="eyebrow">Merchant Tools · Effective Rate</div>
+    <h1 data-i18n="heroTitle">What are you actually paying?</h1>
+    <p class="hero-sub" data-i18n="heroSub">A 30-second estimate of your blended effective rate. Adjust the inputs to match your business. Upload your statement when you want a precise read.</p>
+  </section>
+
+  <section class="calc-grid">
+
+    <!-- INPUTS -->
+    <div class="panel" aria-labelledby="inputs-title">
+      <div class="panel-title" id="inputs-title" data-i18n="inputsTitle">Your business</div>
+
+      <div class="input-group">
+        <div class="input-label">
+          <label for="volume" class="input-name" data-i18n="volumeLabel">Monthly card volume</label>
+          <span class="input-value" id="volume-value">$50,000</span>
+        </div>
+        <input type="range" id="volume" class="slider" min="5000" max="2000000" step="5000" value="50000" aria-describedby="volume-hint">
+        <div class="input-hint" id="volume-hint" data-i18n="volumeHint">Total dollars processed through cards per month, in-person + online combined.</div>
+      </div>
+
+      <div class="input-group">
+        <div class="input-label">
+          <label for="ticket" class="input-name" data-i18n="ticketLabel">Average ticket</label>
+          <span class="input-value" id="ticket-value">$45</span>
+        </div>
+        <input type="range" id="ticket" class="slider" min="5" max="500" step="1" value="45" aria-describedby="ticket-hint">
+        <div class="input-hint" id="ticket-hint" data-i18n="ticketHint">The average dollar amount per transaction. Lower tickets carry more per-transaction fee impact.</div>
+      </div>
+
+      <div class="input-group">
+        <div class="input-label">
+          <span class="input-name" data-i18n="channelLabel">Where do you accept payments?</span>
+        </div>
+        <div class="segmented" role="group" aria-label="Channel mix">
+          <button class="seg-btn active" data-channel="inperson" data-i18n="channelInPerson">In-person</button>
+          <button class="seg-btn" data-channel="online" data-i18n="channelOnline">Online</button>
+          <button class="seg-btn" data-channel="both" data-i18n="channelBoth">Both</button>
+        </div>
+        <div class="channel-split" id="channel-split">
+          <div class="channel-split-label">
+            <span data-i18n="splitInPerson">In-person <span id="inperson-pct">60</span>%</span>
+            <span data-i18n="splitOnline">Online <span id="online-pct">40</span>%</span>
+          </div>
+          <input type="range" id="split" class="slider" min="0" max="100" step="5" value="60" aria-label="Split between in-person and online">
+        </div>
+      </div>
+
+      <div class="input-group">
+        <div class="input-label">
+          <span class="input-name" data-i18n="cardMixLabel">Typical card mix</span>
+        </div>
+        <div class="segmented" role="group" aria-label="Card mix">
+          <button class="seg-btn" data-cardmix="debit" data-i18n="cardMixDebit">Mostly debit</button>
+          <button class="seg-btn active" data-cardmix="mixed" data-i18n="cardMixMixed">Mixed</button>
+          <button class="seg-btn" data-cardmix="premium" data-i18n="cardMixPremium">Premium credit</button>
+        </div>
+        <div class="input-hint" data-i18n="cardMixHint">Premium cards (rewards, business, international) carry higher interchange.</div>
+      </div>
+
+      <div class="input-group">
+        <label class="check-row" id="integration-row">
+          <input type="checkbox" id="integration">
+          <span class="check-row-text" data-i18n="integrationLabel">I run an integrated POS or eCommerce stack</span>
+        </label>
+      </div>
+
+    </div>
+
+    <!-- OUTPUTS -->
+    <div class="panel output-panel" aria-labelledby="output-title" aria-live="polite">
+      <div class="save-row">
+        <button class="save-btn" id="copy-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          <span data-i18n="copyBtn">Copy link</span>
+        </button>
+        <button class="save-btn" id="email-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <span data-i18n="emailBtn">Email me</span>
+        </button>
+      </div>
+
+      <div class="output-label" id="output-title" data-i18n="outputLabel">Estimated effective rate</div>
+      <div class="rate-range" id="rate-range">2.10% – 2.60%</div>
+      <div class="rate-meta">
+        <span data-i18n="midpointLabel">Midpoint:</span> <strong id="rate-mid">2.35%</strong>
+      </div>
+
+      <div class="interp" id="interp">
+        <span data-i18n="interpPrefix">For a profile like yours,</span> <span class="interp-em" data-i18n="interpProfileInPerson">in-person retail at this volume</span><span data-i18n="interpSuffix"> typically lands in this band. Most of the variation comes from card mix and average ticket.</span>
+      </div>
+
+      <div class="sparkline-wrap">
+        <div class="sparkline-label" data-i18n="sparklineLabel">How rate moves with volume</div>
+        <svg class="sparkline" id="sparkline" viewBox="0 0 400 80" preserveAspectRatio="none" role="img" aria-label="Sparkline showing how the effective rate varies with monthly volume">
+          <defs>
+            <linearGradient id="spark-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#25C78F" stop-opacity="0.35"/>
+              <stop offset="100%" stop-color="#25C78F" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <path class="spark-area" id="spark-area" d=""/>
+          <path class="spark-line" id="spark-line" d=""/>
+          <circle class="spark-dot-pulse" id="spark-dot-pulse" cx="0" cy="0" r="10"/>
+          <circle class="spark-dot" id="spark-dot" cx="0" cy="0" r="4"/>
+        </svg>
+      </div>
+
+      <div class="cost-row">
+        <span class="cost-label" data-i18n="costMonthly">Estimated monthly cost</span>
+        <span class="cost-value" id="cost-monthly">$1,050 – $1,300</span>
+      </div>
+      <div class="cost-row">
+        <span class="cost-label" data-i18n="costAnnual">Estimated annual cost</span>
+        <span class="cost-value" id="cost-annual">$12,600 – $15,600</span>
+      </div>
+    </div>
+
+  </section>
+
+  <div class="disclaimer-band" role="note">
+    <div class="disclaimer-icon" aria-hidden="true">!</div>
+    <div class="disclaimer-text">
+      <strong data-i18n="disclaimerTitle">Illustrative only.</strong>
+      <span data-i18n="disclaimerBody"> Actual rates depend on your specific card mix, processor agreement, monthly fees, hardware costs, and other factors that vary per merchant. The only way to know what you're really paying is to read your statement — and that's exactly what we do, for free, in 24 hours.</span>
+    </div>
+  </div>
+
+  <section class="cta-band" id="cta">
+    <div class="cta-band-content">
+      <h2 class="cta-title" data-i18n="ctaTitle">Want the real number?</h2>
+      <p class="cta-sub" data-i18n="ctaSub">Upload your last statement. We'll map it line by line, give you a precise effective rate, and tell you what's worth changing.</p>
+      <div class="cta-buttons">
+        <a href="#" class="btn-primary" data-i18n="ctaPrimary">Upload Your Statement</a>
+        <a href="#" class="btn-secondary" data-i18n="ctaSecondary">Talk to a Specialist</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-row">
+      <span data-i18n="footerCopy">© 2026 CleverPays · Toronto / Montréal · Bilingual EN/FR · Quebec-built</span>
+      <span><a href="#" data-i18n="footerPrivacy">Privacy</a> · <a href="#" data-i18n="footerTools">All merchant tools →</a></span>
+    </div>
+  </footer>
+
+</main>
+
+<script>
+// ============================================================
+// i18n
+// ============================================================
+const I18N = {
+  en: {
+    navCta:"Upload Statement",
+    eyebrow:"Merchant Tools · Effective Rate",
+    heroTitle:"What are you actually paying?",
+    heroSub:"A 30-second estimate of your blended effective rate. Adjust the inputs to match your business. Upload your statement when you want a precise read.",
+    inputsTitle:"Your business",
+    volumeLabel:"Monthly card volume",
+    volumeHint:"Total dollars processed through cards per month, in-person + online combined.",
+    ticketLabel:"Average ticket",
+    ticketHint:"The average dollar amount per transaction. Lower tickets carry more per-transaction fee impact.",
+    channelLabel:"Where do you accept payments?",
+    channelInPerson:"In-person",
+    channelOnline:"Online",
+    channelBoth:"Both",
+    splitInPerson:"In-person",
+    splitOnline:"Online",
+    cardMixLabel:"Typical card mix",
+    cardMixDebit:"Mostly debit",
+    cardMixMixed:"Mixed",
+    cardMixPremium:"Premium credit",
+    cardMixHint:"Premium cards (rewards, business, international) carry higher interchange.",
+    integrationLabel:"I run an integrated POS or eCommerce stack",
+    copyBtn:"Copy link",
+    emailBtn:"Email me",
+    copiedBtn:"Copied",
+    outputLabel:"Estimated effective rate",
+    midpointLabel:"Midpoint:",
+    sparklineLabel:"How rate moves with volume",
+    costMonthly:"Estimated monthly cost",
+    costAnnual:"Estimated annual cost",
+    disclaimerTitle:"Illustrative only.",
+    disclaimerBody:" Actual rates depend on your specific card mix, processor agreement, monthly fees, hardware costs, and other factors that vary per merchant. The only way to know what you're really paying is to read your statement — and that's exactly what we do, for free, in 24 hours.",
+    ctaTitle:"Want the real number?",
+    ctaSub:"Upload your last statement. We'll map it line by line, give you a precise effective rate, and tell you what's worth changing.",
+    ctaPrimary:"Upload Your Statement",
+    ctaSecondary:"Talk to a Specialist",
+    footerCopy:"© 2026 CleverPays · Toronto / Montréal · Bilingual EN/FR · Quebec-built",
+    footerPrivacy:"Privacy",
+    footerTools:"All merchant tools →",
+    profiles: {
+      inperson:{ retail:"in-person retail at this volume", restaurant:"in-person hospitality at this volume" },
+      online:"online merchants at this volume",
+      both:"multi-channel merchants at this volume"
+    },
+    interpPrefix:"For a profile like yours,",
+    interpSuffix:" typically lands in this band. Most of the variation comes from card mix and average ticket."
+  },
+  fr: {
+    navCta:"Téléverser un relevé",
+    eyebrow:"Outils marchands · Taux effectif",
+    heroTitle:"Que payez-vous vraiment?",
+    heroSub:"Une estimation en 30 secondes de votre taux effectif. Ajustez les valeurs selon votre entreprise. Téléversez votre relevé pour un chiffre précis.",
+    inputsTitle:"Votre entreprise",
+    volumeLabel:"Volume mensuel par carte",
+    volumeHint:"Total des paiements par carte par mois, en magasin et en ligne combinés.",
+    ticketLabel:"Panier moyen",
+    ticketHint:"Le montant moyen par transaction. Les paniers plus faibles portent un impact plus élevé des frais fixes par transaction.",
+    channelLabel:"Où acceptez-vous les paiements?",
+    channelInPerson:"En magasin",
+    channelOnline:"En ligne",
+    channelBoth:"Les deux",
+    splitInPerson:"En magasin",
+    splitOnline:"En ligne",
+    cardMixLabel:"Mélange de cartes typique",
+    cardMixDebit:"Majoritairement débit",
+    cardMixMixed:"Mixte",
+    cardMixPremium:"Crédit premium",
+    cardMixHint:"Les cartes premium (récompenses, affaires, internationales) portent un interchange plus élevé.",
+    integrationLabel:"J'utilise un PDV intégré ou une plateforme e-commerce",
+    copyBtn:"Copier le lien",
+    emailBtn:"Recevoir par courriel",
+    copiedBtn:"Copié",
+    outputLabel:"Taux effectif estimé",
+    midpointLabel:"Point médian :",
+    sparklineLabel:"Évolution du taux selon le volume",
+    costMonthly:"Coût mensuel estimé",
+    costAnnual:"Coût annuel estimé",
+    disclaimerTitle:"Estimation à titre indicatif seulement.",
+    disclaimerBody:" Les taux réels dépendent de votre mélange de cartes, de votre entente avec le processeur, des frais mensuels, des coûts matériels et d'autres facteurs propres à chaque marchand. La seule façon de savoir ce que vous payez vraiment, c'est de lire votre relevé — et c'est exactement ce que nous faisons, gratuitement, en 24 heures.",
+    ctaTitle:"Vous voulez le vrai chiffre?",
+    ctaSub:"Téléversez votre dernier relevé. Nous le décortiquons ligne par ligne, donnons un taux effectif précis et identifions ce qui vaut la peine d'être changé.",
+    ctaPrimary:"Téléverser mon relevé",
+    ctaSecondary:"Parler à un spécialiste",
+    footerCopy:"© 2026 CleverPays · Toronto / Montréal · Bilingue EN/FR · Conçu au Québec",
+    footerPrivacy:"Confidentialité",
+    footerTools:"Tous les outils marchands →",
+    profiles: {
+      inperson:{ retail:"un commerce de détail en magasin à ce volume", restaurant:"un commerce de restauration à ce volume" },
+      online:"un marchand en ligne à ce volume",
+      both:"un marchand multicanal à ce volume"
+    },
+    interpPrefix:"Pour un profil comme le vôtre,",
+    interpSuffix:" se situe généralement dans cette plage. La majeure partie de la variation provient du mélange de cartes et du panier moyen."
+  }
+};
+
+let locale = "en";
+function applyLocale(loc) {
+  locale = loc;
+  document.documentElement.lang = loc === "fr" ? "fr-CA" : "en-CA";
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (I18N[loc][key]) el.textContent = I18N[loc][key];
+  });
+  document.querySelectorAll('.locale-btn').forEach(b => {
+    const active = b.dataset.locale === loc;
+    b.classList.toggle('active', active);
+    b.setAttribute('aria-pressed', active ? "true" : "false");
+  });
+  recompute();
+}
+
+// ============================================================
+// State
+// ============================================================
+const state = {
+  volume: 50000,
+  ticket: 45,
+  channel: "inperson",
+  splitInPerson: 60,
+  cardMix: "mixed",
+  integration: false,
+};
+
+// ============================================================
+// RATE CONFIG — update these values when interchange changes.
+// All values are percentage points. Last updated: 2026-05-12.
+// ============================================================
+const RATE_CONFIG = {
+  // Base blended effective rate by channel (interchange + assessments + typical processor markup)
+  channelBase: {
+    inPerson: 1.85,
+    online:   2.55
+  },
+  // Card-mix adjustment applied to base
+  cardMixAdjustment: {
+    debit:   -0.30,
+    mixed:    0.00,
+    premium:  0.35
+  },
+  // Blended fixed-per-transaction fee (interchange + auth)
+  perTransactionFee: 0.10,
+  // Volume tier discount: starts at this threshold, scales up to maxDiscount
+  volumeDiscount: {
+    thresholdMonthly: 100000,
+    scalePerMillion:  0.35,
+    maxDiscount:      0.30
+  },
+  // Range uncertainty applied as ± to the midpoint
+  rangeUncertainty: 0.25,
+  // Floor and ceiling on rendered rate
+  floor: 1.40,
+  ceiling: 4.20
+};
+
+// ============================================================
+// Compute
+// ============================================================
+function estimateRate(volume, ticket, channel, splitInPerson, cardMix) {
+  const C = RATE_CONFIG;
+  let pctInPerson, pctOnline;
+  if (channel === "inperson") { pctInPerson = 100; pctOnline = 0; }
+  else if (channel === "online") { pctInPerson = 0; pctOnline = 100; }
+  else { pctInPerson = splitInPerson; pctOnline = 100 - splitInPerson; }
+
+  let base = (C.channelBase.inPerson * pctInPerson + C.channelBase.online * pctOnline) / 100;
+  base += C.cardMixAdjustment[cardMix] || 0;
+
+  // per-transaction impact
+  const perTxImpact = (C.perTransactionFee / Math.max(ticket, 1)) * 100;
+  base += perTxImpact;
+
+  // volume tier discount
+  let volumeDiscount = 0;
+  if (volume > C.volumeDiscount.thresholdMonthly) {
+    volumeDiscount = Math.min(
+      C.volumeDiscount.maxDiscount,
+      ((volume - C.volumeDiscount.thresholdMonthly) / 1000000) * C.volumeDiscount.scalePerMillion
+    );
+  }
+  base -= volumeDiscount;
+
+  base = Math.max(C.floor, Math.min(C.ceiling, base));
+
+  return { low: base - C.rangeUncertainty, high: base + C.rangeUncertainty, mid: base };
+}
+
+function formatPct(v) { return v.toFixed(2) + "%"; }
+function formatCurrency(v) {
+  if (locale === "fr") {
+    return "$" + v.toLocaleString('fr-CA', { maximumFractionDigits: 0 }).replace(/,/g," ");
+  }
+  return "$" + v.toLocaleString('en-CA', { maximumFractionDigits: 0 });
+}
+function formatVolume(v) {
+  if (v >= 1000000) return (v / 1000000).toFixed(v % 1000000 === 0 ? 0 : 1) + (locale === "fr" ? " M$" : "M");
+  if (v >= 1000) return (v / 1000).toFixed(0) + "K";
+  return v.toString();
+}
+
+// ============================================================
+// Sparkline
+// ============================================================
+function drawSparkline() {
+  const svg = document.getElementById('sparkline');
+  const w = 400, h = 80;
+  const minV = 5000, maxV = 2000000;
+  const steps = 60;
+  const points = [];
+  for (let i = 0; i <= steps; i++) {
+    const v = minV + (maxV - minV) * (i / steps);
+    const r = estimateRate(v, state.ticket, state.channel, state.splitInPerson, state.cardMix);
+    points.push({ v, rate: r.mid });
+  }
+  const rates = points.map(p => p.rate);
+  const minR = Math.min(...rates) - 0.1;
+  const maxR = Math.max(...rates) + 0.1;
+  const xScale = v => ((v - minV) / (maxV - minV)) * w;
+  const yScale = r => h - ((r - minR) / (maxR - minR)) * h * 0.85 - 6;
+
+  const pathD = points.map((p, i) => (i === 0 ? "M" : "L") + xScale(p.v) + " " + yScale(p.rate)).join(" ");
+  const areaD = pathD + ` L ${w} ${h} L 0 ${h} Z`;
+  document.getElementById('spark-line').setAttribute('d', pathD);
+  document.getElementById('spark-area').setAttribute('d', areaD);
+
+  // current marker
+  const currentR = estimateRate(state.volume, state.ticket, state.channel, state.splitInPerson, state.cardMix);
+  const cx = xScale(state.volume);
+  const cy = yScale(currentR.mid);
+  document.getElementById('spark-dot').setAttribute('cx', cx);
+  document.getElementById('spark-dot').setAttribute('cy', cy);
+  document.getElementById('spark-dot-pulse').setAttribute('cx', cx);
+  document.getElementById('spark-dot-pulse').setAttribute('cy', cy);
+}
+
+// ============================================================
+// Render
+// ============================================================
+function recompute() {
+  const r = estimateRate(state.volume, state.ticket, state.channel, state.splitInPerson, state.cardMix);
+
+  document.getElementById('rate-range').textContent = formatPct(r.low) + " – " + formatPct(r.high);
+  document.getElementById('rate-mid').textContent = formatPct(r.mid);
+
+  const monthlyLow = state.volume * (r.low / 100);
+  const monthlyHigh = state.volume * (r.high / 100);
+  document.getElementById('cost-monthly').textContent = formatCurrency(monthlyLow) + " – " + formatCurrency(monthlyHigh);
+  document.getElementById('cost-annual').textContent = formatCurrency(monthlyLow * 12) + " – " + formatCurrency(monthlyHigh * 12);
+
+  document.getElementById('volume-value').textContent = formatCurrency(state.volume);
+  document.getElementById('ticket-value').textContent = formatCurrency(state.ticket);
+
+  // interpretation
+  const T = I18N[locale];
+  let profileLabel;
+  if (state.channel === "inperson") {
+    profileLabel = T.profiles.inperson.retail;
+  } else if (state.channel === "online") {
+    profileLabel = T.profiles.online;
+  } else {
+    profileLabel = T.profiles.both;
+  }
+  document.getElementById('interp').innerHTML =
+    T.interpPrefix + ' <span class="interp-em">' + profileLabel + '</span>' + T.interpSuffix;
+
+  // channel split visibility + label
+  document.getElementById('channel-split').classList.toggle('visible', state.channel === "both");
+  document.getElementById('inperson-pct').textContent = state.splitInPerson;
+  document.getElementById('online-pct').textContent = 100 - state.splitInPerson;
+
+  drawSparkline();
+}
+
+// ============================================================
+// Wire up inputs
+// ============================================================
+document.getElementById('volume').addEventListener('input', e => {
+  state.volume = parseInt(e.target.value, 10);
+  recompute();
+});
+document.getElementById('ticket').addEventListener('input', e => {
+  state.ticket = parseInt(e.target.value, 10);
+  recompute();
+});
+document.getElementById('split').addEventListener('input', e => {
+  state.splitInPerson = parseInt(e.target.value, 10);
+  recompute();
+});
+document.querySelectorAll('[data-channel]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    state.channel = btn.dataset.channel;
+    document.querySelectorAll('[data-channel]').forEach(b => b.classList.toggle('active', b === btn));
+    recompute();
+  });
+});
+document.querySelectorAll('[data-cardmix]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    state.cardMix = btn.dataset.cardmix;
+    document.querySelectorAll('[data-cardmix]').forEach(b => b.classList.toggle('active', b === btn));
+    recompute();
+  });
+});
+const intCheckbox = document.getElementById('integration');
+intCheckbox.addEventListener('change', e => {
+  state.integration = e.target.checked;
+  document.getElementById('integration-row').classList.toggle('checked', e.target.checked);
+  recompute();
+});
+
+document.querySelectorAll('.locale-btn').forEach(btn => {
+  btn.addEventListener('click', () => applyLocale(btn.dataset.locale));
+});
+
+// Copy link with state encoded
+document.getElementById('copy-btn').addEventListener('click', () => {
+  const params = new URLSearchParams({
+    v: state.volume, t: state.ticket, c: state.channel, s: state.splitInPerson,
+    m: state.cardMix, i: state.integration ? "1" : "0", lang: locale
+  });
+  const url = window.location.href.split('?')[0] + '?' + params.toString();
+  navigator.clipboard.writeText(url).then(() => {
+    const btn = document.getElementById('copy-btn');
+    const span = btn.querySelector('span');
+    const original = span.textContent;
+    span.textContent = I18N[locale].copiedBtn;
+    btn.classList.add('copied');
+    setTimeout(() => { span.textContent = original; btn.classList.remove('copied'); }, 1800);
+  });
+});
+
+document.getElementById('email-btn').addEventListener('click', () => {
+  // placeholder: in production this opens a small modal asking for email
+  alert(locale === "fr"
+    ? "Dans la version finale, ceci ouvre une fenêtre pour entrer votre courriel et recevoir vos résultats."
+    : "In production, this opens a modal to capture your email and send the results.");
+});
+
+// Restore from URL if present
+(function restoreFromURL() {
+  const p = new URLSearchParams(window.location.search);
+  if (p.has('v')) state.volume = parseInt(p.get('v'), 10);
+  if (p.has('t')) state.ticket = parseInt(p.get('t'), 10);
+  if (p.has('c')) state.channel = p.get('c');
+  if (p.has('s')) state.splitInPerson = parseInt(p.get('s'), 10);
+  if (p.has('m')) state.cardMix = p.get('m');
+  if (p.has('i')) state.integration = p.get('i') === "1";
+  if (p.has('lang')) locale = p.get('lang');
+  document.getElementById('volume').value = state.volume;
+  document.getElementById('ticket').value = state.ticket;
+  document.getElementById('split').value = state.splitInPerson;
+  document.querySelectorAll('[data-channel]').forEach(b => b.classList.toggle('active', b.dataset.channel === state.channel));
+  document.querySelectorAll('[data-cardmix]').forEach(b => b.classList.toggle('active', b.dataset.cardmix === state.cardMix));
+  intCheckbox.checked = state.integration;
+  document.getElementById('integration-row').classList.toggle('checked', state.integration);
+})();
+
+applyLocale(locale);
+</script>
+
+</body>
+</html>
