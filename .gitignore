@@ -48,10 +48,12 @@ Thumbs.db
 # build artifacts
 /skassociates-static-html.zip
 
-# cleverpays / payment-processing static assets — belong to a different
+# cleverpays / payment-processing assets — belong to a different
 # project, preserved at D:\Claude\payment-processing-project\
 /public/home.html
 /public/calculator.html
 /public/styles.css
 /public/business-solutions/
 /public/payment-processing/
+/CleverPays*.md
+/cleverpays*.md
