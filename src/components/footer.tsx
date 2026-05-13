@@ -122,31 +122,96 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Divider + Copyright */}
+      {/* Bottom matter: disclaimer + legal links + copyright */}
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="border-t border-white/5 py-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-          <div className="flex flex-col sm:flex-row sm:items-center gap-x-3 gap-y-1">
-            <p className="text-[length:--font-size-caption] text-slate-500">
-              &copy; 2026 S. Kopstick &amp; Associates Inc. All rights reserved.
-            </p>
-            <span className="hidden sm:inline text-slate-600" aria-hidden="true">
+        <div className="border-t border-white/5 pt-8 pb-8 space-y-6">
+          {/* Legal disclaimer */}
+          <p className="text-[length:--font-size-caption] text-slate-500 leading-relaxed max-w-5xl">
+            The information on this website is provided for general
+            informational purposes only and does not constitute legal,
+            accounting, or financial advice. Spire&reg;, Adagio&reg;,
+            PayDirt&reg;, Crystal Reports&reg;, and Microsoft Access&reg; are
+            trademarks of their respective owners. S. Kopstick &amp; Associates
+            Inc. is an independent consulting firm and is not affiliated with
+            the publishers of these products except as an authorized partner
+            where indicated. Always consult a qualified professional for advice
+            specific to your business situation.
+          </p>
+
+          {/* Legal page links */}
+          <nav
+            aria-label="Legal"
+            className="flex flex-wrap items-center gap-x-3 gap-y-2 text-[length:--font-size-caption] text-slate-400"
+          >
+            <Link
+              href="/privacy"
+              className="hover:text-slate-200 transition-colors duration-200"
+            >
+              Privacy Policy
+            </Link>
+            <span className="text-slate-600" aria-hidden="true">
               &middot;
             </span>
-            <p className="text-[length:--font-size-caption] text-slate-500">
-              Serving clients across Canada
+            <Link
+              href="/terms"
+              className="hover:text-slate-200 transition-colors duration-200"
+            >
+              Terms of Use
+            </Link>
+            <span className="text-slate-600" aria-hidden="true">
+              &middot;
+            </span>
+            <Link
+              href="/cookies"
+              className="hover:text-slate-200 transition-colors duration-200"
+            >
+              Cookie Statement
+            </Link>
+            <span className="text-slate-600" aria-hidden="true">
+              &middot;
+            </span>
+            <Link
+              href="/accessibility"
+              className="hover:text-slate-200 transition-colors duration-200"
+            >
+              Accessibility
+            </Link>
+            <span className="text-slate-600" aria-hidden="true">
+              &middot;
+            </span>
+            <Link
+              href="/disclaimer"
+              className="hover:text-slate-200 transition-colors duration-200"
+            >
+              Disclaimer
+            </Link>
+          </nav>
+
+          {/* Copyright row */}
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pt-2 border-t border-white/5">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-x-3 gap-y-1 pt-6">
+              <p className="text-[length:--font-size-caption] text-slate-500">
+                &copy; 2026 S. Kopstick &amp; Associates Inc. All rights reserved.
+              </p>
+              <span className="hidden sm:inline text-slate-600" aria-hidden="true">
+                &middot;
+              </span>
+              <p className="text-[length:--font-size-caption] text-slate-500">
+                Serving clients across Canada
+              </p>
+            </div>
+            <p className="text-[length:--font-size-caption] text-slate-500 sm:pt-6">
+              Handcrafted by{" "}
+              <a
+                href="https://talkerstein.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-slate-300 hover:text-accent-400 transition-colors duration-200"
+              >
+                Talkerstein Consulting
+              </a>
             </p>
           </div>
-          <p className="text-[length:--font-size-caption] text-slate-500">
-            Handcrafted by{" "}
-            <a
-              href="https://talkerstein.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-slate-300 hover:text-accent-400 transition-colors duration-200"
-            >
-              Talkerstein Consulting
-            </a>
-          </p>
         </div>
       </div>
     </footer>

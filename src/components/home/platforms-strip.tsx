@@ -35,19 +35,19 @@ const platforms: Platform[] = [
     name: "PayDirt Payroll",
     subtitle: "Payroll",
     logo: "/logos/paydirt.png",
-    maxHeight: "max-h-10",
+    maxHeight: "max-h-16",
   },
   {
     name: "Crystal Reports",
     subtitle: "Reporting",
     logo: "/logos/crystal-reports.png",
-    maxHeight: "max-h-14",
+    maxHeight: "max-h-16",
   },
   {
     name: "Microsoft Access",
     subtitle: "Custom Databases",
     logo: "/logos/microsoft-access.png",
-    maxHeight: "max-h-14",
+    maxHeight: "max-h-16",
   },
 ];
 

@@ -328,27 +328,6 @@ export function Hero() {
               ))}
             </motion.div>
 
-            {/* Founder card */}
-            <motion.div
-              variants={fadeUp}
-              className="mt-8 inline-flex items-center gap-4 rounded-xl bg-navy-800/40 border border-white/5 px-4 py-3"
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&fit=crop&crop=faces"
-                alt="Samuel Kopstick"
-                referrerPolicy="no-referrer"
-                className="w-12 h-12 rounded-full object-cover border border-white/10"
-              />
-              <div className="leading-tight">
-                <div className="text-sm font-semibold text-ivory-100">
-                  Samuel Kopstick
-                </div>
-                <div className="text-xs text-slate-400">
-                  Founder &amp; Principal Consultant
-                </div>
-              </div>
-            </motion.div>
           </motion.div>
 
           {/* RIGHT — 2/5 */}

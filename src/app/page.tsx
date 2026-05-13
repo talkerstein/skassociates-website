@@ -8,6 +8,7 @@ import { Industries } from "@/components/home/industries";
 import { Process } from "@/components/home/process";
 import { CaseStudies } from "@/components/home/case-studies";
 import { Testimonials } from "@/components/home/testimonials";
+import { ThirdPartyReviews } from "@/components/home/third-party-reviews";
 import { AboutSamuel } from "@/components/home/about-samuel";
 import { FinalCTA } from "@/components/home/final-cta";
 import { Faq } from "@/components/ui/faq";
@@ -26,6 +27,7 @@ export default function HomePage() {
       <Process />
       <CaseStudies />
       <Testimonials />
+      <ThirdPartyReviews />
       <AboutSamuel />
       <Faq items={homeFaqs} heading="Common questions, answered plainly." />
       <FinalCTA />

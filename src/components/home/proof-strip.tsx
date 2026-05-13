@@ -76,14 +76,12 @@ export function ProofStrip() {
   const stats = [
     { value: '30+', label: 'Years of Expertise', delay: 0 },
     { value: '100+', label: 'Businesses Supported', delay: 0.1 },
-    { value: '2', label: 'Certified Platforms', delay: 0.2 },
-    { value: '3', label: 'Industry Specializations', delay: 0.3 },
   ];
 
   return (
     <section className="bg-ivory-100 border-y border-ivory-200">
-      <div className="mx-auto max-w-5xl px-6 lg:px-8 py-16 lg:py-20">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4">
+      <div className="mx-auto max-w-3xl px-6 lg:px-8 py-16 lg:py-20">
+        <div className="grid grid-cols-2 gap-8 md:gap-4">
           {stats.map((stat) => (
             <Stat key={stat.label} {...stat} />
           ))}

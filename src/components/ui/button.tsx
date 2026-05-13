@@ -5,7 +5,7 @@ import { ChevronRight } from "lucide-react";
 import { clsx } from "clsx";
 import type { ComponentPropsWithoutRef, ReactNode } from "react";
 
-type Variant = "primary" | "secondary" | "accent" | "ghost";
+type Variant = "primary" | "secondary" | "secondaryDark" | "accent" | "ghost";
 type Size = "sm" | "md" | "lg";
 
 interface ButtonBaseProps {
@@ -33,6 +33,8 @@ const variantStyles: Record<Variant, string> = {
     "bg-navy-900 text-ivory-50 hover:bg-navy-800 shadow-sm hover:shadow-md",
   secondary:
     "border border-navy-900/20 text-navy-900 hover:bg-navy-900 hover:text-ivory-50",
+  secondaryDark:
+    "border border-white/20 text-ivory-50 hover:bg-white hover:text-navy-900",
   accent:
     "bg-accent-600 text-white hover:bg-accent-500 shadow-sm hover:shadow-md",
   ghost:

@@ -180,10 +180,10 @@ export default function SpirePage() {
               </Button>
               <Button
                 href="/solutions"
-                variant="secondary"
+                variant="secondaryDark"
                 size="lg"
                 arrow
-                className="border-white/15 text-ivory-50 hover:bg-white hover:text-navy-900"
+                
               >
                 All Solutions
               </Button>

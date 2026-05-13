@@ -11,13 +11,15 @@ const testimonials = [
     name: "Bobby Bennett",
     title: "Co-Owner",
     company: "Kilo Gateaux",
+    logoLabel: "KILO GATEAUX",
   },
   {
     quote:
       "Samuel was a key element in our Adagio conversion. His knowledge of the software is excellent and he was always available when we needed guidance.",
     name: "Lester Frischman",
     title: "President/Owner",
-    company: "",
+    company: "Frischman Group",
+    logoLabel: "FRISCHMAN GROUP",
   },
   {
     quote:
@@ -25,6 +27,7 @@ const testimonials = [
     name: "Hannah Mestel",
     title: "Comptroller",
     company: "Non-Profit Organization",
+    logoLabel: "COMMUNITY NFP",
   },
 ];
 
@@ -66,6 +69,12 @@ export function Testimonials() {
               &ldquo;{testimonial.quote}&rdquo;
             </blockquote>
             <div>
+              {/* TODO: Replace company name placeholder with actual logo when client supplies image — save to /public/logos/clients/[slug].png */}
+              <div className="mb-4 inline-flex items-center justify-center h-11 rounded-md bg-slate-100 px-3">
+                <span className="text-[11px] font-bold tracking-wider uppercase text-navy-900">
+                  {testimonial.logoLabel}
+                </span>
+              </div>
               <p className="text-[length:--font-size-body-sm] font-semibold text-ivory-50">
                 {testimonial.name}
               </p>
