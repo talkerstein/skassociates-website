@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Adagio Accounting Solutions | S. Kopstick & Associates',
+  title: 'Adagio — Proven Financial Reporting and Control | S. Kopstick & Associates',
   description:
-    'Expert Adagio implementation, configuration, and support. Modular financial management with strong controls, audit trails, and reporting for accounting-focused organizations.',
+    'Adagio offers exceptional financial reporting, departmental and consolidated reporting, detailed budgeting, GridView executive snapshots, and a strong fit for non-profits. Ongoing support for existing Adagio customers.',
 };
 
 export default function AdagioLayout({

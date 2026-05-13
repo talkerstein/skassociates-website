@@ -79,7 +79,8 @@ export function EolBanner() {
                   </span>{" "}
                   <span className="hidden sm:inline text-slate-500">·</span>{" "}
                   <span>
-                    Plan your migration to Spire or Adagio before support ends.
+                    Spire is the natural upgrade — plan your migration before
+                    support ends.
                   </span>{" "}
                   <span className="hidden md:inline text-slate-500">·</span>{" "}
                   <span className="inline-flex items-center gap-1.5 whitespace-nowrap">

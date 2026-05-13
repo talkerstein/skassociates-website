@@ -2,18 +2,18 @@
 
 import { motion } from 'framer-motion';
 import {
-  ArrowRight,
+  ArrowUpRight,
   Package,
-  ShoppingCart,
-  ClipboardList,
-  BarChart3,
+  ListFilter,
+  Download,
+  Boxes,
+  Building2,
+  Bell,
+  GraduationCap,
   Layers,
+  Network,
+  MapPin,
   CheckCircle2,
-  Users,
-  TrendingUp,
-  Settings,
-  Headphones,
-  Quote,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Faq } from '@/components/ui/faq';
@@ -38,87 +38,70 @@ const stagger = {
 };
 
 /* ------------------------------------------------------------------ */
-/*  Data                                                               */
+/*  Data — Samuel's bullets, expanded                                  */
 /* ------------------------------------------------------------------ */
 
 const capabilities = [
   {
     icon: Package,
-    title: 'Real-Time Inventory',
+    title: 'Strong Inventory & Order Entry Management',
     description:
-      'Track stock across multiple locations with live visibility into quantities, costs, and movements as transactions happen.',
+      'Maintain and manage Items, Kits, Bills of Materials, and Lot and Serial numbers with full traceability. Run production of raw materials into finished goods, plan jobs end-to-end, and price differently for individual Customers or Customer Groups — all in one place.',
   },
   {
-    icon: ClipboardList,
-    title: 'Purchase Order Management',
+    icon: ListFilter,
+    title: 'Filters & Searches',
     description:
-      'Automate purchasing workflows from requisition through receipt, with approval controls and vendor performance tracking.',
+      'Filter records to find the exact data you need in seconds. Save filters for the searches you run again and again, so the work that used to take ten minutes takes ten seconds.',
   },
   {
-    icon: ShoppingCart,
-    title: 'Sales Order Processing',
+    icon: Download,
+    title: 'One-Click Export to Excel',
     description:
-      'Manage the full order-to-cash cycle with real-time availability checks, backorder management, and integrated shipping.',
+      'Every module list has a one-button export to Excel — straight from the records you are already looking at. No re-keying, no custom report request, no waiting.',
   },
   {
-    icon: BarChart3,
-    title: 'Integrated Accounting',
+    icon: Boxes,
+    title: '20 Core Modules Included',
     description:
-      'General ledger, accounts payable, accounts receivable, and banking — all connected to your operations in a single system.',
+      'G/L, A/R, A/P, Quotes, Job Costing, Inventory Control, Bills of Materials, Canadian Payroll, Sales and Purchase Orders, multi-currency and more — included in the core system rather than sold as bolt-ons.',
+  },
+  {
+    icon: Building2,
+    title: 'Unlimited Companies',
+    description:
+      'Maintain separate databases for as many companies as you need at no additional fee. Useful for holding companies, multiple entities, or keeping prior-year data live and queryable.',
+  },
+  {
+    icon: Bell,
+    title: 'Built-In Alerts, CRM and Calendar',
+    description:
+      'Set alerts so key follow-ups do not slip. Spire ships with native CRM and Calendar modules — assign any user to follow up on a specific date and a pop-up tells them exactly what needs to happen.',
+  },
+  {
+    icon: GraduationCap,
+    title: 'Online Training Videos',
+    description:
+      'Short, focused video instructions are recorded on nearly every topic and accessible directly through the Help feature. New hires get up to speed on their own time.',
+  },
+  {
+    icon: Network,
+    title: 'Complete Integration Throughout the System',
+    description:
+      'Every module is integrated. View and maintain sales and purchase orders wherever they live — on the Customer, on the Vendor, or on the Inventory item — and the data stays in sync automatically.',
+  },
+  {
+    icon: MapPin,
+    title: 'Multiple Locations',
+    description:
+      'Native multi-location inventory and operational support. Track stock, costs, and movement across warehouses, branches, or retail sites without external workarounds.',
   },
   {
     icon: Layers,
-    title: 'Operational Dashboards',
+    title: 'Real-Time Visibility',
     description:
-      'At-a-glance visibility into the metrics that matter: sales performance, inventory turns, outstanding orders, and cash flow.',
+      'Because operations and accounting share one data set, every dashboard, report, and inquiry reflects what is actually happening right now — not what happened at last night\'s sync.',
   },
-  {
-    icon: TrendingUp,
-    title: 'Business Intelligence',
-    description:
-      'Built-in reporting engine with drill-down capability, giving your team answers without waiting for IT or manual exports.',
-  },
-];
-
-const processSteps = [
-  {
-    step: '01',
-    title: 'Discover',
-    description:
-      'We learn how your business actually operates — your workflows, pain points, reporting needs, and growth plans.',
-  },
-  {
-    step: '02',
-    title: 'Recommend',
-    description:
-      'We map Spire capabilities to your specific requirements and present an honest assessment of fit, timeline, and investment.',
-  },
-  {
-    step: '03',
-    title: 'Implement',
-    description:
-      'We configure every module around your processes, migrate your data cleanly, and test everything before go-live.',
-  },
-  {
-    step: '04',
-    title: 'Train',
-    description:
-      'Role-based training that meets your team where they are — practical, plain-language sessions that build real competence.',
-  },
-  {
-    step: '05',
-    title: 'Support',
-    description:
-      'Ongoing access to someone who knows your system inside and out. Not a generic help desk — a genuine partner.',
-  },
-];
-
-const idealFor = [
-  'Distribution and wholesale companies',
-  'Growing businesses that have outgrown entry-level tools',
-  'Organizations needing real-time inventory visibility',
-  'Companies managing complex order-to-cash cycles',
-  'Businesses ready for integrated operations and accounting',
 ];
 
 /* ------------------------------------------------------------------ */
@@ -159,16 +142,17 @@ export default function SpirePage() {
               custom={1}
               className="font-display text-[clamp(2.25rem,5vw,3.75rem)] leading-[1.08] tracking-tight text-ivory-50 text-balance"
             >
-              Spire — Modern Business Management, Fully Integrated
+              Spire — The Natural Upgrade from BusinessVision.
             </motion.h1>
             <motion.p
               variants={fadeUp}
               custom={2}
               className="mt-6 text-[length:--font-size-body-lg] leading-relaxed text-slate-300 max-w-2xl"
             >
-              Real-time inventory, order management, purchasing, and accounting
-              in one connected system. Built for businesses that need their
-              operations and finances working from the same data, in real time.
+              Modern accounting and operations software with deep integration,
+              powerful inventory management, and real-time visibility. Built to
+              handle the volume and complexity that legacy systems struggle
+              with.
             </motion.p>
             <motion.div
               variants={fadeUp}
@@ -179,62 +163,38 @@ export default function SpirePage() {
                 Book a Spire Consultation
               </Button>
               <Button
-                href="/solutions"
+                href="/assessment"
                 variant="secondaryDark"
                 size="lg"
                 arrow
-                
               >
-                All Solutions
+                Take the Fit Assessment
               </Button>
             </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* ── Who Spire Is For ── */}
+      {/* ── Lead: BusinessVision Upgrade Path ── */}
       <section className="bg-ivory-100 py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              className="lg:col-span-5"
             >
-              <p className="eyebrow text-accent-600 mb-4">Ideal Fit</p>
+              <p className="eyebrow text-accent-600 mb-4">From BusinessVision</p>
               <h2 className="font-display text-[length:--font-size-display-sm] tracking-tight text-navy-900 mb-6">
-                Is Spire Right for Your Business?
+                The most efficient upgrade from BusinessVision.
               </h2>
-              <p className="text-[length:--font-size-body-lg] text-slate-600 leading-relaxed mb-8">
-                Spire is built for organizations that have outgrown basic
-                accounting tools and need a system where operations and
-                finances are genuinely connected. If you are managing
-                inventory, processing orders, and running accounting in
-                separate systems — or worse, in spreadsheets — Spire
-                consolidates everything.
+              <p className="text-[length:--font-size-body-lg] text-slate-600 leading-relaxed">
+                If you are running BusinessVision today, Spire is the most
+                logical and direct path forward — built by the same heritage,
+                with a modern foundation underneath.
               </p>
-              <ul className="space-y-4">
-                {idealFor.map((item, i) => (
-                  <motion.li
-                    key={item}
-                    initial={{ opacity: 0, x: -12 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{
-                      duration: 0.5,
-                      delay: 0.15 + i * 0.08,
-                      ease: [0.16, 1, 0.3, 1],
-                    }}
-                    className="flex items-start gap-3"
-                  >
-                    <CheckCircle2 className="w-5 h-5 text-accent-500 mt-0.5 flex-shrink-0" />
-                    <span className="text-[length:--font-size-body] text-slate-700">
-                      {item}
-                    </span>
-                  </motion.li>
-                ))}
-              </ul>
             </motion.div>
 
             <motion.div
@@ -243,31 +203,44 @@ export default function SpirePage() {
               viewport={{ once: true }}
               transition={{
                 duration: 0.7,
-                delay: 0.15,
+                delay: 0.12,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="bg-white rounded-2xl p-10 shadow-card border border-ivory-200"
+              className="lg:col-span-7 bg-white rounded-2xl p-10 lg:p-12 shadow-card border border-ivory-200"
             >
-              <div className="flex items-center gap-3 mb-8">
-                <div className="w-10 h-10 rounded-xl bg-navy-900/[0.06] flex items-center justify-center">
-                  <Users className="w-5 h-5 text-navy-800" />
+              <div className="flex items-start gap-4 mb-6">
+                <div className="w-11 h-11 rounded-xl bg-accent-500/10 flex items-center justify-center flex-shrink-0">
+                  <ArrowUpRight
+                    className="w-5 h-5 text-accent-600"
+                    strokeWidth={1.75}
+                  />
                 </div>
-                <h3 className="text-[length:--font-size-h3] font-semibold text-navy-900">
-                  Common Triggers
-                </h3>
+                <div>
+                  <h3 className="text-[length:--font-size-h2] font-semibold text-navy-900 mb-3">
+                    Keep every record. Bring every history forward.
+                  </h3>
+                  <p className="text-[length:--font-size-body] text-slate-600 leading-relaxed">
+                    Moving to Spire from BusinessVision preserves the full
+                    depth of your historical data — customers, vendors,
+                    inventory, transactions, and the trail behind them. What
+                    other accounting software upgrade can honestly make that
+                    claim?
+                  </p>
+                </div>
               </div>
-              <ul className="space-y-4 text-[length:--font-size-body] text-slate-600">
+              <ul className="space-y-3 pt-6 border-t border-ivory-200">
                 {[
-                  'Inventory counts never match what the system says',
-                  'Orders are falling through the cracks during busy periods',
-                  'Finance is reconciling data from three different systems',
-                  'You are making decisions based on last month\'s numbers',
-                  'Growth is outpacing your current software\'s capacity',
-                  'New hires take months to learn your workaround processes',
-                ].map((trigger) => (
-                  <li key={trigger} className="flex items-start gap-3">
-                    <ArrowRight className="w-4 h-4 text-accent-500 mt-1 flex-shrink-0" />
-                    <span>{trigger}</span>
+                  'Direct upgrade path — designed for BusinessVision users',
+                  'All historical records retained, not just opening balances',
+                  'Familiar concepts and terminology, modernized',
+                  'A migration we have done many times before',
+                ].map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-start gap-3 text-[length:--font-size-body] text-slate-700"
+                  >
+                    <CheckCircle2 className="w-5 h-5 text-accent-500 mt-0.5 flex-shrink-0" />
+                    <span>{item}</span>
                   </li>
                 ))}
               </ul>
@@ -276,7 +249,7 @@ export default function SpirePage() {
         </div>
       </section>
 
-      {/* ── Key Capabilities ── */}
+      {/* ── Capabilities Grid ── */}
       <section className="bg-white py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <motion.div
@@ -284,11 +257,11 @@ export default function SpirePage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="text-center mb-16"
+            className="max-w-2xl mb-16"
           >
-            <p className="eyebrow text-accent-600 mb-4">Capabilities</p>
+            <p className="eyebrow text-accent-600 mb-4">What Spire Delivers</p>
             <h2 className="font-display text-[length:--font-size-display-sm] tracking-tight text-navy-900">
-              Everything Your Business Needs. One System.
+              Built for the volume and complexity legacy systems can&apos;t carry.
             </h2>
           </motion.div>
 
@@ -301,7 +274,7 @@ export default function SpirePage() {
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{
                   duration: 0.6,
-                  delay: i * 0.08,
+                  delay: (i % 3) * 0.08,
                   ease: [0.16, 1, 0.3, 1],
                 }}
                 className="bg-ivory-50 rounded-2xl p-8 border border-ivory-200 hover:shadow-card transition-shadow duration-500"
@@ -324,145 +297,38 @@ export default function SpirePage() {
         </div>
       </section>
 
-      {/* ── Why Implementation Matters ── */}
-      <section className="bg-navy-900 py-24 lg:py-32">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-white/[0.06] mb-6">
-                <Settings className="w-6 h-6 text-accent-400" />
-              </div>
-              <h2 className="font-display text-[length:--font-size-display-sm] tracking-tight text-ivory-50 mb-6">
-                Spire Is Powerful — But Only When It Is Configured Right
-              </h2>
-              <p className="text-[length:--font-size-body-lg] text-slate-300 leading-relaxed mb-6">
-                The difference between a Spire system that transforms your
-                operations and one that frustrates your team comes down to
-                implementation quality. Default settings do not account for
-                your specific inventory rules, order workflows, approval
-                processes, or reporting requirements.
-              </p>
-              <p className="text-[length:--font-size-body] text-slate-400 leading-relaxed">
-                We take the time to understand how your business actually
-                operates — not how a textbook says it should. Every configuration
-                decision is made with your real processes in mind, and every
-                setting is tested against your actual data before go-live.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 0.7,
-                delay: 0.12,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-            >
-              <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-white/[0.06] mb-6">
-                <Headphones className="w-6 h-6 text-accent-400" />
-              </div>
-              <h2 className="font-display text-[length:--font-size-h1] tracking-tight text-ivory-50 mb-6">
-                Ongoing Support From Someone Who Knows Your System
-              </h2>
-              <p className="text-[length:--font-size-body-lg] text-slate-300 leading-relaxed mb-6">
-                When something goes wrong at 2 PM on a Tuesday, you do not
-                want to explain your setup to a stranger. Our support model
-                means you work with someone who already knows your
-                configuration, your data, and your team.
-              </p>
-              <p className="text-[length:--font-size-body] text-slate-400 leading-relaxed">
-                No ticket queues, no first-tier runarounds. Direct access
-                to an expert who can solve problems quickly because they
-                understand the context.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Process ── */}
-      <section className="bg-ivory-50 py-24 lg:py-32">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      {/* ── Moving from BusinessVision callout ── */}
+      <section className="bg-navy-900 py-24 lg:py-28">
+        <div className="mx-auto max-w-5xl px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="text-center mb-16"
+            className="text-center"
           >
-            <p className="eyebrow text-accent-600 mb-4">Our Process</p>
-            <h2 className="font-display text-[length:--font-size-display-sm] tracking-tight text-navy-900">
-              How We Work Together
+            <p className="eyebrow text-accent-400 mb-5">
+              Moving from BusinessVision?
+            </p>
+            <h2 className="font-display text-[length:--font-size-display-sm] tracking-tight text-ivory-50 mb-6">
+              We have done this migration more times than anyone else you&apos;ll talk to.
             </h2>
-          </motion.div>
-
-          <div className="grid md:grid-cols-5 gap-6">
-            {processSteps.map((step, i) => (
-              <motion.div
-                key={step.step}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{
-                  duration: 0.6,
-                  delay: i * 0.1,
-                  ease: [0.16, 1, 0.3, 1],
-                }}
-                className="relative bg-white rounded-2xl p-6 shadow-card text-center"
-              >
-                <span className="block text-[length:--font-size-caption] font-bold text-accent-500 mb-3">
-                  {step.step}
-                </span>
-                <h3 className="text-[length:--font-size-h3] font-semibold text-navy-900 mb-2">
-                  {step.title}
-                </h3>
-                <p className="text-[length:--font-size-body-sm] text-slate-600 leading-relaxed">
-                  {step.description}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Testimonial ── */}
-      <section className="bg-white py-24 lg:py-28">
-        <div className="mx-auto max-w-4xl px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <Quote className="w-10 h-10 text-accent-400/40 mx-auto mb-6" />
-            <blockquote className="font-display text-[length:--font-size-h1] leading-snug tracking-tight text-navy-900 mb-8">
-              We tried implementing Spire ourselves and it was a disaster.
-              Samuel came in, rebuilt our configuration from scratch, and
-              the difference was night and day. Our team actually uses the
-              system now.
-            </blockquote>
-            <div>
-              <p className="text-[length:--font-size-body] font-semibold text-navy-900">
-                Operations Director
-              </p>
-              <p className="text-[length:--font-size-body-sm] text-slate-500">
-                Distribution Company, Ontario
-              </p>
-            </div>
+            <p className="text-[length:--font-size-body-lg] text-slate-300 leading-relaxed max-w-3xl mx-auto mb-10">
+              Spire is the recommended path forward from BusinessVision — and
+              we have spent decades doing exactly these migrations. We know
+              where data needs cleaning, where defaults will hurt you, and how
+              to bring the full history across without surprises after go-live.
+            </p>
+            <Button href="/assessment" variant="accent" size="lg" arrow>
+              Get a BusinessVision Migration Plan
+            </Button>
           </motion.div>
         </div>
       </section>
 
       <Faq items={spireFaqs} heading="Spire questions, answered." />
 
-      {/* ── CTA ── */}
+      {/* ── Final CTA ── */}
       <section className="bg-navy-950 py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center">
           <motion.div
@@ -472,17 +338,21 @@ export default function SpirePage() {
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           >
             <h2 className="font-display text-[length:--font-size-display-sm] tracking-tight text-ivory-50 mb-5">
-              Ready to Get Spire Working for You?
+              Ready to see what Spire can do for you?
             </h2>
             <p className="text-[length:--font-size-body-lg] text-slate-300 max-w-2xl mx-auto mb-10">
-              Whether you are evaluating Spire for the first time or need
-              to fix a broken implementation, the first step is a
-              conversation. No obligation, no sales pitch — just an honest
-              assessment.
+              Whether you are moving off BusinessVision, evaluating Spire for
+              the first time, or fixing an implementation that never landed
+              properly — start with a real conversation.
             </p>
-            <Button href="/contact" variant="accent" size="lg" arrow>
-              Book a Spire Consultation
-            </Button>
+            <div className="flex flex-wrap gap-4 justify-center">
+              <Button href="/contact" variant="accent" size="lg" arrow>
+                Book a Spire Consultation
+              </Button>
+              <Button href="/assessment" variant="secondaryDark" size="lg" arrow>
+                Take the Fit Assessment
+              </Button>
+            </div>
           </motion.div>
         </div>
       </section>

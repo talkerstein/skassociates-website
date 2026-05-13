@@ -266,25 +266,30 @@ export function Hero() {
               variants={fadeUp}
               className="eyebrow text-accent-400 mb-6"
             >
-              Toronto · Serving Canada &amp; Beyond
+              Canadian accounting software, simplified.
             </motion.div>
 
             <motion.h1
               variants={fadeUp}
               className="font-display text-5xl lg:text-6xl leading-[1.05] tracking-tight text-ivory-50 text-balance"
             >
-              Your software should work{" "}
-              <span className="text-accent-400 italic">for</span> your business.
-              Not the other way around.
+              Run your Business{" "}
+              <span className="text-accent-400 italic">Successfully.</span>
             </motion.h1>
 
             <motion.p
               variants={fadeUp}
-              className="mt-7 text-lg leading-relaxed text-slate-300 max-w-xl"
+              className="mt-5 font-display text-2xl lg:text-3xl leading-snug tracking-tight text-ivory-100/90"
+            >
+              Don&apos;t let your software hold you back.
+            </motion.p>
+
+            <motion.p
+              variants={fadeUp}
+              className="mt-6 text-lg leading-relaxed text-slate-300 max-w-xl"
             >
               Expert implementation, training, and ongoing support for Spire
-              and Adagio — so your accounting and operations software actually
-              delivers what it promised.
+              and Adagio — Toronto-based, serving Canada and beyond.
             </motion.p>
 
             {/* CTAs */}

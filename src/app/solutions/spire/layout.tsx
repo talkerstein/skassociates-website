@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Spire ERP Solutions | S. Kopstick & Associates',
+  title: 'Spire — The Natural Upgrade from BusinessVision | S. Kopstick & Associates',
   description:
-    'Expert Spire implementation, configuration, and support. Real-time inventory, order management, purchasing, and integrated accounting for growing businesses.',
+    'Spire is the most logical upgrade from BusinessVision — keep all of your historical records, gain real-time inventory, integrated order management, and 20 included modules. Expert implementation and migration support.',
 };
 
 export default function SpireLayout({

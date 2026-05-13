@@ -2,17 +2,12 @@
 
 import { motion } from 'framer-motion';
 import {
-  ArrowRight,
-  BookOpen,
-  Receipt,
-  CreditCard,
+  FileText,
   BarChart3,
-  Blocks,
-  Shield,
-  CheckCircle2,
-  Lock,
-  FileSearch,
-  Quote,
+  Eye,
+  Download,
+  Heart,
+  LifeBuoy,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Faq } from '@/components/ui/faq';
@@ -37,55 +32,40 @@ const stagger = {
 };
 
 /* ------------------------------------------------------------------ */
-/*  Data                                                               */
+/*  Data — Samuel's bullets, expanded                                  */
 /* ------------------------------------------------------------------ */
 
-const capabilities = [
+const strengths = [
   {
-    icon: BookOpen,
-    title: 'General Ledger',
+    icon: FileText,
+    title: 'Exceptional Financial Reporting',
     description:
-      'A rock-solid general ledger with multi-department tracking, recurring entries, and drill-down capability for full visibility into every number.',
-  },
-  {
-    icon: CreditCard,
-    title: 'Accounts Payable',
-    description:
-      'Streamlined vendor management, payment processing, and cash flow planning. Know exactly what you owe and when.',
-  },
-  {
-    icon: Receipt,
-    title: 'Accounts Receivable',
-    description:
-      'Invoice management, aging reports, and collection tracking to keep revenue flowing and receivables under control.',
+      'Adagio lets you build any financial statement in the format you actually need to report — not a fixed template. Departmental and consolidated reporting are particularly strong, which is why so many finance-led organizations have stayed with it for years.',
   },
   {
     icon: BarChart3,
-    title: 'Financial Reporting',
+    title: 'Detailed Budgeting',
     description:
-      'Powerful financial statements, custom report builders, and export tools that give you the numbers you need, when you need them.',
+      'Maintain detailed budgets at the level your organization works at. For clients with heavier reporting needs, we produce professional monthly and quarterly statements with variance analysis between periods that summarize the budgeting clearly.',
   },
   {
-    icon: Blocks,
-    title: 'Modular Architecture',
+    icon: Eye,
+    title: 'Sophisticated Online Views with GridView',
     description:
-      'Start with what you need, add modules as you grow. Adagio does not force you into features you will never use.',
+      'The Adagio GridView module creates executive snapshots of your data that can be run without granting access to the rest of the accounting system — useful when you want managers and staff to view reports without ever touching the accounting program itself.',
   },
   {
-    icon: Shield,
-    title: 'Audit Trails & Controls',
+    icon: Download,
+    title: 'Rapid Excel Export',
     description:
-      'Comprehensive transaction logging, user permissions, and approval workflows that satisfy auditors and protect your data.',
+      'Adagio offers an "Excel Direct" button that exports the current view of any grid straight into Excel. Quick to use, and exactly what most finance teams reach for first.',
   },
-];
-
-const idealFor = [
-  'Accounting-focused organizations that need strong financial controls',
-  'Service businesses managing complex receivables and project billing',
-  'Not-for-profit organizations with fund accounting requirements',
-  'Companies that need modular, right-sized software',
-  'Organizations prioritizing audit readiness and compliance',
-  'Businesses that value stability and long-term vendor support',
+  {
+    icon: Heart,
+    title: 'A Strong Fit for Non-Profit Organizations',
+    description:
+      'Adagio has a long-standing client base in the non-profit sector and offers discounts on module purchases for non-profits. Generate all of your financials and reporting in one place — so you are no longer late producing detailed financial statements and the other reports the board needs.',
+  },
 ];
 
 /* ------------------------------------------------------------------ */
@@ -126,16 +106,17 @@ export default function AdagioPage() {
               custom={1}
               className="font-display text-[clamp(2.25rem,5vw,3.75rem)] leading-[1.08] tracking-tight text-ivory-50 text-balance"
             >
-              Adagio — Proven Financial Control, Built to Last
+              Adagio — Proven Financial Reporting and Control.
             </motion.h1>
             <motion.p
               variants={fadeUp}
               custom={2}
               className="mt-6 text-[length:--font-size-body-lg] leading-relaxed text-slate-300 max-w-2xl"
             >
-              A modular accounting system built for organizations that take
-              financial accuracy seriously. Strong controls, clear reporting,
-              and the flexibility to build exactly the system you need.
+              Strong financial reporting, departmental analysis, budgeting, and
+              a deep history serving accounting-focused organizations and
+              non-profits. We have supported Adagio implementations for years
+              and continue to do so for clients where it is the right fit.
             </motion.p>
             <motion.div
               variants={fadeUp}
@@ -143,101 +124,22 @@ export default function AdagioPage() {
               className="mt-10 flex flex-wrap gap-4"
             >
               <Button href="/contact" variant="accent" size="lg" arrow>
-                Book an Adagio Consultation
+                Talk About Adagio
               </Button>
               <Button
-                href="/solutions"
+                href="/assessment"
                 variant="secondaryDark"
                 size="lg"
                 arrow
-                
               >
-                All Solutions
+                See Which Platform Fits
               </Button>
             </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* ── Who Adagio Is For ── */}
-      <section className="bg-ivory-100 py-24 lg:py-32">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <p className="eyebrow text-accent-600 mb-4">Ideal Fit</p>
-              <h2 className="font-display text-[length:--font-size-display-sm] tracking-tight text-navy-900 mb-6">
-                Is Adagio Right for Your Organization?
-              </h2>
-              <p className="text-[length:--font-size-body-lg] text-slate-600 leading-relaxed mb-8">
-                Adagio is the right choice when financial control is the
-                priority. It is not trying to be everything to everyone — it
-                is focused on doing accounting exceptionally well. For
-                organizations that need reliable financial data, clean audit
-                trails, and reporting you can trust, Adagio delivers.
-              </p>
-              <ul className="space-y-4">
-                {idealFor.map((item, i) => (
-                  <motion.li
-                    key={item}
-                    initial={{ opacity: 0, x: -12 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{
-                      duration: 0.5,
-                      delay: 0.15 + i * 0.08,
-                      ease: [0.16, 1, 0.3, 1],
-                    }}
-                    className="flex items-start gap-3"
-                  >
-                    <CheckCircle2 className="w-5 h-5 text-accent-500 mt-0.5 flex-shrink-0" />
-                    <span className="text-[length:--font-size-body] text-slate-700">
-                      {item}
-                    </span>
-                  </motion.li>
-                ))}
-              </ul>
-            </motion.div>
-
-            {/* Philosophy card */}
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 0.7,
-                delay: 0.15,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-              className="bg-white rounded-2xl p-10 shadow-card border border-ivory-200"
-            >
-              <h3 className="font-display text-[length:--font-size-h1] tracking-tight text-navy-900 mb-6">
-                Build Exactly the System You Need — No More, No Less
-              </h3>
-              <p className="text-[length:--font-size-body] text-slate-600 leading-relaxed mb-6">
-                Adagio&apos;s modular approach means you only invest in the
-                capabilities your organization actually uses. Start with
-                General Ledger and Accounts Payable. Add Receivables when
-                you need it. Layer in Inventory if your business requires
-                it. Every module integrates seamlessly, but none are forced
-                on you.
-              </p>
-              <p className="text-[length:--font-size-body] text-slate-600 leading-relaxed">
-                This is not about having fewer features — it is about
-                having the right features configured correctly for your
-                specific needs. The result is a system your team actually
-                understands and trusts.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Key Capabilities ── */}
+      {/* ── Where Adagio Excels ── */}
       <section className="bg-white py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <motion.div
@@ -245,39 +147,44 @@ export default function AdagioPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="text-center mb-16"
+            className="max-w-2xl mb-16"
           >
-            <p className="eyebrow text-accent-600 mb-4">Capabilities</p>
+            <p className="eyebrow text-accent-600 mb-4">Where Adagio Excels</p>
             <h2 className="font-display text-[length:--font-size-display-sm] tracking-tight text-navy-900">
-              Financial Management That Earns Your Trust
+              A mature platform with real strengths in reporting and control.
             </h2>
+            <p className="mt-5 text-[length:--font-size-body-lg] text-slate-600 leading-relaxed">
+              Adagio has earned its reputation in financial reporting,
+              departmental and consolidated accounting, budgeting, and the
+              non-profit sector. Below is an honest look at what it does well.
+            </p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {capabilities.map((cap, i) => (
+            {strengths.map((item, i) => (
               <motion.div
-                key={cap.title}
+                key={item.title}
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{
                   duration: 0.6,
-                  delay: i * 0.08,
+                  delay: (i % 3) * 0.08,
                   ease: [0.16, 1, 0.3, 1],
                 }}
                 className="bg-ivory-50 rounded-2xl p-8 border border-ivory-200 hover:shadow-card transition-shadow duration-500"
               >
                 <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-navy-900/[0.06] mb-5">
-                  <cap.icon
+                  <item.icon
                     className="w-5 h-5 text-navy-800"
                     strokeWidth={1.5}
                   />
                 </div>
                 <h3 className="text-[length:--font-size-h3] font-semibold text-navy-900 mb-2">
-                  {cap.title}
+                  {item.title}
                 </h3>
                 <p className="text-[length:--font-size-body] text-slate-600 leading-relaxed">
-                  {cap.description}
+                  {item.description}
                 </p>
               </motion.div>
             ))}
@@ -285,113 +192,44 @@ export default function AdagioPage() {
         </div>
       </section>
 
-      {/* ── Reporting & Controls Emphasis ── */}
-      <section className="bg-navy-900 py-24 lg:py-32">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16">
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-white/[0.06] mb-6">
-                <FileSearch className="w-6 h-6 text-accent-400" />
-              </div>
-              <h2 className="font-display text-[length:--font-size-h1] tracking-tight text-ivory-50 mb-6">
-                Reporting That Stands Up to Scrutiny
-              </h2>
-              <p className="text-[length:--font-size-body-lg] text-slate-300 leading-relaxed mb-6">
-                Adagio was designed from the ground up with reporting in
-                mind. Financial statements, trial balances, aging reports,
-                and custom queries are not afterthoughts — they are core
-                capabilities.
-              </p>
-              <ul className="space-y-3">
-                {[
-                  'Standard and custom financial statement formats',
-                  'Drill-down from summary to transaction detail',
-                  'Comparative period and budget vs. actual reporting',
-                  'Crystal Reports integration for advanced output',
-                  'Excel export for ad hoc analysis',
-                ].map((item) => (
-                  <li
-                    key={item}
-                    className="flex items-start gap-3 text-[length:--font-size-body] text-slate-300"
-                  >
-                    <CheckCircle2 className="w-4 h-4 text-accent-400 mt-1 flex-shrink-0" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 0.7,
-                delay: 0.12,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-            >
-              <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-white/[0.06] mb-6">
-                <Lock className="w-6 h-6 text-accent-400" />
-              </div>
-              <h2 className="font-display text-[length:--font-size-h1] tracking-tight text-ivory-50 mb-6">
-                Controls Your Auditors Will Appreciate
-              </h2>
-              <p className="text-[length:--font-size-body-lg] text-slate-300 leading-relaxed mb-6">
-                Every transaction leaves a trail. User permissions control
-                who can do what. Period locks prevent backdating. Approval
-                workflows ensure proper authorization. When audit season
-                arrives, you are prepared — not scrambling.
-              </p>
-              <ul className="space-y-3">
-                {[
-                  'Complete audit trail on every transaction',
-                  'Granular user permissions by module and function',
-                  'Period and year-end locking controls',
-                  'Transaction approval workflows',
-                  'Automated batch posting with full logging',
-                ].map((item) => (
-                  <li
-                    key={item}
-                    className="flex items-start gap-3 text-[length:--font-size-body] text-slate-300"
-                  >
-                    <CheckCircle2 className="w-4 h-4 text-accent-400 mt-1 flex-shrink-0" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Testimonial ── */}
-      <section className="bg-ivory-50 py-24 lg:py-28">
-        <div className="mx-auto max-w-4xl px-6 lg:px-8 text-center">
+      {/* ── Already an Adagio Customer? ── */}
+      <section className="bg-ivory-100 py-24 lg:py-28">
+        <div className="mx-auto max-w-5xl px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="bg-white rounded-2xl p-10 lg:p-14 shadow-card border border-ivory-200"
           >
-            <Quote className="w-10 h-10 text-accent-400/40 mx-auto mb-6" />
-            <blockquote className="font-display text-[length:--font-size-h1] leading-snug tracking-tight text-navy-900 mb-8">
-              Our previous accountant set up Adagio with all the defaults.
-              Samuel reconfigured everything to match how we actually work,
-              and our month-end close went from five days to two.
-            </blockquote>
-            <div>
-              <p className="text-[length:--font-size-body] font-semibold text-navy-900">
-                Controller
-              </p>
-              <p className="text-[length:--font-size-body-sm] text-slate-500">
-                Professional Services Firm, Toronto
-              </p>
+            <div className="flex items-start gap-5">
+              <div className="w-12 h-12 rounded-xl bg-navy-900/[0.06] flex items-center justify-center flex-shrink-0">
+                <LifeBuoy
+                  className="w-6 h-6 text-navy-800"
+                  strokeWidth={1.5}
+                />
+              </div>
+              <div>
+                <p className="eyebrow text-accent-600 mb-3">
+                  Already an Adagio Customer?
+                </p>
+                <h2 className="font-display text-[length:--font-size-h1] tracking-tight text-navy-900 mb-5">
+                  You are not going anywhere unless you want to.
+                </h2>
+                <p className="text-[length:--font-size-body-lg] text-slate-600 leading-relaxed mb-4">
+                  If you currently run on Adagio, we provide ongoing
+                  implementation refinement, training, custom reporting, and
+                  support — for as long as you continue using the platform.
+                </p>
+                <p className="text-[length:--font-size-body] text-slate-600 leading-relaxed mb-8">
+                  Whether you need a small tune-up, a new report built, or a
+                  quiet second opinion on a year-end question, get in touch
+                  and we will help.
+                </p>
+                <Button href="/contact" variant="accent" arrow>
+                  Talk About Your Adagio Setup
+                </Button>
+              </div>
             </div>
           </motion.div>
         </div>
@@ -399,7 +237,7 @@ export default function AdagioPage() {
 
       <Faq items={adagioFaqs} heading="Adagio questions, answered." />
 
-      {/* ── CTA ── */}
+      {/* ── Final CTA — soft ── */}
       <section className="bg-navy-950 py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center">
           <motion.div
@@ -409,16 +247,21 @@ export default function AdagioPage() {
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           >
             <h2 className="font-display text-[length:--font-size-display-sm] tracking-tight text-ivory-50 mb-5">
-              Ready for Financial Software That Actually Works?
+              Wondering whether Adagio is the right fit?
             </h2>
             <p className="text-[length:--font-size-body-lg] text-slate-300 max-w-2xl mx-auto mb-10">
-              Whether you are considering Adagio for the first time or need
-              help getting more from an existing installation, let us start
-              with a conversation.
+              We will give you a straight answer — whether that is yes,
+              whether that is a different platform, or whether your current
+              Adagio setup just needs better support behind it.
             </p>
-            <Button href="/contact" variant="accent" size="lg" arrow>
-              Book an Adagio Consultation
-            </Button>
+            <div className="flex flex-wrap gap-4 justify-center">
+              <Button href="/contact" variant="accent" size="lg" arrow>
+                Get Guidance on Adagio
+              </Button>
+              <Button href="/assessment" variant="secondaryDark" size="lg" arrow>
+                See Which Platform Fits
+              </Button>
+            </div>
           </motion.div>
         </div>
       </section>

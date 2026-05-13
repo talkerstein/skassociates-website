@@ -46,16 +46,38 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-20 pb-12">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 pb-12 border-b border-white/5">
           <div>
-            <Link href="/" className="inline-flex items-baseline gap-0.5 mb-4">
-              <span className="text-[length:--font-size-h2] font-semibold text-ivory-50 tracking-tight">
-                S. Kopstick
+            <Link
+              href="/"
+              className="inline-flex items-center gap-3 mb-5"
+              aria-label="S. Kopstick & Associates Inc. — Home"
+            >
+              {/* Monogram */}
+              <span
+                className="flex h-10 w-11 items-center justify-center rounded-sm border border-accent-500/60 font-display text-ivory-100"
+                aria-hidden="true"
+              >
+                <span className="text-base leading-none">S</span>
+                <span className="mx-1 h-5 w-px bg-accent-500/70" />
+                <span className="text-base leading-none">K</span>
               </span>
-              <span className="text-[length:--font-size-body] font-light text-slate-400 ml-1.5">
-                &amp; Associates
+
+              {/* Wordmark */}
+              <span className="flex flex-col leading-none">
+                <span className="font-display text-[length:--font-size-h3] text-ivory-100 tracking-tight">
+                  S Kopstick
+                </span>
+                <span className="mt-1.5 text-[0.65rem] uppercase tracking-[0.18em] text-slate-400">
+                  &amp; Associates Inc.
+                </span>
               </span>
             </Link>
-            <p className="text-[length:--font-size-body] text-slate-400 max-w-md leading-relaxed">
-              Expert Spire &amp; Adagio implementation, training, and support.
+
+            {/* Taglines */}
+            <p className="font-display italic text-[length:--font-size-body-sm] text-slate-300 max-w-md leading-relaxed">
+              Canadian accounting software, simplified.
+            </p>
+            <p className="mt-1.5 text-[length:--font-size-caption] text-slate-500 max-w-md leading-relaxed">
+              30+ years of getting it right the first time.
             </p>
           </div>
           <div className="flex-shrink-0">

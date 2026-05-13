@@ -226,13 +226,33 @@ export function Navigation() {
           scrolled ? "h-16" : "h-20"
         )}
       >
-        {/* Logo */}
-        <Link href="/" className="relative z-10 flex items-baseline gap-0.5">
-          <span className="text-[length:--font-size-body-lg] font-semibold text-ivory-50 tracking-tight">
-            S. Kopstick
+        {/* Logo — S|K monogram + wordmark */}
+        <Link
+          href="/"
+          className="relative z-10 flex items-center gap-3"
+          aria-label="S. Kopstick & Associates Inc. — Home"
+        >
+          {/* Monogram */}
+          <span
+            className={clsx(
+              "flex items-center justify-center border border-accent-500/60 rounded-sm font-display text-ivory-50 transition-all duration-500 ease-[var(--ease-out-expo)]",
+              scrolled ? "h-8 w-9" : "h-9 w-10"
+            )}
+            aria-hidden="true"
+          >
+            <span className="text-[0.95rem] leading-none">S</span>
+            <span className="mx-1 h-4 w-px bg-accent-500/70" />
+            <span className="text-[0.95rem] leading-none">K</span>
           </span>
-          <span className="text-[length:--font-size-body-sm] font-light text-slate-400 ml-1.5">
-            &amp; Associates
+
+          {/* Wordmark */}
+          <span className="flex flex-col leading-none">
+            <span className="font-display text-[length:--font-size-body-lg] text-ivory-50 tracking-tight">
+              S Kopstick
+            </span>
+            <span className="mt-1 text-[0.6rem] uppercase tracking-[0.18em] text-slate-400">
+              &amp; Associates Inc.
+            </span>
           </span>
         </Link>
 
