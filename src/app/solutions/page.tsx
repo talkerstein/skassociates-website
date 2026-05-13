@@ -248,10 +248,11 @@ export default function SolutionsPage() {
                 experience, and the patience to get every detail right.
               </p>
               <p className="text-[length:--font-size-body] text-slate-600 leading-relaxed">
-                With over 30 years of hands-on experience with Spire and
-                Adagio, we have done this hundreds of times — and we bring
-                that knowledge to every engagement. Your implementation
-                benefits from every lesson we have learned along the way.
+                With over three decades of accounting software experience —
+                including the years before Spire and Adagio came to dominate
+                the mid-market — we have seen what works and what does not.
+                Your implementation benefits from every lesson learned along
+                the way.
               </p>
             </motion.div>
 
@@ -269,19 +270,19 @@ export default function SolutionsPage() {
               {[
                 {
                   stat: '30+',
-                  label: 'Years of Spire & Adagio expertise',
+                  label: 'Years of accounting software experience',
                 },
                 {
-                  stat: '200+',
-                  label: 'Implementations completed successfully',
+                  stat: 'Authorized',
+                  label: 'Spire Partner & Adagio Reseller',
                 },
                 {
-                  stat: '98%',
-                  label: 'Client retention rate year-over-year',
+                  stat: 'Founder-led',
+                  label: 'Every project handled by Samuel directly',
                 },
                 {
-                  stat: '48hr',
-                  label: 'Average support response turnaround',
+                  stat: 'Toronto',
+                  label: 'Serving clients across Canada, remote-first',
                 },
               ].map((item, i) => (
                 <motion.div

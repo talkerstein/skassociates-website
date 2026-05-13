@@ -46,8 +46,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
       <body className="min-h-screen bg-ivory-50 text-navy-900 antialiased">
-        <EolBanner />
-        <Navigation />
+        {/* Locked top stack — EOL banner sits above the nav, both stay pinned */}
+        <div className="fixed top-0 inset-x-0 z-50">
+          <EolBanner />
+          <Navigation />
+        </div>
         <main>{children}</main>
         <Footer />
       </body>

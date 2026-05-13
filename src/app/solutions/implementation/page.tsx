@@ -275,10 +275,10 @@ export default function ImplementationPage() {
                 How We Reduce Risk and Confusion
               </h2>
               <p className="text-[length:--font-size-body-lg] text-slate-300 leading-relaxed mb-6">
-                After 30 years and hundreds of implementations, we have seen
-                every way a project can go sideways — and we have built our
-                process to prevent each one. Every engagement starts with
-                understanding your business, not your software requirements.
+                After three decades of accounting system implementations, we
+                have seen most of the ways a project can go sideways — and we
+                have built our process to prevent them. Every engagement starts
+                with understanding your business, not your software requirements.
               </p>
               <p className="text-[length:--font-size-body] text-slate-400 leading-relaxed">
                 We do not hand you a questionnaire and disappear for three
@@ -300,20 +300,20 @@ export default function ImplementationPage() {
             >
               {[
                 {
-                  stat: '200+',
-                  label: 'Successful implementations completed',
-                },
-                {
-                  stat: 'Zero',
-                  label: 'Data loss incidents during migration',
-                },
-                {
                   stat: '30+',
                   label: 'Years of implementation experience',
                 },
                 {
-                  stat: '98%',
-                  label: 'On-time go-live rate',
+                  stat: 'Verified',
+                  label: 'Every migration tested against source data',
+                },
+                {
+                  stat: 'Hands-on',
+                  label: 'Samuel runs the implementation himself',
+                },
+                {
+                  stat: 'Hypercare',
+                  label: 'Close post-launch support, not a handoff',
                 },
               ].map((item, i) => (
                 <motion.div

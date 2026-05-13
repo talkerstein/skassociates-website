@@ -214,7 +214,7 @@ export function Navigation() {
   return (
     <header
       className={clsx(
-        "fixed top-0 inset-x-0 z-50 transition-all duration-500 ease-[var(--ease-out-expo)]",
+        "transition-all duration-500 ease-[var(--ease-out-expo)]",
         scrolled
           ? "bg-navy-900/95 backdrop-blur-xl shadow-[0_1px_0_rgba(255,255,255,0.04)]"
           : "bg-navy-950/80 backdrop-blur-md"

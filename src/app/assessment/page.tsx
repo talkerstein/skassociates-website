@@ -572,8 +572,8 @@ export default function AssessmentPage() {
             Seven questions. A real recommendation.
           </h1>
           <p className="mt-3 text-slate-600 max-w-xl mx-auto">
-            Built from 30+ years of implementing both platforms — not a generic
-            quiz.
+            Built from decades of accounting software implementation experience
+            — not a generic quiz.
           </p>
         </div>
 

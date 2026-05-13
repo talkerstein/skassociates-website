@@ -61,10 +61,11 @@ export function AboutSamuel() {
               we do.
             </p>
             <p>
-              With over 30 years of hands-on experience implementing Spire and
-              Adagio across distribution, service, and nonprofit organizations,
-              Samuel brings deep platform knowledge paired with a practical,
-              plain-language approach that clients appreciate.
+              With over 30 years of hands-on experience implementing accounting
+              and business systems across distribution, service, and nonprofit
+              organizations — and specialized expertise in Spire and Adagio for
+              over a decade — Samuel brings deep platform knowledge paired with
+              a practical, plain-language approach that clients appreciate.
             </p>
             <p>
               The goal is always the same: make your system work the way your
